@@ -3,6 +3,8 @@ CustomAbilityIcons = {}
 --- @class (partial) CustomAbilityIcons
 local CustomAbilityIcons = CustomAbilityIcons
 
+local FAB = FancyActionBar or nil;
+
 ------------------
 -- Declarations --
 ------------------
@@ -28,6 +30,10 @@ function CustomAbilityIcons.Initialize()
     CustomAbilityIcons.ReplaceMismatchedIcons()
 end
 
+function CustomAbilityIcons.GetFAB()
+    return FAB;
+end
+
 --- Helper function to apply skill styles for all relevant slots.
 --- @param hotbarCategory number The category of the hotbar to apply styles to.
 function CustomAbilityIcons.ApplySkillStyles(hotbarCategory)
@@ -50,6 +56,7 @@ end
 --- @param isFirstLoad boolean True if it's the first time the UI loads, false otherwise.
 function CustomAbilityIcons.OnPlayerActivated(_, isFirstLoad)
     CustomAbilityIcons.ApplySkillStyles(GetActiveHotbarCategory())
+    FAB = FancyActionBar
 end
 
 --- Triggered when the player switches hotbars, after the "GetSlotTexture" SecurePostHook.

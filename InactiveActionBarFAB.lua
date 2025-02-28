@@ -1,7 +1,7 @@
 --- @class (partial) CustomAbilityIcons
 local CustomAbilityIcons = CustomAbilityIcons
 
-local FAB = FancyActionBar
+--local FAB = FancyActionBar
 
 --- Retrieves the active skill style for the skill found in the specified slotIndex and applies it
 --- to the corresponding slot on both the active and inactive action bars.
@@ -48,11 +48,20 @@ end
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @return any btn The inactive bar button correspondign to the specified slotIndex.
 function CustomAbilityIcons.GetInactiveBarButtonFAB(slotIndex)
-    if FAB and FAB.buttons
+    local FAB = CustomAbilityIcons.GetFAB()
+    if FAB
        and slotIndex >= CustomAbilityIcons.SLOT_INDEX_OFFSET + CustomAbilityIcons.MIN_INDEX
        and slotIndex <= CustomAbilityIcons.SLOT_INDEX_OFFSET + CustomAbilityIcons.MAX_INDEX
     then
-        return FAB.buttons[slotIndex]
+        if FAB.buttons then
+            return FAB.buttons[slotIndex]
+        else 
+            if FAB.GetActionButton then
+                return FAB.GetActionButton(slotIndex)
+            else 
+                return nil
+            end
+        end
     else
         return nil
     end
