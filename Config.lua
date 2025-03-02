@@ -4750,12 +4750,15 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
 function AbilityIconsFramework.GenerateScribedSkillsIcons()
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.BANNER_BEARER] = {
-        [EFFECT.FLAME] = DEFAULT_ICONS.BANNER_BEARER,
+        [EFFECT.FLAME] = addonIcon("ability_grimoire_support_flame.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_support_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_support_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_support_resources.dds"),
-        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_multi.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support_physical.dds")
+        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_magic.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support_physical.dds"),
+		[EFFECT.PHYSICAL] = DEFAULT_ICONS.BANNER_BEARER,
+		[EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_support_immobilize.dds"),
+	
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {
@@ -5540,6 +5543,28 @@ local REPLACEMENT_ICONS = {
 "ability_werewolf_006_a.dds",
 "ability_werewolf_006_b.dds",
 "ability_werewolf_006_c.dds",
+
+
+	-- Test
+"ability_healer_019.dds",
+"ability_healer_030.dds",
+"ability_mage_037.dds",
+"ability_mage_044.dds",
+"antiquities_ornate_necklace_3.dds",
+"consumable_potion_012_type_002.dds",
+"death_recap_cold_aoe.dds",
+"gear_razorhorndaedric_shoulder_a.dds",
+"gear_terrorbear_head_a.dds",
+"gear_undaunted_werewolfbehemoth_head_a.dds",
+"gear_undfiregiant_head_a.dds",
+"gear_undredlord_head_a.dds",
+"u30_trial_soulrip.dds",
+"u34_vtrial_meta.dds",
+"achievement_vvardenfel_061.dds",
+"achievement_u25_dun2_flavor_boss_3b.dds",
+"ability_debuff_levitate.dds",
+"ability_buff_major_slayer.dds",
+"ability_buff_major_force.dds",
 }
 
 -- Initialize all mismatched base icons by default
