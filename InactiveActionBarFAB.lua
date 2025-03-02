@@ -1,5 +1,5 @@
---- @class (partial) CustomAbilityIcons
-local CustomAbilityIcons = CustomAbilityIcons
+--- @class (partial) AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework
 
 --local FAB = FancyActionBar
 
@@ -7,24 +7,24 @@ local CustomAbilityIcons = CustomAbilityIcons
 --- to the corresponding slot on both the active and inactive action bars.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
-function CustomAbilityIcons.ApplySkillStyleInactiveFAB(slotIndex, hotbarCategory)
-    local icon = CustomAbilityIcons.GetSkillStyleIcon(slotIndex, hotbarCategory)
-                 or CustomAbilityIcons.GetCustomAbilityIcon(slotIndex, hotbarCategory)
+function AbilityIconsFramework.ApplySkillStyleInactiveFAB(slotIndex, hotbarCategory)
+    local icon = AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory)
+                 or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
     if (icon or "") ~= "" then
         -- Apply to the inactive bar
-        local inactiveSlotIndex = slotIndex + CustomAbilityIcons.SLOT_INDEX_OFFSET
-        CustomAbilityIcons.ReplaceAbilityBarIcon(inactiveSlotIndex, hotbarCategory, icon)
+        local inactiveSlotIndex = slotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET
+        AbilityIconsFramework.ReplaceAbilityBarIcon(inactiveSlotIndex, hotbarCategory, icon)
 
         -- Apply to the active bar
-        CustomAbilityIcons.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
+        AbilityIconsFramework.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
     end
 end
 
 --- Decides whether icon replacement should take place or not. The only reason not to perform it, is if we've been asked to draw
 --- the icons of the inactive action bar and the inactive weapon is a destruction staff.
 --- @param hotbarCategory number The category of the hotbar in question.
---- @return boolean skipIconReplacement True if CustomAbilityIcons should not perform icon replacement. False otherwise.
-function CustomAbilityIcons.SkipSkillIconReplacement(hotbarCategory)
+--- @return boolean skipIconReplacement True if AbilityIconsFramework should not perform icon replacement. False otherwise.
+function AbilityIconsFramework.SkipSkillIconReplacement(hotbarCategory)
     local result = false
     local activeHotbarCategory = GetActiveHotbarCategory()
     local inactiveWeapon = nil
@@ -47,11 +47,11 @@ end
 --- FancyActionBar+ is available.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @return any btn The inactive bar button correspondign to the specified slotIndex.
-function CustomAbilityIcons.GetInactiveBarButtonFAB(slotIndex)
-    local FAB = CustomAbilityIcons.GetFAB()
+function AbilityIconsFramework.GetInactiveBarButtonFAB(slotIndex)
+    local FAB = AbilityIconsFramework.GetFAB()
     if FAB
-       and slotIndex >= CustomAbilityIcons.SLOT_INDEX_OFFSET + CustomAbilityIcons.MIN_INDEX
-       and slotIndex <= CustomAbilityIcons.SLOT_INDEX_OFFSET + CustomAbilityIcons.MAX_INDEX
+       and slotIndex >= AbilityIconsFramework.SLOT_INDEX_OFFSET + AbilityIconsFramework.MIN_INDEX
+       and slotIndex <= AbilityIconsFramework.SLOT_INDEX_OFFSET + AbilityIconsFramework.MAX_INDEX
     then
         if FAB.buttons then
             return FAB.buttons[slotIndex]
