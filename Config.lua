@@ -1,21 +1,21 @@
-local CustomAbilityIcons = CustomAbilityIcons
+local AbilityIconsFramework = AbilityIconsFramework
 
-CustomAbilityIcons.SAVEDVARIABLES_VERSION = 1.5
+AbilityIconsFramework.SAVEDVARIABLES_VERSION = 1.5
 
 -- Constants
-CustomAbilityIcons.MIN_INDEX = 3                  -- First ability index
-CustomAbilityIcons.MAX_INDEX = 8                  -- Last ability: 7, Ultimate: 8
-CustomAbilityIcons.SLOT_INDEX_OFFSET = 20         -- Offset for backbar abilities indices
-CustomAbilityIcons.COMPANION_INDEX_OFFSET = 30    -- Offset for companion ultimate
+AbilityIconsFramework.MIN_INDEX = 3                  -- First ability index
+AbilityIconsFramework.MAX_INDEX = 8                  -- Last ability: 7, Ultimate: 8
+AbilityIconsFramework.SLOT_INDEX_OFFSET = 20         -- Offset for backbar abilities indices
+AbilityIconsFramework.COMPANION_INDEX_OFFSET = 30    -- Offset for companion ultimate
 
-CustomAbilityIcons.ICON_PACKS = {}
-CustomAbilityIcons.BASE_GAME_ICONS_TO_REPLACE = {}
+AbilityIconsFramework.ICON_PACKS = {}
+AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE = {}
 --- Holds all custom icon configurations for scribed skills.
-CustomAbilityIcons.CUSTOM_ABILITY_ICONS = {}
+AbilityIconsFramework.CUSTOM_ABILITY_ICONS = {}
 
 -- Path shortcuts
 local ESO_ROOT = "/esoui/art/icons/"
-local ADDON_ROOT = "/CustomAbilityIcons/icons/"
+local ADDON_ROOT = "/AbilityIconsFramework/icons/"
 
 function hasIcon(PackIcons, name)
     for index, value in ipairs(PackIcons) do
@@ -28,9 +28,19 @@ end
 
 local function esoIcon(name) return ESO_ROOT .. name end
 local function addonIcon(name)
-    for PackDirectory, PackIcons in pairs(CustomAbilityIcons.ICON_PACKS) do
+    for PackDirectory, PackIcons in pairs(AbilityIconsFramework.ICON_PACKS) do
+        if name == 'ability_necromancer_002.dds' then
+            d('Processing ability_necromancer_002.dds')
+        end
         if hasIcon(PackIcons, name) then
-            return PackDirectory .. name
+            if name == 'ability_necromancer_002.dds' then
+                d('ability_necromancer_002.dds has been found in the pack !')
+            end
+            icon = PackDirectory .. name
+            if name == 'ability_necromancer_002.dds' then
+                d('icon : ', icon)
+            end
+            return icon
         end
     end
     return ADDON_ROOT .. name
@@ -74,16 +84,16 @@ local EFFECT = {
     DEFAULT = "default"
 }
 
-CustomAbilityIcons.DEFAULT = EFFECT.DEFAULT
+AbilityIconsFramework.DEFAULT = EFFECT.DEFAULT
 
 -- Configuration templates
-CustomAbilityIcons.DEFAULT_ADDON_CONFIG = {
-    version = CustomAbilityIcons.SAVEDVARIABLES_VERSION,
+AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
+    version = AbilityIconsFramework.SAVEDVARIABLES_VERSION,
     saveSettingsGlobally = false,
 }
 
 -- Consolidated table for icon names, skill names, main category, class, and skill tree
-	CustomAbilityIcons.ICON_TO_SKILL_NAME = {
+	AbilityIconsFramework.ICON_TO_SKILL_NAME = {
     -- Weapon Skills
     ["ability_bow_rapid_fire.dds"] = {
         skillName = "Rapid Fire",
@@ -4737,23 +4747,9 @@ CustomAbilityIcons.DEFAULT_ADDON_CONFIG = {
     },
 }
 
--- Initialize all mismatched base icons by default
-local mismatchedIcons = {}
-for iconName, _ in pairs(CustomAbilityIcons.ICON_TO_SKILL_NAME) do
-    mismatchedIcons[iconName] = true
-end
+function AbilityIconsFramework.GenerateScribedSkillsIcons()
 
-CustomAbilityIcons.DEFAULT_SETTINGS = {
-    version = CustomAbilityIcons.SAVEDVARIABLES_VERSION,
-    showSkillStyleIcons = false,
-    showCustomScribeIcons = true,
-    replaceMismatchedBaseIcons = true,
-    mismatchedIcons = mismatchedIcons
-}
-
-function CustomAbilityIcons.GenerateScribedSkillsIcons()
-
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.BANNER_BEARER] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.BANNER_BEARER] = {
         [EFFECT.FLAME] = DEFAULT_ICONS.BANNER_BEARER,
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_support_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_support_magic.dds"),
@@ -4762,7 +4758,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support_physical.dds")
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {
         [EFFECT.FLAME] = DEFAULT_ICONS.ELEMENTAL_EXPLOSION,
         [EFFECT.FROST] = addonIcon("ability_grimoire_staffdestro_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_staffdestro_shock.dds"),
@@ -4771,21 +4767,21 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.TRAUMA] = addonIcon("ability_grimoire_staffdestro_trauma.dds"),
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_staffdestro_physical.dds")
     }
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.MENDERS_BOND] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.MENDERS_BOND] = {
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_staffresto_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_staffresto_resources.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_staffresto_shield.dds"),
         [EFFECT.DEFAULT] = DEFAULT_ICONS.MENDERS_BOND
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SHIELD_THROW] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SHIELD_THROW] = {
         [EFFECT.FROST] = addonIcon("ability_grimoire_1handed_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_1handed_magic.dds"),
         [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_1handed_magic.dds"),
         [EFFECT.DEFAULT] = DEFAULT_ICONS.SHIELD_THROW
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SMASH] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SMASH] = {
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_2handed_magic.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_2handed_heal.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_2handed_shield.dds"),
@@ -4794,7 +4790,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = DEFAULT_ICONS.SMASH
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SOUL_BURST] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SOUL_BURST] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic2_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic2_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic2_shock.dds"),
@@ -4807,7 +4803,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_soulmagic2_physical.dds")
     }
     
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TORCHBEARER] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TORCHBEARER] = {
         [EFFECT.FLAME] = DEFAULT_ICONS.TORCHBEARER,
         [EFFECT.FROST] = addonIcon("ability_grimoire_fightersguild_frost.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_fightersguild_heal.dds"),
@@ -4816,7 +4812,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_fightersguild_physical.dds")
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAMPLE] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAMPLE] = {
         [EFFECT.FROST] = addonIcon("ability_grimoire_assault_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_assault_magic.dds"),
         [EFFECT.STUN] = addonIcon("ability_grimoire_assault_stun.dds"),
@@ -4827,7 +4823,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = DEFAULT_ICONS.TRAMPLE
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAVELING_KNIFE] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAVELING_KNIFE] = {
         [EFFECT.FROST] = addonIcon("ability_grimoire_dualwield_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_dualwield_magic.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_dualwield_bleed.dds"),
@@ -4835,7 +4831,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = DEFAULT_ICONS.TRAVELING_KNIFE
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ULFSILDS_CONTINGENCY] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ULFSILDS_CONTINGENCY] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_magesguild_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_magesguild_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_magesguild_shock.dds"),
@@ -4844,7 +4840,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_magesguild_heal.dds")
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.VAULT] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.VAULT] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_bow_flame.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_bow_heal.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_bow_bleed.dds"),
@@ -4853,7 +4849,7 @@ function CustomAbilityIcons.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = DEFAULT_ICONS.VAULT
     }
 
-    CustomAbilityIcons.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.WIELD_SOUL] = {
+    AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.WIELD_SOUL] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic1_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic1_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic1_shock.dds"),
@@ -5544,43 +5540,27 @@ local REPLACEMENT_ICONS = {
 "ability_werewolf_006_a.dds",
 "ability_werewolf_006_b.dds",
 "ability_werewolf_006_c.dds",
-    
-    
-    --Misc  
-	
-"ability_buff_major_force.dds",
-"ability_buff_major_slayer.dds",
-"ability_debuff_levitate.dds",
-"ability_healer_019.dds",
-"ability_healer_030.dds",
-"ability_mage_037.dds",
-"ability_mage_044.dds",
-"ability_warrior_028.dds",
-"achievement_u25_dun2_flavor_boss_3b.dds",
-"achievement_vvardenfel_061.dds",
-"antiquities_ornate_necklace_3.dds",
-"consumable_potion_012_type_002.dds",
-"death_recap_cold_aoe.dds",
-"gear_razorhorndaedric_shoulder_a.dds",
-"gear_terrorbear_head_a.dds",
-"gear_undaunted_werewolfbehemoth_head_a.dds",
-"gear_undfiregiant_head_a.dds",
-"gear_undredlord_head_a.dds",
-"u30_trial_soulrip.dds",
-"u34_vtrial_meta.dds",
-    
-    
-    
-	
-	
-	
 }
 
-function CustomAbilityIcons.GenerateReplacementLists()
-    for _, icon in ipairs(REPLACEMENT_ICONS) do
-        CustomAbilityIcons.BASE_GAME_ICONS_TO_REPLACE[esoIcon(icon)] = addonIcon(icon)
-    end
-    CustomAbilityIcons.GenerateScribedSkillsIcons()
+-- Initialize all mismatched base icons by default
+local mismatchedIcons = {}
+for iconName, _ in pairs(AbilityIconsFramework.ICON_TO_SKILL_NAME) do
+    mismatchedIcons[iconName] = true
 end
 
-CustomAbilityIcons.GenerateReplacementLists()
+AbilityIconsFramework.DEFAULT_SETTINGS = {
+    version = AbilityIconsFramework.SAVEDVARIABLES_VERSION,
+    showSkillStyleIcons = false,
+    showCustomScribeIcons = true,
+    replaceMismatchedBaseIcons = true,
+    mismatchedIcons = mismatchedIcons,
+}
+
+function AbilityIconsFramework.GenerateReplacementLists()
+    for _, icon in ipairs(REPLACEMENT_ICONS) do
+        AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[esoIcon(icon)] = addonIcon(icon)
+    end
+    AbilityIconsFramework.GenerateScribedSkillsIcons()
+end
+
+AbilityIconsFramework.GenerateReplacementLists()

@@ -1,12 +1,12 @@
---- @class (partial) CustomAbilityIcons
-local CustomAbilityIcons = CustomAbilityIcons
+--- @class (partial) AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework
 
 --- Retrieves the base ability id of the skill with the specified ability id.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @return number? baseAbilityId The base ability id of the specified skill.
-function CustomAbilityIcons.GetBaseAbilityId(slotIndex, hotbarCategory)
-    local abilityId = CustomAbilityIcons.GetAbilityId(slotIndex, hotbarCategory)
+function AbilityIconsFramework.GetBaseAbilityId(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if not abilityId then return nil end
 
     local actionType = GetSlotType(slotIndex, hotbarCategory)
@@ -28,9 +28,9 @@ end
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @return number? abilityId The ability id that corresponds to the skill in question.
-function CustomAbilityIcons.GetAbilityId(slotIndex, hotbarCategory)
+function AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     local index = tonumber(slotIndex) or 0
-    if index < CustomAbilityIcons.MIN_INDEX or index > CustomAbilityIcons.MAX_INDEX then
+    if index < AbilityIconsFramework.MIN_INDEX or index > AbilityIconsFramework.MAX_INDEX then
         return nil
     end
     return GetSlotBoundId(slotIndex, hotbarCategory)
@@ -40,36 +40,36 @@ end
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @return string? collectibleIcon The path of the icon that corresponds to the selected skill style.
-function CustomAbilityIcons.GetSkillStyleIcon(slotIndex, hotbarCategory)
-    if not CustomAbilityIcons.GetSettings().showSkillStyleIcons then return nil end
+function AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory)
+    if not AbilityIconsFramework.GetSettings().showSkillStyleIcons then return nil end
 
-    local abilityId = CustomAbilityIcons.GetAbilityId(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if not abilityId then return nil end
 
-    local baseAbilityId = CustomAbilityIcons.GetBaseAbilityId(slotIndex, hotbarCategory)
+    local baseAbilityId = AbilityIconsFramework.GetBaseAbilityId(slotIndex, hotbarCategory)
     local skillType, skillLineIndex, skillIndex = GetSpecificSkillAbilityKeysByAbilityId(baseAbilityId)
     local progressionId = GetProgressionSkillProgressionId(skillType, skillLineIndex, skillIndex)
     local collectibleId = GetActiveProgressionSkillAbilityFxOverrideCollectibleId(progressionId)
     
     -- Return the collectible icon if available, otherwise return the default ability icon
-    return collectibleId and GetCollectibleIcon(collectibleId) or CustomAbilityIcons.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
+    return collectibleId and GetCollectibleIcon(collectibleId) or AbilityIconsFramework.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
 end
 
 --- Retrieves the custom made icons for crafted abilities.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @return string? abilityIcon The path of the icon to be applied to the skill in question.
-function CustomAbilityIcons.GetCustomAbilityIcon(slotIndex, hotbarCategory)
-    if not CustomAbilityIcons.GetSettings().showCustomScribeIcons then return nil end
+function AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
+    if not AbilityIconsFramework.GetSettings().showCustomScribeIcons then return nil end
 
-    local abilityId = CustomAbilityIcons.GetAbilityId(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if not abilityId then return nil end
 
     local primaryScriptId = GetCraftedAbilityActiveScriptIds(abilityId)
     if primaryScriptId == 0 then return nil end
 
     local scriptName = GetCraftedAbilityScriptDisplayName(primaryScriptId)
-    local defaultIcon = CustomAbilityIcons.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
+    local defaultIcon = AbilityIconsFramework.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
     return defaultIcon and MapScriptToIcon(scriptName, defaultIcon) or nil
 end
 
@@ -77,8 +77,8 @@ end
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @return string? abilityIcon The path of the icon that corresponds to the skill in question.
-function CustomAbilityIcons.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
-    local abilityId = CustomAbilityIcons.GetAbilityId(slotIndex, hotbarCategory)
+function AbilityIconsFramework.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if not abilityId then return nil end
 
     local actionType = GetSlotType(slotIndex, hotbarCategory)
@@ -93,7 +93,7 @@ end
 --- @param defaultIcon string The path of the base game icon to be replaced with our own.
 --- @return string? abilityIcon The path of the icon to be applied to the skill in question.
 function MapScriptToIcon(scriptName, defaultIcon)
-    local customIcons = CustomAbilityIcons.CUSTOM_ABILITY_ICONS[defaultIcon]
+    local customIcons = AbilityIconsFramework.CUSTOM_ABILITY_ICONS[defaultIcon]
     if not customIcons then return nil end
 
     scriptName = string.lower(scriptName)
@@ -102,28 +102,28 @@ function MapScriptToIcon(scriptName, defaultIcon)
             return value
         end
     end
-    return customIcons[CustomAbilityIcons.DEFAULT]
+    return customIcons[AbilityIconsFramework.DEFAULT]
 end
 
 --- Applies the active skill style (if any) to the skill found in the specified slotIndex.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
-function CustomAbilityIcons.ApplySkillStyle(slotIndex, hotbarCategory)
-    CustomAbilityIcons.ApplySkillStyleActive(slotIndex, hotbarCategory)
+function AbilityIconsFramework.ApplySkillStyle(slotIndex, hotbarCategory)
+    AbilityIconsFramework.ApplySkillStyleActive(slotIndex, hotbarCategory)
 
     local inactiveBar = hotbarCategory == HOTBAR_CATEGORY_PRIMARY and HOTBAR_CATEGORY_BACKUP or HOTBAR_CATEGORY_PRIMARY
-    CustomAbilityIcons.ApplySkillStyleInactiveFAB(slotIndex, inactiveBar)
+    AbilityIconsFramework.ApplySkillStyleInactiveFAB(slotIndex, inactiveBar)
 end
 
 --- Retrieves the active skill style for the skill found in the specified slotIndex and applies it.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
-function CustomAbilityIcons.ApplySkillStyleActive(slotIndex, hotbarCategory)
-    local icon = CustomAbilityIcons.GetSkillStyleIcon(slotIndex, hotbarCategory)
-                 or CustomAbilityIcons.GetCustomAbilityIcon(slotIndex, hotbarCategory)
-                 or CustomAbilityIcons.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
+function AbilityIconsFramework.ApplySkillStyleActive(slotIndex, hotbarCategory)
+    local icon = AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory)
+                 or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
+                 or AbilityIconsFramework.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
     if icon then
-        CustomAbilityIcons.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
+        AbilityIconsFramework.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
     end
 end
 
@@ -131,18 +131,19 @@ end
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
 --- @param icon string The path of the icon that will be assigned to the skill in question.
-function CustomAbilityIcons.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
-    local btn = CustomAbilityIcons.GetInactiveBarButtonFAB(slotIndex) or ZO_ActionBar_GetButton(slotIndex, hotbarCategory)
+function AbilityIconsFramework.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
+    local btn = AbilityIconsFramework.GetInactiveBarButtonFAB(slotIndex) or ZO_ActionBar_GetButton(slotIndex, hotbarCategory)
     if btn and btn.icon then
         btn.icon:SetTexture(icon)
     end
 end
 
 --- Calls RedirectTexture to replace an existing skill icon with a different one.
-function CustomAbilityIcons.ReplaceMismatchedIcons()
-    for key, value in pairs(CustomAbilityIcons.BASE_GAME_ICONS_TO_REPLACE) do
+function AbilityIconsFramework.ReplaceMismatchedIcons()
+    AbilityIconsFramework.GenerateReplacementLists()
+    for key, value in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
         local iconName = string.match(key, "/([^/]+)$")
-        if CustomAbilityIcons.GetSettings().replaceMismatchedBaseIcons and CustomAbilityIcons:GetSettings().mismatchedIcons[iconName] then
+        if AbilityIconsFramework.GetSettings().replaceMismatchedBaseIcons and AbilityIconsFramework:GetSettings().mismatchedIcons[iconName] then
             RedirectTexture(key, value)
         else
             RedirectTexture(key, key)

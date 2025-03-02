@@ -1,33 +1,33 @@
---- @class (partial) CustomAbilityIcons
-local CustomAbilityIcons = CustomAbilityIcons
+--- @class (partial) AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework
 
 local LAM2 = LibAddonMenu2
 
 --- Initializes saved variables and configures their corresponding menus, using LibAddonMenu2 (if it exists).
-function CustomAbilityIcons.InitializeSettings()
-    CustomAbilityIcons.CONFIG = ZO_SavedVars:NewAccountWide("CustomAbilityIcons_SavedVariables", CustomAbilityIcons.SAVEDVARIABLES_VERSION, nil, CustomAbilityIcons.DEFAULT_ADDON_CONFIG)
-    CustomAbilityIcons.CleanupAccountWideSettings(CustomAbilityIcons_SavedVariables, CustomAbilityIcons.DEFAULT_ADDON_CONFIG, nil)
+function AbilityIconsFramework.InitializeSettings()
+    AbilityIconsFramework.CONFIG = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_SavedVariables", AbilityIconsFramework.SAVEDVARIABLES_VERSION, nil, AbilityIconsFramework.DEFAULT_ADDON_CONFIG)
+    AbilityIconsFramework.CleanupAccountWideSettings(AbilityIconsFramework_SavedVariables, AbilityIconsFramework.DEFAULT_ADDON_CONFIG, nil)
 
-    CustomAbilityIcons.GLOBALSETTINGS = ZO_SavedVars:NewAccountWide("CustomAbilityIcons_Globals", CustomAbilityIcons.SAVEDVARIABLES_VERSION, "global_settings",  CustomAbilityIcons.DEFAULT_SETTINGS)
-    CustomAbilityIcons.CleanupAccountWideSettings(CustomAbilityIcons_Globals, CustomAbilityIcons.DEFAULT_SETTINGS, "global_settings")
+    AbilityIconsFramework.GLOBALSETTINGS = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_Globals", AbilityIconsFramework.SAVEDVARIABLES_VERSION, "global_settings",  AbilityIconsFramework.DEFAULT_SETTINGS)
+    AbilityIconsFramework.CleanupAccountWideSettings(AbilityIconsFramework_Globals, AbilityIconsFramework.DEFAULT_SETTINGS, "global_settings")
 
-    CustomAbilityIcons.CHARACTERSETTINGS = ZO_SavedVars:NewCharacterIdSettings("CustomAbilityIcons_Settings", CustomAbilityIcons.SAVEDVARIABLES_VERSION, "character_settings", CustomAbilityIcons.DEFAULT_SETTINGS)
-    CustomAbilityIcons.CleanupCharacterIdSettings(CustomAbilityIcons_Settings, CustomAbilityIcons.DEFAULT_SETTINGS, "character_settings")
+    AbilityIconsFramework.CHARACTERSETTINGS = ZO_SavedVars:NewCharacterIdSettings("AbilityIconsFramework_Settings", AbilityIconsFramework.SAVEDVARIABLES_VERSION, "character_settings", AbilityIconsFramework.DEFAULT_SETTINGS)
+    AbilityIconsFramework.CleanupCharacterIdSettings(AbilityIconsFramework_Settings, AbilityIconsFramework.DEFAULT_SETTINGS, "character_settings")
 
     if LAM2 == nil then return end
 
     local panelData = {
         type = "panel",
         name = "Ability Icons Reimagined",
-        displayName = "|c722cd4Ability|r |ce6202dIcons|r |cebd991Reimagined|r",
+        displayName = "|c722cd4Ability|r |ce6202dIcons|r |cebd991Framework|r",
         author = "|ce6202dKwiebe-Kwibus|r",
-        version = CustomAbilityIcons.version,
-        slashCommand = "/caigb",    -- (optional) will register a keybind to open to this panel
+        version = AbilityIconsFramework.version,
+        slashCommand = "/aifgb",    -- (optional) will register a keybind to open to this panel
         registerForRefresh = true,   -- boolean (optional) (will refresh all options controls when a setting is changed and when the panel is shown)
         registerForDefaults = true   -- boolean (optional) (will set all options controls back to default values)
     }
 
-    LAM2:RegisterAddonPanel("CustomAbilityIcons_Panel", panelData)
+    LAM2:RegisterAddonPanel("AbilityIconsFramework_Panel", panelData)
 
     local optionsData = {
         {
@@ -38,25 +38,25 @@ function CustomAbilityIcons.InitializeSettings()
             type = "checkbox",
             name = "Use the same settings for all characters",
             getFunc = function()
-                return CustomAbilityIcons.CONFIG.saveSettingsGlobally
+                return AbilityIconsFramework.CONFIG.saveSettingsGlobally
             end,
-            setFunc = CustomAbilityIcons.SetOptionGlobalIcons
+            setFunc = AbilityIconsFramework.SetOptionGlobalIcons
         },
         {
             type = "checkbox",
             name = "Use Custom Scribed Ability Icons on ability bar",
             getFunc = function()
-                return CustomAbilityIcons:GetSettings().showCustomScribeIcons
+                return AbilityIconsFramework:GetSettings().showCustomScribeIcons
             end,
-            setFunc = CustomAbilityIcons.SetOptionCustomIcons
+            setFunc = AbilityIconsFramework.SetOptionCustomIcons
         },
         {
             type = "checkbox",
             name = "Replace mismatched Base Ability Icons",
             getFunc = function()
-                return CustomAbilityIcons:GetSettings().replaceMismatchedBaseIcons
+                return AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons
             end,
-            setFunc = CustomAbilityIcons.SetOptionMismatchedIcons
+            setFunc = AbilityIconsFramework.SetOptionMismatchedIcons
         }
     }
 
@@ -68,7 +68,7 @@ local mismatchedOptions = {}
 
  -- Group mismatched icons by main category, class, and skill tree
     local mainCategoryGroups = {}
-    for iconName, data in pairs(CustomAbilityIcons.ICON_TO_SKILL_NAME) do
+    for iconName, data in pairs(AbilityIconsFramework.ICON_TO_SKILL_NAME) do
         local mainCategory = data.mainCategory
         local class = data.class
         local skillTree = data.skillTree
@@ -91,11 +91,11 @@ local mismatchedOptions = {}
                 type = "checkbox",
                 name = "Replace " .. data.skillName,
                 getFunc = function()
-                    return CustomAbilityIcons:GetSettings().mismatchedIcons[iconName]
+                    return AbilityIconsFramework:GetSettings().mismatchedIcons[iconName]
                 end,
                 setFunc = function(value)
-                    CustomAbilityIcons:GetSettings().mismatchedIcons[iconName] = value
-                    CustomAbilityIcons.ReplaceMismatchedIcons()
+                    AbilityIconsFramework:GetSettings().mismatchedIcons[iconName] = value
+                    AbilityIconsFramework.ReplaceMismatchedIcons()
                 end,
             }
         })
@@ -196,15 +196,15 @@ for _, mainCategory in ipairs(sortedMainCategories) do
     end
 end
 
-    LAM2:RegisterOptionControls("CustomAbilityIcons_Panel", optionsData)
+    LAM2:RegisterOptionControls("AbilityIconsFramework_Panel", optionsData)
 end
 
 --- Retrieves the saved settings, whether global or per character (and the default settings if nothing was previously saved).
-function CustomAbilityIcons.GetSettings()
-	if CustomAbilityIcons.CONFIG and CustomAbilityIcons.CONFIG.saveSettingsGlobally then
-		return CustomAbilityIcons.GLOBALSETTINGS or CustomAbilityIcons.DEFAULT_SETTINGS
+function AbilityIconsFramework.GetSettings()
+	if AbilityIconsFramework.CONFIG and AbilityIconsFramework.CONFIG.saveSettingsGlobally then
+		return AbilityIconsFramework.GLOBALSETTINGS or AbilityIconsFramework.DEFAULT_SETTINGS
 	else
-        return CustomAbilityIcons.CHARACTERSETTINGS or CustomAbilityIcons.DEFAULT_SETTINGS
+        return AbilityIconsFramework.CHARACTERSETTINGS or AbilityIconsFramework.DEFAULT_SETTINGS
     end
 end
 
@@ -213,7 +213,7 @@ end
 --- @param defaultConfig table Contains the default account-wide saved variables.
 --- @param namespace string? The sub-table (if any) in which the saved variables are stored.
 -- Update the CleanupAccountWideSettings and CleanupCharacterIdSettings functions
-function CustomAbilityIcons.CleanupAccountWideSettings(savedVars, defaultConfig, namespace)
+function AbilityIconsFramework.CleanupAccountWideSettings(savedVars, defaultConfig, namespace)
     local currentConfig = savedVars["Default"][GetDisplayName()]["$AccountWide"]
     if namespace then
         currentConfig = currentConfig[namespace]
@@ -233,7 +233,7 @@ function CustomAbilityIcons.CleanupAccountWideSettings(savedVars, defaultConfig,
     end
 end
 
-function CustomAbilityIcons.CleanupCharacterIdSettings(savedVars, defaultConfig, namespace)
+function AbilityIconsFramework.CleanupCharacterIdSettings(savedVars, defaultConfig, namespace)
     local characterKey = GetCurrentCharacterId()
     local currentConfig = savedVars["Default"][GetDisplayName()][characterKey]
     if namespace then
@@ -256,31 +256,31 @@ end
 
 --- Set the setting for global (Account Wide) icons to on/off
 --- @param value boolean
-function CustomAbilityIcons.SetOptionGlobalIcons(value)
-    local oldSettings = CustomAbilityIcons:GetSettings()
-    CustomAbilityIcons.CONFIG.saveSettingsGlobally = value
-    CustomAbilityIcons:GetSettings().showSkillStyleIcons = oldSettings.showSkillStyleIcons
-    CustomAbilityIcons:GetSettings().showCustomScribeIcons = oldSettings.showCustomScribeIcons
-    CustomAbilityIcons:GetSettings().replaceMismatchedBaseIcons = oldSettings.replaceMismatchedBaseIcons
+function AbilityIconsFramework.SetOptionGlobalIcons(value)
+    local oldSettings = AbilityIconsFramework:GetSettings()
+    AbilityIconsFramework.CONFIG.saveSettingsGlobally = value
+    AbilityIconsFramework:GetSettings().showSkillStyleIcons = oldSettings.showSkillStyleIcons
+    AbilityIconsFramework:GetSettings().showCustomScribeIcons = oldSettings.showCustomScribeIcons
+    AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons = oldSettings.replaceMismatchedBaseIcons
 end
 
 --- Set the setting for skill style icons to on/off
 --- @param value boolean
-function CustomAbilityIcons.SetOptionSkillStyleIcons(value)
-    CustomAbilityIcons:GetSettings().showSkillStyleIcons = value
-    CustomAbilityIcons.OnCollectibleUpdated()
+function AbilityIconsFramework.SetOptionSkillStyleIcons(value)
+    AbilityIconsFramework:GetSettings().showSkillStyleIcons = value
+    AbilityIconsFramework.OnCollectibleUpdated()
 end
 
 --- Set the setting for custom scribed icons to on/off
 --- @param value boolean
-function CustomAbilityIcons.SetOptionCustomIcons(value)
-    CustomAbilityIcons:GetSettings().showCustomScribeIcons = value
-    CustomAbilityIcons.OnCollectibleUpdated()
+function AbilityIconsFramework.SetOptionCustomIcons(value)
+    AbilityIconsFramework:GetSettings().showCustomScribeIcons = value
+    AbilityIconsFramework.OnCollectibleUpdated()
 end
 
 --- Set the setting for mismatched icons to on/off
 --- @param value boolean
-function CustomAbilityIcons.SetOptionMismatchedIcons(value)
-    CustomAbilityIcons:GetSettings().replaceMismatchedBaseIcons = value
-    CustomAbilityIcons.ReplaceMismatchedIcons()
+function AbilityIconsFramework.SetOptionMismatchedIcons(value)
+    AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons = value
+    AbilityIconsFramework.ReplaceMismatchedIcons()
 end
