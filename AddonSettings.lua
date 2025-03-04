@@ -18,9 +18,9 @@ function AbilityIconsFramework.InitializeSettings()
 
     local panelData = {
         type = "panel",
-        name = "Ability Icons Reimagined",
-        displayName = "|c722cd4Ability|r |ce6202dIcons|r |cebd991Framework|r",
-        author = "|ce6202dKwiebe-Kwibus|r",
+        name = "Ability Icons Framework",
+        displayName = "|c66b2b2Ability|r |cffbf00Icons|r |c6C3BAAFramework|r",
+        author = "|ce6202dKwiebe-Kwibus|r & Asquart",
         version = AbilityIconsFramework.version,
         slashCommand = "/aifgb",    -- (optional) will register a keybind to open to this panel
         registerForRefresh = true,   -- boolean (optional) (will refresh all options controls when a setting is changed and when the panel is shown)
