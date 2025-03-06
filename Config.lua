@@ -273,21 +273,63 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_002.dds"] = {
-        skillName = "Wall of Elements",
+        skillName = "Wall of Elements F",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_002a.dds"] = {
-        skillName = "Elemental Blockade",
+        skillName = "Elemental Blockade F",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_002b.dds"] = {
-        skillName = "Unstable Wall of Elements",
+        skillName = "Unstable Wall of Elements F",
+        position = 9,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_003.dds"] = {
+        skillName = "Wall of Elements L",
+        position = 7,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+    ["ability_destructionstaff_003_a.dds"] = {
+        skillName = "Elemental Blockade L",
+        position = 8,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+    ["ability_destructionstaff_003_b.dds"] = {
+        skillName = "Unstable Wall of Elements L",
+        position = 9,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_004.dds"] = {
+        skillName = "Wall of Elements I",
+        position = 7,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+    ["ability_destructionstaff_004_a.dds"] = {
+        skillName = "Elemental Blockade I",
+        position = 8,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+    ["ability_destructionstaff_004_b.dds"] = {
+        skillName = "Unstable Wall of Elements I",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
@@ -961,7 +1003,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_resolving_vigor.dds"] = {
+    ["ability_ava_resolving_vigor.dds"] = {
         skillName = "Resolving Vigor",
         position = 9,
         mainCategory = "Non Class",
@@ -4640,6 +4682,71 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "World",
         skillTree = "Werewolf"
     },
+	
+	-- Armor
+	["ability_armor_001.dds"] = {
+        skillName = "Unstoppable",
+        position = 1,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Heavy"
+    },
+	["ability_armor_001_a.dds"] = {
+        skillName = "Unstoppable Brute",
+        position = 2,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Heavy"
+    },
+	["ability_armor_001_b.dds"] = {
+        skillName = "Immovable",
+        position = 3,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Heavy"
+    },
+	["ability_armor_002.dds"] = {
+        skillName = "Evasion",
+        position = 1,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Medium"
+    },
+	["ability_armor_002_a.dds"] = {
+        skillName = "Shuffle",
+        position = 2,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Medium"
+    },
+	["ability_armor_002_b.dds"] = {
+        skillName = "Elude",
+        position = 3,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Medium"
+    },
+	["ability_armor_003.dds"] = {
+        skillName = "Annulment",
+        position = 1,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Light"
+    },
+	["ability_armor_003_a.dds"] = {
+        skillName = "Dampen Magicka",
+        position = 2,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Light"
+    },
+	["ability_armor_003_b.dds"] = {
+        skillName = "Harness Magicka",
+        position = 3,
+        mainCategory = "Non Class",
+        class = "Armor",
+        skillTree = "Light"
+    },
 }
 
 function AbilityIconsFramework.GenerateScribedSkillsIcons()
@@ -5164,6 +5271,12 @@ local REPLACEMENT_ICONS = {
 "ability_destructionstaff_002.dds",
 "ability_destructionstaff_002a.dds",
 "ability_destructionstaff_002b.dds",
+"ability_destructionstaff_003.dds",
+"ability_destructionstaff_003_a.dds",
+"ability_destructionstaff_003_b.dds",
+"ability_destructionstaff_004.dds",
+"ability_destructionstaff_004_a.dds",
+"ability_destructionstaff_004_b.dds",
 "ability_destructionstaff_005.dds",
 "ability_destructionstaff_005_a.dds",
 "ability_destructionstaff_005_b.dds",
@@ -5439,6 +5552,16 @@ local REPLACEMENT_ICONS = {
 "ability_werewolf_006_b.dds",
 "ability_werewolf_006_c.dds",
 
+	-- Armor
+"ability_armor_001.dds",
+"ability_armor_001_a.dds",
+"ability_armor_001_b.dds",
+"ability_armor_002.dds",
+"ability_armor_002_a.dds",
+"ability_armor_002_b.dds",
+"ability_armor_003.dds",
+"ability_armor_003_a.dds",
+"ability_armor_003_b.dds",
 
 	-- Test
 "ability_healer_019.dds",
