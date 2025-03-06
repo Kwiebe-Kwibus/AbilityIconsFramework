@@ -95,126 +95,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
 -- Consolidated table for icon names, skill names, main category, class, and skill tree
 	AbilityIconsFramework.ICON_TO_SKILL_NAME = {
     -- Weapon Skills
-    ["ability_bow_rapid_fire.dds"] = {
+    ["ability_bow_006.dds"] = {
         skillName = "Rapid Fire",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_ballista.dds"] = {
+    ["ability_bow_006_a.dds"] = {
         skillName = "Ballista",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_toxic_barrage.dds"] = {
+    ["ability_bow_006_b.dds"] = {
         skillName = "Toxic Barrage",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_snipe.dds"] = {
+    ["ability_bow_001.dds"] = {
         skillName = "Snipe",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_focused_aim.dds"] = {
+    ["ability_bow_001_b.dds"] = {
         skillName = "Focused Aim",
         position = 5,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_lethal_arrow.dds"] = {
+    ["ability_bow_001_a.dds"] = {
         skillName = "Lethal Arrow",
         position = 6,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_volley.dds"] = {
+    ["ability_bow_003.dds"] = {
         skillName = "Volley",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_arrow_barrage.dds"] = {
+    ["ability_bow_003_b.dds"] = {
         skillName = "Arrow Barrage",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_endless_hail.dds"] = {
+    ["ability_bow_003_a.dds"] = {
         skillName = "Endless Hail",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_scatter_shot.dds"] = {
+    ["ability_bow_004.dds"] = {
         skillName = "Scatter Shot",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_draining_shot.dds"] = {
+    ["ability_bow_004_a.dds"] = {
         skillName = "Draining Shot",
         position = 11,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_magnum_shot.dds"] = {
+    ["ability_bow_004_b.dds"] = {
         skillName = "Magnum Shot",
         position = 12,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_arrow_spray.dds"] = {
+    ["ability_bow_005.dds"] = {
         skillName = "Arrow Spray",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_acid_spray.dds"] = {
+    ["ability_bow_005_b.dds"] = {
         skillName = "Acid Spray",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_bombard.dds"] = {
+    ["ability_bow_005_a.dds"] = {
         skillName = "Bombard",
         position = 15,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_poison_arrow.dds"] = {
+    ["ability_bow_002.dds"] = {
         skillName = "Poison Arrow",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_poison_injection.dds"] = {
+    ["ability_bow_002_b.dds"] = {
         skillName = "Poison Injection",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_venom_arrow.dds"] = {
+    ["ability_bow_002_a.dds"] = {
         skillName = "Venom Arrow",
         position = 18,
         mainCategory = "Non Class",
@@ -228,156 +228,121 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Bow"
     },
-    ["ability_bow_vinedusk_training.dds"] = {
-        skillName = "Vinedusk Training",
-        position = 20,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Bow"
-    },
-    ["ability_bow_accuracy.dds"] = {
-        skillName = "Accuracy",
-        position = 21,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Bow"
-    },
-    ["ability_bow_ranger.dds"] = {
-        skillName = "Ranger",
-        position = 22,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Bow"
-    },
-    ["ability_bow_hawk_eye.dds"] = {
-        skillName = "Hawk Eye",
-        position = 23,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Bow"
-    },
-    ["ability_bow_hasty_retreat.dds"] = {
-        skillName = "Hasty Retreat",
-        position = 24,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Bow"
-    },
 
     -- Destruction Staff Skills
-    ["ability_destructionstaff_elemental_storm.dds"] = {
+    ["ability_destructionstaff_012.dds"] = {
         skillName = "Elemental Storm",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_elemental_rage.dds"] = {
+    ["ability_destructionstaff_012_b.dds"] = {
         skillName = "Elemental Rage",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_eye_of_the_storm.dds"] = {
+    ["ability_destructionstaff_012_a.dds"] = {
         skillName = "Eye of the Storm",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_force_shock.dds"] = {
+    ["ability_destructionstaff_001.dds"] = {
         skillName = "Force Shock",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_crushing_shock.dds"] = {
+    ["ability_destructionstaff_001a.dds"] = {
         skillName = "Crushing Shock",
         position = 5,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_force_pulse.dds"] = {
+    ["ability_destructionstaff_001b.dds"] = {
         skillName = "Force Pulse",
         position = 6,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_wall_of_elements.dds"] = {
+    ["ability_destructionstaff_002.dds"] = {
         skillName = "Wall of Elements",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_elemental_blockade.dds"] = {
+    ["ability_destructionstaff_002a.dds"] = {
         skillName = "Elemental Blockade",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_unstable_wall_of_elements.dds"] = {
+    ["ability_destructionstaff_002b.dds"] = {
         skillName = "Unstable Wall of Elements",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_destructive_touch.dds"] = {
+    ["ability_destructionstaff_005.dds"] = {
         skillName = "Destructive Touch",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_destructive_clench.dds"] = {
+    ["ability_destructionstaff_005_a.dds"] = {
         skillName = "Destructive Clench",
         position = 11,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_destructive_reach.dds"] = {
+    ["ability_destructionstaff_005_b.dds"] = {
         skillName = "Destructive Reach",
         position = 12,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_weakness_to_elements.dds"] = {
+    ["ability_destructionstaff_011.dds"] = {
         skillName = "Weakness to Elements",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_elemental_drain.dds"] = {
+    ["ability_destructionstaff_011a.dds"] = {
         skillName = "Elemental Drain",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_elemental_susceptibility.dds"] = {
+    ["ability_destructionstaff_011b.dds"] = {
         skillName = "Elemental Susceptibility",
         position = 15,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_impulse.dds"] = {
+    ["ability_destructionstaff_008.dds"] = {
         skillName = "Impulse",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_elemental_ring.dds"] = {
+    ["ability_destructionstaff_008_a.dds"] = {
         skillName = "Elemental Ring",
         position = 17,
         mainCategory = "Non Class",
@@ -398,135 +363,100 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_tri_focus.dds"] = {
-        skillName = "Tri Focus",
-        position = 20,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Destruction Staff"
-    },
-    ["ability_destructionstaff_penetrating_magic.dds"] = {
-        skillName = "Penetrating Magic",
-        position = 21,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Destruction Staff"
-    },
-    ["ability_destructionstaff_elemental_force.dds"] = {
-        skillName = "Elemental Force",
-        position = 22,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Destruction Staff"
-    },
-    ["ability_destructionstaff_ancient_knowledge.dds"] = {
-        skillName = "Ancient Knowledge",
-        position = 23,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Destruction Staff"
-    },
-    ["ability_destructionstaff_destruction_expert.dds"] = {
-        skillName = "Destruction Expert",
-        position = 24,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Destruction Staff"
-    },
 
     -- Dual Wield Skills
-    ["ability_dualwield_lacerate.dds"] = {
+    ["ability_dualwield_006.dds"] = {
         skillName = "Lacerate",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_rend.dds"] = {
+    ["ability_dualwield_006_a.dds"] = {
         skillName = "Rend",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_thrive_in_chaos.dds"] = {
+    ["ability_dualwield_006_b.dds"] = {
         skillName = "Thrive in Chaos",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_flurry.dds"] = {
+    ["ability_dualwield_002.dds"] = {
         skillName = "Flurry",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_bloodthirst.dds"] = {
+    ["ability_dualwield_002_a.dds"] = {
         skillName = "Bloodthirst",
         position = 5,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_rapid_strikes.dds"] = {
+    ["ability_dualwield_002_b.dds"] = {
         skillName = "Rapid Strikes",
         position = 6,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_twin_slashes.dds"] = {
+    ["ability_dualwield_001.dds"] = {
         skillName = "Twin Slashes",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_blood_craze.dds"] = {
+    ["ability_dualwield_001_b.dds"] = {
         skillName = "Blood Craze",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_rending_slashes.dds"] = {
+    ["ability_dualwield_001_a.dds"] = {
         skillName = "Rending Slashes",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_whirlwind.dds"] = {
+    ["ability_dualwield_005.dds"] = {
         skillName = "Whirlwind",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_steel_tornado.dds"] = {
+    ["ability_dualwield_005_b.dds"] = {
         skillName = "Steel Tornado",
         position = 11,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_whirling_blades.dds"] = {
+    ["ability_dualwield_005_a.ddss"] = {
         skillName = "Whirling Blades",
         position = 12,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_blade_cloak.dds"] = {
+    ["ability_dualwield_004.dds"] = {
         skillName = "Blade Cloak",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_deadly_cloak.dds"] = {
+    ["ability_dualwield_004_b.dds"] = {
         skillName = "Deadly Cloak",
         position = 14,
         mainCategory = "Non Class",
@@ -540,21 +470,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_hidden_blade.dds"] = {
+    ["ability_dualwield_003.dds"] = {
         skillName = "Hidden Blade",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_flying_blade.dds"] = {
+    ["ability_dualwield_003_a.dds"] = {
         skillName = "Flying Blade",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_shrouded_daggers.dds"] = {
+    ["ability_dualwield_003_b.dds"] = {
         skillName = "Shrouded Daggers",
         position = 18,
         mainCategory = "Non Class",
@@ -568,163 +498,128 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_slaughter.dds"] = {
-        skillName = "Slaughter",
-        position = 20,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Dual Wield"
-    },
-    ["ability_dualwield_dual_wield_expert.dds"] = {
-        skillName = "Dual Wield Expert",
-        position = 21,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Dual Wield"
-    },
-    ["ability_dualwield_controlled_fury.dds"] = {
-        skillName = "Controlled Fury",
-        position = 22,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Dual Wield"
-    },
-    ["ability_dualwield_ruffian.dds"] = {
-        skillName = "Ruffian",
-        position = 23,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Dual Wield"
-    },
-    ["ability_dualwield_twin_blade_and_blunt.dds"] = {
-        skillName = "Twin Blade and Blunt",
-        position = 24,
-        mainCategory = "Non Class",
-        class = "Weapon",
-        skillTree = "Dual Wield"
-    },
 
     -- One Hand and Shield Skills
-    ["ability_onehandshield_shield_wall.dds"] = {
+    ["ability_1handed_006.dds"] = {
         skillName = "Shield Wall",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_shield_discipline.dds"] = {
+    ["ability_1handed_006_b.dds"] = {
         skillName = "Shield Discipline",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_spell_wall.dds"] = {
+    ["ability_1handed_006_a.dds"] = {
         skillName = "Spell Wall",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_puncture.dds"] = {
+    ["ability_1handed_002.dds"] = {
         skillName = "Puncture",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_pierce_armor.dds"] = {
+    ["ability_1handed_002_b.dds"] = {
         skillName = "Pierce Armor",
         position = 5,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_ransack.dds"] = {
+    ["ability_1handed_002_a.dds"] = {
         skillName = "Ransack",
         position = 6,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_low_slash.dds"] = {
+    ["ability_1handed_001.dds"] = {
         skillName = "Low Slash",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_deep_slash.dds"] = {
+    ["ability_1handed_001_b.dds"] = {
         skillName = "Deep Slash",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_heroic_slash.dds"] = {
+    ["ability_1handed_001_a.dds"] = {
         skillName = "Heroic Slash",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_defensive_posture.dds"] = {
+    ["ability_1handed_004.dds"] = {
         skillName = "Defensive Posture",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_absorb_missile.dds"] = {
+    ["ability_1handed_004_b.dds"] = {
         skillName = "Absorb Missile",
         position = 11,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_defensive_stance.dds"] = {
+    ["ability_1handed_004_a.dds"] = {
         skillName = "Defensive Stance",
         position = 12,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_shield_charge.dds"] = {
+    ["ability_1handed_003.dds"] = {
         skillName = "Shield Charge",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_invasion.dds"] = {
+    ["ability_1handed_003_b.dds"] = {
         skillName = "Invasion",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_shielded_assault.dds"] = {
+    ["ability_1handed_003_a.dds"] = {
         skillName = "Shielded Assault",
         position = 15,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_power_bash.dds"] = {
+    ["ability_1handed_005.dds"] = {
         skillName = "Power Bash",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_power_slam.dds"] = {
+    ["ability_1handed_005_a.dds"] = {
         skillName = "Power Slam",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "One Hand and Shield"
     },
-    ["ability_onehandshield_reverberating_bash.dds"] = {
+    ["ability_1handed_005_b.dds"] = {
         skillName = "Reverberating Bash",
         position = 18,
         mainCategory = "Non Class",
@@ -740,35 +635,35 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Restoration Staff Skills
-    ["ability_restorationstaff_panacea.dds"] = {
+    ["ability_restorationstaff_006.dds"] = {
         skillName = "Panacea",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_life_giver.dds"] = {
+    ["ability_restorationstaff_006_a.dds"] = {
         skillName = "Life Giver",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_lights_champion.dds"] = {
+    ["ability_restorationstaff_006_b.dds"] = {
         skillName = "Light's Champion",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_grand_healing.dds"] = {
+    ["ability_restorationstaff_004.dds"] = {
         skillName = "Grand Healing",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_healing_springs.dds"] = {
+    ["ability_restorationstaff_004a.dds"] = {
         skillName = "Healing Springs",
         position = 5,
         mainCategory = "Non Class",
@@ -782,7 +677,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_regeneration.dds"] = {
+    ["ability_restorationstaff_002.dds"] = {
         skillName = "Regeneration",
         position = 7,
         mainCategory = "Non Class",
@@ -796,21 +691,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_rapid_regeneration.dds"] = {
+    ["ability_restorationstaff_002b.dds"] = {
         skillName = "Rapid Regeneration",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_blessing_of_protection.dds"] = {
+    ["ability_restorationstaff_003.dds"] = {
         skillName = "Blessing of Protection",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_blessing_of_restoration.dds"] = {
+    ["ability_restorationstaff_003_a.dds"] = {
         skillName = "Blessing of Restoration",
         position = 11,
         mainCategory = "Non Class",
@@ -824,42 +719,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_steadfast_ward.dds"] = {
+    ["ability_restorationstaff_001.dds"] = {
         skillName = "Steadfast Ward",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_healing_ward.dds"] = {
+    ["ability_restorationstaff_001_a.dds"] = {
         skillName = "Healing Ward",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_ward_ally.dds"] = {
+    ["ability_restorationstaff_001_b.dds"] = {
         skillName = "Ward Ally",
         position = 15,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_force_siphon.dds"] = {
+    ["ability_restorationstaff_005.dds"] = {
         skillName = "Force Siphon",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_quick_siphon.dds"] = {
+    ["ability_restorationstaff_005_b.dds"] = {
         skillName = "Quick Siphon",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Restoration Staff"
     },
-    ["ability_restorationstaff_siphon_spirit.dds"] = {
+    ["ability_restorationstaff_005_a.dds"] = {
         skillName = "Siphon Spirit",
         position = 18,
         mainCategory = "Non Class",
@@ -875,126 +770,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Two Handed Skills
-    ["ability_twohanded_berserker_strike.dds"] = {
+    ["ability_2handed_006.dds"] = {
         skillName = "Berserker Strike",
         position = 1,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_berserker_rage.dds"] = {
+    ["ability_2handed_006_b.dds"] = {
         skillName = "Berserker Rage",
         position = 2,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_onslaught.dds"] = {
+    ["ability_2handed_006_a.dds"] = {
         skillName = "Onslaught",
         position = 3,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_uppercut.dds"] = {
+    ["ability_2handed_001.dds"] = {
         skillName = "Uppercut",
         position = 4,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_dizzying_swing.dds"] = {
+    ["ability_2handed_001_a.dds"] = {
         skillName = "Dizzying Swing",
         position = 5,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_wrecking_blow.dds"] = {
+    ["ability_2handed_001_b.dds"] = {
         skillName = "Wrecking Blow",
         position = 6,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_critical_charge.dds"] = {
+    ["ability_2handed_003.dds"] = {
         skillName = "Critical Charge",
         position = 7,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_critical_rush.dds"] = {
+    ["ability_2handed_003_b.dds"] = {
         skillName = "Critical Rush",
         position = 8,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_stampede.dds"] = {
+    ["ability_2handed_003_a.dds"] = {
         skillName = "Stampede",
         position = 9,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_cleave.dds"] = {
+    ["ability_2handed_002.dds"] = {
         skillName = "Cleave",
         position = 10,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_brawler.dds"] = {
+    ["ability_2handed_002_b.dds"] = {
         skillName = "Brawler",
         position = 11,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_carve.dds"] = {
+    ["ability_2handed_002_a.dds"] = {
         skillName = "Carve",
         position = 12,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_reverse_slash.dds"] = {
+    ["ability_2handed_004.dds"] = {
         skillName = "Reverse Slash",
         position = 13,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_executioner.dds"] = {
+    ["ability_2handed_004_a.dds"] = {
         skillName = "Executioner",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_reverse_slice.dds"] = {
+    ["ability_2handed_004_b.dds"] = {
         skillName = "Reverse Slice",
         position = 15,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_momentum.dds"] = {
+    ["ability_2handed_005.dds"] = {
         skillName = "Momentum",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_forward_momentum.dds"] = {
+    ["ability_2handed_005_a.dds"] = {
         skillName = "Forward Momentum",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Two Handed"
     },
-    ["ability_twohanded_rally.dds"] = {
+    ["ability_2handed_005_b.dds"] = {
         skillName = "Rally",
         position = 18,
         mainCategory = "Non Class",
@@ -1010,42 +905,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Alliance War Skills
-    ["ability_alliancewar_warhorn.dds"] = {
+    ["ability_ava_003.dds"] = {
         skillName = "War Horn",
         position = 1,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_aggressive_horn.dds"] = {
+    ["ability_ava_003_a.dds"] = {
         skillName = "Aggressive Horn",
         position = 2,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_sturdy_horn.dds"] = {
+    ["ability_ava_003_b.dds"] = {
         skillName = "Sturdy Horn",
         position = 3,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_rapid_maneuver.dds"] = {
+    ["ability_ava_002.dds"] = {
         skillName = "Rapid Maneuver",
         position = 4,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_charging_maneuver.dds"] = {
+    ["ability_ava_002_b.dds"] = {
         skillName = "Charging Maneuver",
         position = 5,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_retreating_maneuver.dds"] = {
+    ["ability_ava_002_a.dds"] = {
         skillName = "Retreating Maneuver",
         position = 6,
         mainCategory = "Non Class",
@@ -1073,7 +968,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_caltrops.dds"] = {
+    ["ability_ava_001.dds"] = {
         skillName = "Caltrops",
         position = 10,
         mainCategory = "Non Class",
@@ -1087,7 +982,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_razor_caltrops.dds"] = {
+    ["ability_ava_001_b.dds"] = {
         skillName = "Razor Caltrops",
         position = 12,
         mainCategory = "Non Class",
@@ -1124,7 +1019,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Support Skills
-    ["ability_alliancewar_barrier.dds"] = {
+    ["ability_ava_006.dds"] = {
         skillName = "Barrier",
         position = 1,
         mainCategory = "Non Class",
@@ -1152,42 +1047,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_siege_shield.dds"] = {
+    ["ability_ava_004.dds"] = {
         skillName = "Siege Shield",
         position = 5,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_propelling_shield.dds"] = {
+    ["ability_ava_004_a.dds"] = {
         skillName = "Propelling Shield",
         position = 6,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_siege_weapon_shield.dds"] = {
+    ["ability_ava_004_b.dds"] = {
         skillName = "Siege Weapon Shield",
         position = 7,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_purge.dds"] = {
+    ["ability_ava_005.dds"] = {
         skillName = "Purge",
         position = 8,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_cleanse.dds"] = {
+    ["ability_ava_005_b.dds"] = {
         skillName = "Cleanse",
         position = 9,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_efficient_purge.dds"] = {
+    ["ability_ava_005_a.dds"] = {
         skillName = "Efficient Purge",
         position = 10,
         mainCategory = "Non Class",
@@ -1238,14 +1133,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Guild Skills
-    ["ability_fightersguild_dawnbreaker.dds"] = {
+    ["ability_fightersguild_005.dds"] = {
         skillName = "Dawnbreaker",
         position = 1,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_dawnbreaker_smiting.dds"] = {
+    ["ability_fightersguild_005_b.dds"] = {
         skillName = "Dawnbreaker of Smiting",
         position = 2,
         mainCategory = "Non Class",
@@ -1259,28 +1154,28 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_silver_bolts.dds"] = {
+    ["ability_fightersguild_003.dds"] = {
         skillName = "Silver Bolts",
         position = 4,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_silver_leash.dds"] = {
+    ["ability_fightersguild_003_b.dds"] = {
         skillName = "Silver Leash",
         position = 5,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_silver_shards.dds"] = {
+    ["ability_fightersguild_003_a.dds"] = {
         skillName = "Silver Shards",
         position = 6,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_circle_of_protection.dds"] = {
+    ["ability_fightersguild_001.dds"] = {
         skillName = "Circle of Protection",
         position = 7,
         mainCategory = "Non Class",
@@ -1294,14 +1189,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_turn_evil.dds"] = {
+    ["ability_fightersguild_001_a.dds"] = {
         skillName = "Turn Evil",
         position = 9,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_expert_hunter.dds"] = {
+    ["ability_fightersguild_002.dds"] = {
         skillName = "Expert Hunter",
         position = 10,
         mainCategory = "Non Class",
@@ -1315,14 +1210,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_evil_hunter.dds"] = {
+    ["ability_fightersguild_002_a.dds"] = {
         skillName = "Evil Hunter",
         position = 12,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_trap_beast.dds"] = {
+    ["ability_fightersguild_004.dds"] = {
         skillName = "Trap Beast",
         position = 13,
         mainCategory = "Non Class",
@@ -1336,7 +1231,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Fighters Guild"
     },
-    ["ability_fightersguild_lightweight_beast_trap.dds"] = {
+    ["ability_fightersguild_004_b.dds"] = {
         skillName = "Lightweight Beast Trap",
         position = 15,
         mainCategory = "Non Class",
@@ -1352,105 +1247,105 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Mages Guild Skills
-    ["ability_magesguild_meteor.dds"] = {
+    ["ability_mageguild_005.dds"] = {
         skillName = "Meteor",
         position = 1,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_ice_comet.dds"] = {
+    ["ability_mageguild_005_b.dds"] = {
         skillName = "Ice Comet",
         position = 2,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_shooting_star.dds"] = {
+    ["ability_mageguild_005_a.dds"] = {
         skillName = "Shooting Star",
         position = 3,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_magelight.dds"] = {
+    ["ability_mageguild_002.dds"] = {
         skillName = "Magelight",
         position = 4,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_inner_light.dds"] = {
+    ["ability_mageguild_002_b.dds"] = {
         skillName = "Inner Light",
         position = 5,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_radiant_magelight.dds"] = {
+    ["ability_mageguild_002_a.dds"] = {
         skillName = "Radiant Magelight",
         position = 6,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_entropy.dds"] = {
+    ["ability_mageguild_004.dds"] = {
         skillName = "Entropy",
         position = 7,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_degeneration.dds"] = {
+    ["ability_mageguild_004_a.dds"] = {
         skillName = "Degeneration",
         position = 8,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_structured_entropy.dds"] = {
+    ["ability_mageguild_004_b.dds"] = {
         skillName = "Structured Entropy",
         position = 9,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_fire_rune.dds"] = {
+    ["ability_mageguild_001.dds"] = {
         skillName = "Fire Rune",
         position = 10,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_scalding_rune.dds"] = {
+    ["ability_mageguild_001_b.dds"] = {
         skillName = "Scalding Rune",
         position = 11,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_volcanic_rune.dds"] = {
+    ["ability_mageguild_001_a.dds"] = {
         skillName = "Volcanic Rune",
         position = 12,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_equilibrium.dds"] = {
+    ["ability_mageguild_003.dds"] = {
         skillName = "Equilibrium",
         position = 13,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_balance.dds"] = {
+    ["ability_mageguild_003_b.dds"] = {
         skillName = "Balance",
         position = 14,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Mages Guild"
     },
-    ["ability_magesguild_spell_symmetry.dds"] = {
+    ["ability_mageguild_003_a.dds"] = {
         skillName = "Spell Symmetry",
         position = 15,
         mainCategory = "Non Class",
@@ -1466,14 +1361,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Psijic Order Skills
-    ["ability_psijicorder_undo.dds"] = {
+    ["ability_psijic_001.dds"] = {
         skillName = "Undo",
         position = 1,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_precognition.dds"] = {
+    ["ability_psijic_001_a.dds"] = {
         skillName = "Precognition",
         position = 2,
         mainCategory = "Non Class",
@@ -1487,105 +1382,105 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_time_stop.dds"] = {
+    ["ability_psijic_002.dds"] = {
         skillName = "Time Stop",
         position = 4,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_borrowed_time.dds"] = {
+    ["ability_psijic_002_a.dds"] = {
         skillName = "Borrowed Time",
         position = 5,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_time_freeze.dds"] = {
+    ["ability_psijic_002_b.dds"] = {
         skillName = "Time Freeze",
         position = 6,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_imbue_weapon.dds"] = {
+    ["ability_psijic_003.dds"] = {
         skillName = "Imbue Weapon",
         position = 7,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_crushing_weapon.dds"] = {
+    ["ability_psijic_003_b.dds"] = {
         skillName = "Crushing Weapon",
         position = 8,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_elemental_weapon.dds"] = {
+    ["ability_psijic_003_a.dds"] = {
         skillName = "Elemental Weapon",
         position = 9,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_accelerate.dds"] = {
+    ["ability_psijic_005.dds"] = {
         skillName = "Accelerate",
         position = 10,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_channeled_acceleration.dds"] = {
+    ["ability_psijic_005_a.dds"] = {
         skillName = "Channeled Acceleration",
         position = 11,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_race_against_time.dds"] = {
+    ["ability_psijic_005_b.dds"] = {
         skillName = "Race Against Time",
         position = 12,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_mend_wounds.dds"] = {
+    ["ability_psijic_006.dds"] = {
         skillName = "Mend Wounds",
         position = 13,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_mend_spirit.dds"] = {
+    ["ability_psijic_006_a.dds"] = {
         skillName = "Mend Spirit",
         position = 14,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_symbiosis.dds"] = {
+    ["ability_psijic_006_b.dds"] = {
         skillName = "Symbiosis",
         position = 15,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_meditate.dds"] = {
+    ["ability_psijic_004.dds"] = {
         skillName = "Meditate",
         position = 16,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_deep_thoughts.dds"] = {
+    ["ability_psijic_004_a.dds"] = {
         skillName = "Deep Thoughts",
         position = 17,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Psijic Order"
     },
-    ["ability_psijicorder_introspection.dds"] = {
+    ["ability_psijic_004_b.dds"] = {
         skillName = "Introspection",
         position = 18,
         mainCategory = "Non Class",
@@ -1594,91 +1489,91 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Undaunted Skills
-    ["ability_undaunted_blood_altar.dds"] = {
+    ["ability_undaunted_001.dds"] = {
         skillName = "Blood Altar",
         position = 1,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_overflowing_altar.dds"] = {
+    ["ability_undaunted_001_a.dds"] = {
         skillName = "Overflowing Altar",
         position = 2,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_sanguine_altar.dds"] = {
+    ["ability_undaunted_001_b.dds"] = {
         skillName = "Sanguine Altar",
         position = 3,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_trapping_webs.dds"] = {
+    ["ability_undaunted_003.dds"] = {
         skillName = "Trapping Webs",
         position = 4,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_shadow_silk.dds"] = {
+    ["ability_undaunted_003_a.dds"] = {
         skillName = "Shadow Silk",
         position = 5,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_tangling_webs.dds"] = {
+    ["ability_undaunted_003_b.dds"] = {
         skillName = "Tangling Webs",
         position = 6,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_inner_fire.dds"] = {
+    ["ability_undaunted_002.dds"] = {
         skillName = "Inner Fire",
         position = 7,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_inner_beast.dds"] = {
+    ["ability_undaunted_002_a.dds"] = {
         skillName = "Inner Beast",
         position = 8,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_inner_rage.dds"] = {
+    ["ability_undaunted_002_b.dds"] = {
         skillName = "Inner Rage",
         position = 9,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_bone_shield.dds"] = {
+    ["ability_undaunted_005"] = {
         skillName = "Bone Shield",
         position = 10,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_bone_surge.dds"] = {
+    ["ability_undaunted_005a.dds"] = {
         skillName = "Bone Surge",
         position = 11,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_spiked_bone_shield.dds"] = {
+    ["ability_undaunted_005b.dds"] = {
         skillName = "Spiked Bone Shield",
         position = 12,
         mainCategory = "Non Class",
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_necrotic_orb.dds"] = {
+    ["ability_undaunted_004.dds"] = {
         skillName = "Necrotic Orb",
         position = 13,
         mainCategory = "Non Class",
@@ -1701,42 +1596,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Volendrung Skills
-    ["ability_volendrung_ruinous_cyclone.dds"] = {
+    ["ability_artifact_volendrung_006.dds"] = {
         skillName = "Ruinous Cyclone",
         position = 1,
         mainCategory = "Non Class",
         class = "Pvp Artifacts",
         skillTree = "Volendrung"
     },
-    ["ability_volendrung_rourkens_rebuke.dds"] = {
+    ["ability_artifact_volendrung_001.dds"] = {
         skillName = "Rourken's Rebuke",
         position = 2,
         mainCategory = "Non Class",
         class = "Pvp Artifacts",
         skillTree = "Volendrung"
     },
-    ["ability_volendrung_malacaths_vengeance.dds"] = {
+    ["ability_artifact_volendrung_002.dds"] = {
         skillName = "Malacath's Vengeance",
         position = 3,
         mainCategory = "Non Class",
         class = "Pvp Artifacts",
         skillTree = "Volendrung"
     },
-    ["ability_volendrung_accursed_charge.dds"] = {
+    ["ability_artifact_volendrung_003.dds"] = {
         skillName = "Accursed Charge",
         position = 4,
         mainCategory = "Non Class",
         class = "Pvp Artifacts",
         skillTree = "Volendrung"
     },
-    ["ability_volendrung_pariahs_resolve.dds"] = {
+    ["ability_artifact_volendrung_004.dds"] = {
         skillName = "Pariah's Resolve",
         position = 5,
         mainCategory = "Non Class",
         class = "Pvp Artifacts",
         skillTree = "Volendrung"
     },
-    ["ability_volendrung_sundering_swing.dds"] = {
+    ["ability_artifact_volendrung_005.dds"] = {
         skillName = "Sundering Swing",
         position = 6,
         mainCategory = "Non Class",
@@ -1745,112 +1640,112 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Arcanist Skills
-    ["ability_arcanist_vitalizing_glyphic.dds"] = {
+    ["ability_arcanist_018.dds"] = {
         skillName = "Vitalizing Glyphic",
         position = 1,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_glyphic_of_the_tides.dds"] = {
+    ["ability_arcanist_018_a.dds"] = {
         skillName = "Glyphic of the Tides",
         position = 2,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_resonating_glyphic.dds"] = {
+    ["ability_arcanist_018_b.dds"] = {
         skillName = "Resonating Glyphic",
         position = 3,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_runemend.dds"] = {
+    ["ability_arcanist_013.dds"] = {
         skillName = "Runemend",
         position = 4,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_audacious_runemend.dds"] = {
+    ["ability_arcanist_013_b.dds"] = {
         skillName = "Audacious Runemend",
         position = 5,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_evolving_runemend.dds"] = {
+    ["ability_arcanist_013_a.dds"] = {
         skillName = "Evolving Runemend",
         position = 6,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_remedy_cascade.dds"] = {
+    ["ability_arcanist_014.dds"] = {
         skillName = "Remedy Cascade",
         position = 7,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_cascading_fortune.dds"] = {
+    ["ability_arcanist_014_a.dds"] = {
         skillName = "Cascading Fortune",
         position = 8,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_curative_surge.dds"] = {
+    ["ability_arcanist_014_b.dds"] = {
         skillName = "Curative Surge",
         position = 9,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_chakram_shields.dds"] = {
+    ["ability_arcanist_015.dds"] = {
         skillName = "Chakram Shields",
         position = 10,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_chakram_of_destiny.dds"] = {
+    ["ability_arcanist_015_a.dds"] = {
         skillName = "Chakram of Destiny",
         position = 11,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_tidal_chakram.dds"] = {
+    ["ability_arcanist_015_b.dds"] = {
         skillName = "Tidal Chakram",
         position = 12,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_arcanists_domain.dds"] = {
+    ["ability_arcanist_017.dds"] = {
         skillName = "Arcanist's Domain",
         position = 13,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_reconstructive_domain.dds"] = {
+    ["ability_arcanist_017_b.dds"] = {
         skillName = "Reconstructive Domain",
         position = 14,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_zenas_empowering_disc.dds"] = {
+    ["ability_arcanist_017_a.dds"] = {
         skillName = "Zenas' Empowering Disc",
         position = 15,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_apocryphal_gate.dds"] = {
+    ["ability_arcanist_016.dds"] = {
         skillName = "Apocryphal Gate",
         position = 16,
         mainCategory = "Class",
@@ -1864,7 +1759,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Curative Runeforms"
     },
-    ["ability_arcanist_passage_between_worlds.dds"] = {
+    ["ability_arcanist_016_a.dds"] = {
         skillName = "Passage Between Worlds",
         position = 18,
         mainCategory = "Class",
@@ -1873,7 +1768,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Herald of the Tome Skills
-    ["ability_arcanist_the_unblinking_eye.dds"] = {
+    ["ability_arcanist_006.dds"] = {
         skillName = "The Unblinking Eye",
         position = 1,
         mainCategory = "Class",
@@ -1887,28 +1782,28 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_the_tide_kings_gaze.dds"] = {
+    ["ability_arcanist_006_a.dds"] = {
         skillName = "The Tide King's Gaze",
         position = 3,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_runeblades.dds"] = {
+    ["ability_arcanist_001.dds"] = {
         skillName = "Runeblades",
         position = 4,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_escalating_runeblades.dds"] = {
+    ["ability_arcanist_001_b.dds"] = {
         skillName = "Escalating Runeblades",
         position = 5,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_writhing_runeblades.dds"] = {
+    ["ability_arcanist_001_a.dds"] = {
         skillName = "Writhing Runeblades",
         position = 6,
         mainCategory = "Class",
@@ -1936,28 +1831,28 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_abyssal_impact.dds"] = {
+    ["ability_arcanist_003.dds"] = {
         skillName = "Abyssal Impact",
         position = 10,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_cephaliarchs_flail.dds"] = {
+    ["ability_arcanist_003_a.dds"] = {
         skillName = "Cephaliarch's Flail",
         position = 11,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_tentacular_dread.dds"] = {
+    ["ability_arcanist_003_b.dds"] = {
         skillName = "Tentacular Dread",
         position = 12,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_tome_bearers_inspiration.dds"] = {
+    ["ability_arcanist_005.dds"] = {
         skillName = "Tome-Bearer's Inspiration",
         position = 13,
         mainCategory = "Class",
@@ -1971,14 +1866,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_recuperative_treatise.dds"] = {
+    ["ability_arcanist_005_b.dds"] = {
         skillName = "Recuperative Treatise",
         position = 15,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_the_imperfect_ring.dds"] = {
+    ["ability_arcanist_004.dds"] = {
         skillName = "The Imperfect Ring",
         position = 16,
         mainCategory = "Class",
@@ -1992,7 +1887,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Herald of the Tome"
     },
-    ["ability_arcanist_rune_of_displacement.dds"] = {
+    ["ability_arcanist_004_a.dds"] = {
         skillName = "Rune of Displacement",
         position = 18,
         mainCategory = "Class",
@@ -2001,70 +1896,70 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Soldier of Apocrypha Skills
-    ["ability_arcanist_gibbering_shield.dds"] = {
+    ["ability_arcanist_012.dds"] = {
         skillName = "Gibbering Shield",
         position = 1,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_gibbering_shelter.dds"] = {
+    ["ability_arcanist_012_b.dds"] = {
         skillName = "Gibbering Shelter",
         position = 2,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_sanctum_of_the_abyssal_sea.dds"] = {
+    ["ability_arcanist_012_a.dds"] = {
         skillName = "Sanctum of the Abyssal Sea",
         position = 3,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runic_jolt.dds"] = {
+    ["ability_arcanist_007.dds"] = {
         skillName = "Runic Jolt",
         position = 4,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runic_embrace.dds"] = {
+    ["ability_arcanist_007_a.dds"] = {
         skillName = "Runic Embrace",
         position = 5,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runic_sunder.dds"] = {
+    ["ability_arcanist_007_b.dds"] = {
         skillName = "Runic Sunder",
         position = 6,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runespite_ward.dds"] = {
+    ["ability_arcanist_008.dds"] = {
         skillName = "Runespite Ward",
         position = 7,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_impervious_runeward.dds"] = {
+    ["ability_arcanist_008_b.dds"] = {
         skillName = "Impervious Runeward",
         position = 8,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_spiteward_of_the_lucid_mind.dds"] = {
+    ["ability_arcanist_008_a.dds"] = {
         skillName = "Spiteward of the Lucid Mind",
         position = 9,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_fatewoven_armor.dds"] = {
+    ["ability_arcanist_009.dds"] = {
         skillName = "Fatewoven Armor",
         position = 10,
         mainCategory = "Class",
@@ -2078,49 +1973,49 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_unbreakable_fate.dds"] = {
+    ["ability_arcanist_009_b.dds"] = {
         skillName = "Unbreakable Fate",
         position = 12,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runic_defense.dds"] = {
+    ["ability_arcanist_010.dds"] = {
         skillName = "Runic Defense",
         position = 13,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runeguard_of_freedom.dds"] = {
+    ["ability_arcanist_010_b.dds"] = {
         skillName = "Runeguard of Freedom",
         position = 14,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_runeguard_of_still_waters.dds"] = {
+    ["ability_arcanist_010_a.dds"] = {
         skillName = "Runeguard of Still Waters",
         position = 15,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_rune_of_eldritch_horror.dds"] = {
+    ["ability_arcanist_011.dds"] = {
         skillName = "Rune of Eldritch Horror",
         position = 16,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_rune_of_uncanny_adoration.dds"] = {
+    ["ability_arcanist_011_a.dds"] = {
         skillName = "Rune of Uncanny Adoration",
         position = 17,
         mainCategory = "Class",
         class = "Arcanist",
         skillTree = "Soldier of Apocrypha"
     },
-    ["ability_arcanist_rune_of_the_colorless_pool.dds"] = {
+    ["ability_arcanist_011_b.dds"] = {
         skillName = "Rune of the Colorless Pool",
         position = 18,
         mainCategory = "Class",
@@ -2129,126 +2024,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Dragonknight Skills
-    ["ability_dragonknight_dragonknight_standard.dds"] = {
+    ["ability_dragonknight_006.dds"] = {
         skillName = "Dragonknight Standard",
         position = 1,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_shifting_standard.dds"] = {
+    ["ability_dragonknight_006_a.dds"] = {
         skillName = "Shifting Standard",
         position = 2,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_standard_of_might.dds"] = {
+    ["ability_dragonknight_006_b.dds"] = {
         skillName = "Standard of Might",
         position = 3,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_lava_whip.dds"] = {
+    ["ability_dragonknight_001.dds"] = {
         skillName = "Lava Whip",
         position = 4,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_flame_lash.dds"] = {
+    ["ability_dragonknight_001_a.dds"] = {
         skillName = "Flame Lash",
         position = 5,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_molten_whip.dds"] = {
+    ["ability_dragonknight_001_b.dds"] = {
         skillName = "Molten Whip",
         position = 6,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_searing_strike.dds"] = {
+    ["ability_dragonknight_003.dds"] = {
         skillName = "Searing Strike",
         position = 7,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_burning_embers.dds"] = {
+    ["ability_dragonknight_003_b.dds"] = {
         skillName = "Burning Embers",
         position = 8,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_venomous_claw.dds"] = {
+    ["ability_dragonknight_003_a.dds"] = {
         skillName = "Venomous Claw",
         position = 9,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_fiery_breath.dds"] = {
+    ["ability_dragonknight_004.dds"] = {
         skillName = "Fiery Breath",
         position = 10,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_engulfing_flames.dds"] = {
+    ["ability_dragonknight_004_b.dds"] = {
         skillName = "Engulfing Flames",
         position = 11,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_noxious_breath.dds"] = {
+    ["ability_dragonknight_004_a.dds"] = {
         skillName = "Noxious Breath",
         position = 12,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_fiery_grip.dds"] = {
+    ["ability_dragonknight_005.dds"] = {
         skillName = "Fiery Grip",
         position = 13,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_chains_of_devastation.dds"] = {
+    ["ability_dragonknight_005_b.dds"] = {
         skillName = "Chains of Devastation",
         position = 14,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_unrelenting_grip.dds"] = {
+    ["ability_dragonknight_005_a.dds"] = {
         skillName = "Unrelenting Grip",
         position = 15,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_inferno.dds"] = {
+    ["ability_dragonknight_002.dds"] = {
         skillName = "Inferno",
         position = 16,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_cauterize.dds"] = {
+    ["ability_dragonknight_002_b.dds"] = {
         skillName = "Cauterize",
         position = 17,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Ardent Flame"
     },
-    ["ability_dragonknight_flames_of_oblivion.dds"] = {
+    ["ability_dragonknight_002_a.dds"] = {
         skillName = "Flames of Oblivion",
         position = 18,
         mainCategory = "Class",
@@ -2257,126 +2152,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Draconic Power Skills
-    ["ability_dragonknight_dragon_leap.dds"] = {
+    ["ability_dragonknight_009.dds"] = {
         skillName = "Dragon Leap",
         position = 1,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_ferocious_leap.dds"] = {
+    ["ability_dragonknight_009_a.dds"] = {
         skillName = "Ferocious Leap",
         position = 2,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_take_flight.dds"] = {
+    ["ability_dragonknight_009_b.dds"] = {
         skillName = "Take Flight",
         position = 3,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_spiked_armor.dds"] = {
+    ["ability_dragonknight_007.dds"] = {
         skillName = "Spiked Armor",
         position = 4,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_hardened_armor.dds"] = {
+    ["ability_dragonknight_007_b.dds"] = {
         skillName = "Hardened Armor",
         position = 5,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_volatile_armor.dds"] = {
+    ["ability_dragonknight_007_a.dds"] = {
         skillName = "Volatile Armor",
         position = 6,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_dark_talons.dds"] = {
+    ["ability_dragonknight_010.dds"] = {
         skillName = "Dark Talons",
         position = 7,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_burning_talons.dds"] = {
+    ["ability_dragonknight_010_b.dds"] = {
         skillName = "Burning Talons",
         position = 8,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_choking_talons.dds"] = {
+    ["ability_dragonknight_010_a.dds"] = {
         skillName = "Choking Talons",
         position = 9,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_dragon_blood.dds"] = {
+    ["ability_dragonknight_011.dds"] = {
         skillName = "Dragon Blood",
         position = 10,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_coagulating_blood.dds"] = {
+    ["ability_dragonknight_011_a.dds"] = {
         skillName = "Coagulating Blood",
         position = 11,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_green_dragon_blood.dds"] = {
+    ["ability_dragonknight_011_b.dds"] = {
         skillName = "Green Dragon Blood",
         position = 12,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_protective_scale.dds"] = {
+    ["ability_dragonknight_008.dds"] = {
         skillName = "Protective Scale",
         position = 13,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_dragon_fire_scale.dds"] = {
+    ["ability_dragonknight_008_a.dds"] = {
         skillName = "Dragon Fire Scale",
         position = 14,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_protective_plate.dds"] = {
+    ["ability_dragonknight_008_b.dds"] = {
         skillName = "Protective Plate",
         position = 15,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_inhale.dds"] = {
+    ["ability_dragonknight_012.dds"] = {
         skillName = "Inhale",
         position = 16,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_deep_breath.dds"] = {
+    ["ability_dragonknight_012_a.dds"] = {
         skillName = "Deep Breath",
         position = 17,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Draconic Power"
     },
-    ["ability_dragonknight_draw_essence.dds"] = {
+    ["ability_dragonknight_012_b.dds"] = {
         skillName = "Draw Essence",
         position = 18,
         mainCategory = "Class",
@@ -2385,126 +2280,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Earthen Heart Skills
-    ["ability_dragonknight_magma_armor.dds"] = {
+    ["ability_dragonknight_018.dds"] = {
         skillName = "Magma Armor",
         position = 1,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_corrosive_armor.dds"] = {
+    ["ability_dragonknight_018_b.dds"] = {
         skillName = "Corrosive Armor",
         position = 2,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_magma_shell.dds"] = {
+    ["ability_dragonknight_018_a.dds"] = {
         skillName = "Magma Shell",
         position = 3,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_stonefist.dds"] = {
+    ["ability_dragonknight_013.dds"] = {
         skillName = "Stonefist",
         position = 4,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_obsidian_shard.dds"] = {
+    ["ability_dragonknight_013_b.dds"] = {
         skillName = "Obsidian Shard",
         position = 5,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_stone_giant.dds"] = {
+    ["ability_dragonknight_013_a.dds"] = {
         skillName = "Stone Giant",
         position = 6,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_molten_weapons.dds"] = {
+    ["ability_dragonknight_015.dds"] = {
         skillName = "Molten Weapons",
         position = 7,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_igneous_weapons.dds"] = {
+    ["ability_dragonknight_015_a.dds"] = {
         skillName = "Igneous Weapons",
         position = 8,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_molten_armaments.dds"] = {
+    ["ability_dragonknight_015_b.dds"] = {
         skillName = "Molten Armaments",
         position = 9,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_obsidian_shield.dds"] = {
+    ["ability_dragonknight_017.dds"] = {
         skillName = "Obsidian Shield",
         position = 10,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_fragmented_shield.dds"] = {
+    ["ability_dragonknight_017a.dds"] = {
         skillName = "Fragmented Shield",
         position = 11,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_igneous_shield.dds"] = {
+    ["ability_dragonknight_017b.dds"] = {
         skillName = "Igneous Shield",
         position = 12,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_petrify.dds"] = {
+    ["ability_dragonknight_014.dds"] = {
         skillName = "Petrify",
         position = 13,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_fossilize.dds"] = {
+    ["ability_dragonknight_014_a.dds"] = {
         skillName = "Fossilize",
         position = 14,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_shattering_rocks.dds"] = {
+    ["ability_dragonknight_014b.dds"] = {
         skillName = "Shattering Rocks",
         position = 15,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_ash_cloud.dds"] = {
+    ["ability_dragonknight_016.dds"] = {
         skillName = "Ash Cloud",
         position = 16,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_cinder_storm.dds"] = {
+    ["ability_dragonknight_016a.dds"] = {
         skillName = "Cinder Storm",
         position = 17,
         mainCategory = "Class",
         class = "Dragonknight",
         skillTree = "Earthen Heart"
     },
-    ["ability_dragonknight_eruption.dds"] = {
+    ["ability_dragonknight_016b.dds"] = {
         skillName = "Eruption",
         position = 18,
         mainCategory = "Class",
@@ -2513,28 +2408,28 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Necromancer Skills
-    ["ability_necromancer_bone_goliath_transformation.dds"] = {
+    ["ability_necromancer_012.dds"] = {
         skillName = "Bone Goliath Transformation",
         position = 1,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_pummeling_goliath.dds"] = {
+    ["ability_necromancer_012_a.dds"] = {
         skillName = "Pummeling Goliath",
         position = 2,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_ravenous_goliath.dds"] = {
+    ["ability_necromancer_012_b.dds"] = {
         skillName = "Ravenous Goliath",
         position = 3,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_death_scythe.dds"] = {
+    ["ability_necromancer_007.dds"] = {
         skillName = "Death Scythe",
         position = 4,
         mainCategory = "Class",
@@ -2548,14 +2443,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_ruinous_scythe.dds"] = {
+    ["ability_necromancer_007_b.dds"] = {
         skillName = "Ruinous Scythe",
         position = 6,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_bone_armor.dds"] = {
+    ["ability_necromancer_008.dds"] = {
         skillName = "Bone Armor",
         position = 7,
         mainCategory = "Class",
@@ -2576,14 +2471,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_bitter_harvest.dds"] = {
+    ["ability_necromancer_011.dds"] = {
         skillName = "Bitter Harvest",
         position = 10,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_deaden_pain.dds"] = {
+    ["ability_necromancer_011_a.dds"] = {
         skillName = "Deaden Pain",
         position = 11,
         mainCategory = "Class",
@@ -2597,35 +2492,35 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_bone_totem.dds"] = {
+    ["ability_necromancer_010.dds"] = {
         skillName = "Bone Totem",
         position = 13,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_agony_totem.dds"] = {
+    ["ability_necromancer_010_b.dds"] = {
         skillName = "Agony Totem",
         position = 14,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_remote_totem.dds"] = {
+    ["ability_necromancer_010_a.dds"] = {
         skillName = "Remote Totem",
         position = 15,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_grave_grasp.dds"] = {
+    ["ability_necromancer_009.dds"] = {
         skillName = "Grave Grasp",
         position = 16,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Bone Tyrant"
     },
-    ["ability_necromancer_empowering_grasp.dds"] = {
+    ["ability_necromancer_009_a.dds"] = {
         skillName = "Empowering Grasp",
         position = 17,
         mainCategory = "Class",
@@ -2641,7 +2536,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Grave Lord Skills
-    ["ability_necromancer_frozen_colossus.dds"] = {
+    ["ability_necromancer_006.dds"] = {
         skillName = "Frozen Colossus",
         position = 1,
         mainCategory = "Class",
@@ -2655,21 +2550,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_pestilent_colossus.dds"] = {
+    ["ability_necromancer_006_b.dds"] = {
         skillName = "Pestilent Colossus",
         position = 3,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_flame_skull.dds"] = {
+    ["ability_necromancer_001.dds"] = {
         skillName = "Flame Skull",
         position = 4,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_ricochet_skull.dds"] = {
+    ["ability_necromancer_001_b.dds"] = {
         skillName = "Ricochet Skull",
         position = 5,
         mainCategory = "Class",
@@ -2683,7 +2578,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_sacrificial_bones.dds"] = {
+    ["ability_necromancer_002.dds"] = {
         skillName = "Sacrificial Bones",
         position = 7,
         mainCategory = "Class",
@@ -2697,21 +2592,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_grave_lords_sacrifice.dds"] = {
+    ["ability_necromancer_002_b.dds"] = {
         skillName = "Grave Lord's Sacrifice",
         position = 9,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_boneyard.dds"] = {
+    ["ability_necromancer_004.dds"] = {
         skillName = "Boneyard",
         position = 10,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_avid_boneyard.dds"] = {
+    ["ability_necromancer_004_b.dds"] = {
         skillName = "Avid Boneyard",
         position = 11,
         mainCategory = "Class",
@@ -2725,42 +2620,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_skeletal_mage.dds"] = {
+    ["ability_necromancer_003.dds"] = {
         skillName = "Skeletal Mage",
         position = 13,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_skeletal_arcanist.dds"] = {
+    ["ability_necromancer_003_b.dds"] = {
         skillName = "Skeletal Arcanist",
         position = 14,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_skeletal_archer.dds"] = {
+    ["ability_necromancer_003_a.dds"] = {
         skillName = "Skeletal Archer",
         position = 15,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_005_b.dds"] = {
+    ["ability_necromancer_005.dds"] = {
         skillName = "Shocking Siphon",
         position = 16,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_detonating_siphon.dds"] = {
+    ["ability_necromancer_005_b.dds"] = {
         skillName = "Detonating Siphon",
         position = 17,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
-    ["ability_necromancer_mystic_siphon.dds"] = {
+    ["ability_necromancer_005_a.dds"] = {
         skillName = "Mystic Siphon",
         position = 18,
         mainCategory = "Class",
@@ -2769,91 +2664,91 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Living Death Skills
-    ["ability_necromancer_reanimate.dds"] = {
+    ["ability_necromancer_018.dds"] = {
         skillName = "Reanimate",
         position = 1,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_animate_blastbones.dds"] = {
+    ["ability_necromancer_018_b.dds"] = {
         skillName = "Animate Blastbones",
         position = 2,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_renewing_animation.dds"] = {
+    ["ability_necromancer_018_a.dds"] = {
         skillName = "Renewing Animation",
         position = 3,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_render_flesh.dds"] = {
+    ["ability_necromancer_013.dds"] = {
         skillName = "Render Flesh",
         position = 4,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_blood_sacrifice.dds"] = {
+    ["ability_necromancer_013_b.dds"] = {
         skillName = "Blood Sacrifice",
         position = 5,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_resistant_flesh.dds"] = {
+    ["ability_necromancer_013_a.dds"] = {
         skillName = "Resistant Flesh",
         position = 6,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_expunge.dds"] = {
+    ["ability_necromancer_014.dds"] = {
         skillName = "Expunge",
         position = 7,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_expunge_and_modify.dds"] = {
+    ["ability_necromancer_014_b.dds"] = {
         skillName = "Expunge and Modify",
         position = 8,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_hexproof.dds"] = {
+    ["ability_necromancer_014_a.dds"] = {
         skillName = "Hexproof",
         position = 9,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_life_amid_death.dds"] = {
+    ["ability_necromancer_016.dds"] = {
         skillName = "Life amid Death",
         position = 10,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_enduring_undeath.dds"] = {
+    ["ability_necromancer_016_b.dds"] = {
         skillName = "Enduring Undeath",
         position = 11,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_renewing_undeath.dds"] = {
+    ["ability_necromancer_016_a.dds"] = {
         skillName = "Renewing Undeath",
         position = 12,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_spirit_mender.dds"] = {
+    ["ability_necromancer_015.dds"] = {
         skillName = "Spirit Mender",
         position = 13,
         mainCategory = "Class",
@@ -2874,21 +2769,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_restoring_tether.dds"] = {
+    ["ability_necromancer_017.dds"] = {
         skillName = "Restoring Tether",
         position = 16,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_braided_tether.dds"] = {
+    ["ability_necromancer_017_a.dds"] = {
         skillName = "Braided Tether",
         position = 17,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Living Death"
     },
-    ["ability_necromancer_mortal_coil.dds"] = {
+    ["ability_necromancer_017_b.dds"] = {
         skillName = "Mortal Coil",
         position = 18,
         mainCategory = "Class",
@@ -2897,126 +2792,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Nightblade Skills
-    ["ability_nightblade_death_stroke.dds"] = {
+    ["ability_nightblade_007.dds"] = {
         skillName = "Death Stroke",
         position = 1,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_incapacitating_strike.dds"] = {
+    ["ability_nightblade_007_a.dds"] = {
         skillName = "Incapacitating Strike",
         position = 2,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_soul_harvest.dds"] = {
+    ["ability_nightblade_007_b.dds"] = {
         skillName = "Soul Harvest",
         position = 3,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_veiled_strike.dds"] = {
+    ["ability_nightblade_002.dds"] = {
         skillName = "Veiled Strike",
         position = 4,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_concealed_weapon.dds"] = {
+    ["ability_nightblade_002_b.dds"] = {
         skillName = "Concealed Weapon",
         position = 5,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_surprise_attack.dds"] = {
+    ["ability_nightblade_002_a.ddss"] = {
         skillName = "Surprise Attack",
         position = 6,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_teleport_strike.dds"] = {
+    ["ability_nightblade_008.dds"] = {
         skillName = "Teleport Strike",
         position = 7,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_ambush.dds"] = {
+    ["ability_nightblade_008_b.dds"] = {
         skillName = "Ambush",
         position = 8,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_lotus_fan.dds"] = {
+    ["ability_nightblade_008_a.dds"] = {
         skillName = "Lotus Fan",
         position = 9,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_assassins_blade.dds"] = {
+    ["ability_nightblade_017.dds"] = {
         skillName = "Assassin's Blade",
         position = 10,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_impale.dds"] = {
+    ["ability_nightblade_017_b.dds"] = {
         skillName = "Impale",
         position = 11,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_killers_blade.dds"] = {
+    ["ability_nightblade_017_a.dds"] = {
         skillName = "Killer's Blade",
         position = 12,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_mark_target.dds"] = {
+    ["ability_nightblade_014.dds"] = {
         skillName = "Mark Target",
         position = 13,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_piercing_mark.dds"] = {
+    ["ability_nightblade_014_b.dds"] = {
         skillName = "Piercing Mark",
         position = 14,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_reapers_mark.dds"] = {
+    ["ability_nightblade_014_a.dds"] = {
         skillName = "Reaper's Mark",
         position = 15,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_grim_focus.dds"] = {
+    ["ability_nightblade_005.dds"] = {
         skillName = "Grim Focus",
         position = 16,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_merciless_resolve.dds"] = {
+    ["ability_nightblade_005_b.dds"] = {
         skillName = "Merciless Resolve",
         position = 17,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Assassination"
     },
-    ["ability_nightblade_relentless_focus.dds"] = {
+    ["ability_nightblade_005_a.dds"] = {
         skillName = "Relentless Focus",
         position = 18,
         mainCategory = "Class",
@@ -3025,126 +2920,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Shadow Skills
-    ["ability_nightblade_consuming_darkness.dds"] = {
+    ["ability_nightblade_015.dds"] = {
         skillName = "Consuming Darkness",
         position = 1,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_bolstering_darkness.dds"] = {
+    ["ability_nightblade_015_a.dds"] = {
         skillName = "Bolstering Darkness",
         position = 2,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_veil_of_blades.dds"] = {
+    ["ability_nightblade_015_b.dds"] = {
         skillName = "Veil of Blades",
         position = 3,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_shadow_cloak.dds"] = {
+    ["ability_nightblade_004.dds"] = {
         skillName = "Shadow Cloak",
         position = 4,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_dark_cloak.dds"] = {
+    ["ability_nightblade_004_b.dds"] = {
         skillName = "Dark Cloak",
         position = 5,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_shadowy_disguise.dds"] = {
+    ["ability_nightblade_004_a.dds"] = {
         skillName = "Shadowy Disguise",
         position = 6,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_path_of_darkness.dds"] = {
+    ["ability_nightblade_010.dds"] = {
         skillName = "Path of Darkness",
         position = 7,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_refreshing_path.dds"] = {
+    ["ability_nightblade_010_a.dds"] = {
         skillName = "Refreshing Path",
         position = 8,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_twisting_path.dds"] = {
+    ["ability_nightblade_010_b.dds"] = {
         skillName = "Twisting Path",
         position = 9,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_blur.dds"] = {
+    ["ability_nightblade_009.dds"] = {
         skillName = "Blur",
         position = 10,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_mirage.dds"] = {
+    ["ability_nightblade_009_a.dds"] = {
         skillName = "Mirage",
         position = 11,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_phantasmal_escape.dds"] = {
+    ["ability_nightblade_009_b.dds"] = {
         skillName = "Phantasmal Escape",
         position = 12,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_aspect_of_terror.dds"] = {
+    ["ability_nightblade_016.dds"] = {
         skillName = "Aspect of Terror",
         position = 13,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_manifestation_of_terror.dds"] = {
+    ["ability_nightblade_016_b.dds"] = {
         skillName = "Manifestation of Terror",
         position = 14,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_mass_hysteria.dds"] = {
+    ["ability_nightblade_016_a.dds"] = {
         skillName = "Mass Hysteria",
         position = 15,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_summon_shade.dds"] = {
+    ["ability_nightblade_001.dds"] = {
         skillName = "Summon Shade",
         position = 16,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_dark_shade.dds"] = {
+    ["ability_nightblade_001_a.dds"] = {
         skillName = "Dark Shade",
         position = 17,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Shadow"
     },
-    ["ability_nightblade_shadow_image.dds"] = {
+    ["ability_nightblade_001_b.dds"] = {
         skillName = "Shadow Image",
         position = 18,
         mainCategory = "Class",
@@ -3153,126 +3048,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Siphoning Skills
-    ["ability_nightblade_soul_shred.dds"] = {
+    ["ability_nightblade_018.dds"] = {
         skillName = "Soul Shred",
         position = 1,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_soul_siphon.dds"] = {
+    ["ability_nightblade_018_b.dds"] = {
         skillName = "Soul Siphon",
         position = 2,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_soul_tether.dds"] = {
+    ["ability_nightblade_018_a.dds"] = {
         skillName = "Soul Tether",
         position = 3,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_strife.dds"] = {
+    ["ability_nightblade_012.dds"] = {
         skillName = "Strife",
         position = 4,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_funnel_health.dds"] = {
+    ["ability_nightblade_012_b.dds"] = {
         skillName = "Funnel Health",
         position = 5,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_swallow_soul.dds"] = {
+    ["ability_nightblade_012_a.dds"] = {
         skillName = "Swallow Soul",
         position = 6,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_malevolent_offering.dds"] = {
+    ["ability_nightblade_011.dds"] = {
         skillName = "Malevolent Offering",
         position = 7,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_healthy_offering.dds"] = {
+    ["ability_nightblade_011_a.dds"] = {
         skillName = "Healthy Offering",
         position = 8,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_shrewd_offering.dds"] = {
+    ["ability_nightblade_011_b.dds"] = {
         skillName = "Shrewd Offering",
         position = 9,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_cripple.dds"] = {
+    ["ability_nightblade_006.dds"] = {
         skillName = "Cripple",
         position = 10,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_crippling_grasp.dds"] = {
+    ["ability_nightblade_006.dds"] = {
         skillName = "Crippling Grasp",
         position = 11,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_debilitate.dds"] = {
+    ["ability_nightblade_006_a.dds"] = {
         skillName = "Debilitate",
         position = 12,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_siphoning_strikes.dds"] = {
+    ["ability_nightblade_003.dds"] = {
         skillName = "Siphoning Strikes",
         position = 13,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_leeching_strikes.dds"] = {
+    ["ability_nightblade_003_a.dds"] = {
         skillName = "Leeching Strikes",
         position = 14,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_siphoning_attacks.dds"] = {
+    ["ability_nightblade_003_b.dds"] = {
         skillName = "Siphoning Attacks",
         position = 15,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_drain_power.dds"] = {
+    ["ability_nightblade_013.dds"] = {
         skillName = "Drain Power",
         position = 16,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_power_extraction.dds"] = {
+    ["ability_nightblade_013_b.dds"] = {
         skillName = "Power Extraction",
         position = 17,
         mainCategory = "Class",
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_sap_essence.dds"] = {
+    ["ability_nightblade_013_a.dds"] = {
         skillName = "Sap Essence",
         position = 18,
         mainCategory = "Class",
@@ -3281,7 +3176,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Sorcerer Skills
-    ["ability_sorcerer_summon_storm_atronach.dds"] = {
+    ["ability_sorcerer_storm_atronach.dds"] = {
         skillName = "Summon Storm Atronach",
         position = 1,
         mainCategory = "Class",
@@ -3295,28 +3190,28 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_charged_atronach.dds"] = {
+    ["ability_sorcerer_endless_atronachs.dds"] = {
         skillName = "Summon Charged Atronach",
         position = 3,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_unstable_familiar.dds"] = {
+    ["ability_sorcerer_unstable_fimiliar.dds"] = {
         skillName = "Summon Unstable Familiar",
         position = 4,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_unstable_clannfear.dds"] = {
+    ["ability_sorcerer_unstable_clannfear.dds"] = {
         skillName = "Summon Unstable Clannfear",
         position = 5,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_volatile_familiar.dds"] = {
+    ["ability_sorcerer_speedy_familiar.dds"] = {
         skillName = "Summon Volatile Familiar",
         position = 6,
         mainCategory = "Class",
@@ -3330,56 +3225,56 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_daedric_prey.dds"] = {
+    ["ability_sorcerer_explosive_curse.dds"] = {
         skillName = "Daedric Prey",
         position = 8,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_haunting_curse.dds"] = {
+    ["ability_sorcerer_velocious_curse.dds"] = {
         skillName = "Haunting Curse",
         position = 9,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_winged_twilight.dds"] = {
+    ["ability_sorcerer_lightning_prey.dds"] = {
         skillName = "Summon Winged Twilight",
         position = 10,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_twilight_matriarch.dds"] = {
+    ["ability_sorcerer_storm_prey.dds"] = {
         skillName = "Summon Twilight Matriarch",
         position = 11,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_summon_twilight_tormentor.dds"] = {
+    ["ability_sorcerer_lightning_matriarch.dds"] = {
         skillName = "Summon Twilight Tormentor",
         position = 12,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_conjured_ward.dds"] = {
+    ["ability_sorcerer_hurricane.dds"] = {
         skillName = "Conjured Ward",
         position = 13,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_hardened_ward.dds"] = {
+    ["ability_sorcerer_typhoon.dds"] = {
         skillName = "Hardened Ward",
         position = 14,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
-    ["ability_sorcerer_regenerative_ward.dds"] = {
+    ["ability_sorcerer_tempest.dds"] = {
         skillName = "Regenerative Ward",
         position = 15,
         mainCategory = "Class",
@@ -3409,84 +3304,84 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Dark Magic Skills
-    ["ability_sorcerer_negate_magic.dds"] = {
+    ["ability_sorcerer_monsoon.dds"] = {
         skillName = "Negate Magic",
         position = 1,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_absorption_field.dds"] = {
+    ["ability_sorcerer_rushing_winds.dds"] = {
         skillName = "Absorption Field",
         position = 2,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_suppression_field.dds"] = {
+    ["ability_sorcerer_crushing_monsoon.dds"] = {
         skillName = "Suppression Field",
         position = 3,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_crystal_shard.dds"] = {
+    ["ability_sorcerer_thunderclap.dds"] = {
         skillName = "Crystal Shard",
         position = 4,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_crystal_fragments.dds"] = {
+    ["ability_sorcerer_thunderstomp.dds"] = {
         skillName = "Crystal Fragments",
         position = 5,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_crystal_weapon.dds"] = {
+    ["ability_sorcerer_crystalweapon.dds"] = {
         skillName = "Crystal Weapon",
         position = 6,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_encase.dds"] = {
+    ["ability_sorcerer_cyclone.dds"] = {
         skillName = "Encase",
         position = 7,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_shattering_spines.dds"] = {
+    ["ability_sorcerer_twister.dds"] = {
         skillName = "Shattering Spines",
         position = 8,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_vibrant_shroud.dds"] = {
+    ["ability_sorcerer_crushing_winds.dds"] = {
         skillName = "Vibrant Shroud",
         position = 9,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_rune_prison.dds"] = {
+    ["ability_sorcerer_dark_fog.dds"] = {
         skillName = "Rune Prison",
         position = 10,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_defensive_rune.dds"] = {
+    ["ability_sorcerer_weakening_fog.dds"] = {
         skillName = "Defensive Rune",
         position = 11,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_rune_cage.dds"] = {
+    ["ability_sorcerer_dark_haze.dds"] = {
         skillName = "Rune Cage",
         position = 12,
         mainCategory = "Class",
@@ -3521,7 +3416,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-    ["ability_sorcerer_daedric_refuge.dds"] = {
+    ["ability_sorcerer_daedric_minefield.dds"] = {
         skillName = "Daedric Refuge",
         position = 17,
         mainCategory = "Class",
@@ -3558,7 +3453,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Storm Calling"
     },
-    ["ability_sorcerer_mages_fury.dds"] = {
+    ["ability_sorcerer_mage_fury.dds"] = {
         skillName = "Mages' Fury",
         position = 4,
         mainCategory = "Class",
@@ -3572,7 +3467,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Storm Calling"
     },
-    ["ability_sorcerer_mages_wrath.dds"] = {
+    ["ability_sorcerer_mage_wraith.dds"] = {
         skillName = "Mages' Wrath",
         position = 6,
         mainCategory = "Class",
@@ -3593,7 +3488,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Storm Calling"
     },
-    ["ability_sorcerer_hurricane.dds"] = {
+    ["ability_sorcerer_thundering_presence.dds"] = {
         skillName = "Hurricane",
         position = 9,
         mainCategory = "Class",
@@ -3679,21 +3574,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_everlasting_sweep.dds"] = {
+    ["ability_templar_empowering_sweep.dds"] = {
         skillName = "Everlasting Sweep",
         position = 3,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_puncturing_strikes.dds"] = {
+    ["ability_templar_trained_attacker.dds"] = {
         skillName = "Puncturing Strikes",
         position = 4,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_biting_jabs.dds"] = {
+    ["ability_templar_recovery.dds"] = {
         skillName = "Biting Jabs",
         position = 5,
         mainCategory = "Class",
@@ -3707,21 +3602,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_piercing_javelin.dds"] = {
+    ["ability_templar_returning_spear.dds"] = {
         skillName = "Piercing Javelin",
         position = 7,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_aurora_javelin.dds"] = {
+    ["ability_templar_ripping_spear.dds"] = {
         skillName = "Aurora Javelin",
         position = 8,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_binding_javelin.dds"] = {
+    ["ability_templar_light_spear.dds"] = {
         skillName = "Binding Javelin",
         position = 9,
         mainCategory = "Class",
@@ -3749,7 +3644,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_spear_shards.dds"] = {
+    ["ability_templar_sun_strike.dds"] = {
         skillName = "Spear Shards",
         position = 13,
         mainCategory = "Class",
@@ -3763,7 +3658,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Aedric Spear"
     },
-    ["ability_templar_luminous_shards.dds"] = {
+    ["ability_templar_light_strike.dds"] = {
         skillName = "Luminous Shards",
         position = 15,
         mainCategory = "Class",
@@ -3884,21 +3779,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Dawn's Wrath"
     },
-    ["ability_templar_living_dark.dds"] = {
+    ["ability_templar_unstable_core.dds"] = {
         skillName = "Living Dark",
         position = 14,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Dawn's Wrath"
     },
-    ["ability_templar_unstable_core.dds"] = {
+    ["ability_templar_total_dark.dds"] = {
         skillName = "Unstable Core",
         position = 15,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Dawn's Wrath"
     },
-    ["ability_templar_radiant_destruction.dds"] = {
+    ["ability_templar_over_exposure.dds"] = {
         skillName = "Radiant Destruction",
         position = 16,
         mainCategory = "Class",
@@ -3912,7 +3807,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Dawn's Wrath"
     },
-    ["ability_templar_radiant_oppression.dds"] = {
+    ["ability_templar_stendarr_aura.dds"] = {
         skillName = "Radiant Oppression",
         position = 18,
         mainCategory = "Class",
@@ -3984,14 +3879,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Restoring Light"
     },
-    ["ability_templar_restoring_aura.dds"] = {
+    ["ability_templar_restoring_sigil.dds"] = {
         skillName = "Restoring Aura",
         position = 10,
         mainCategory = "Class",
         class = "Templar",
         skillTree = "Restoring Light"
     },
-    ["ability_templar_radiant_aura.dds"] = {
+    ["ability_templar_life_giving_sigil.dds"] = {
         skillName = "Radiant Aura",
         position = 11,
         mainCategory = "Class",
@@ -4019,7 +3914,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Restoring Light"
     },
-    ["ability_templar_ritual_of_retribution.dds"] = {
+    ["ability_templar_purifying_ritual.dds"] = {
         skillName = "Ritual of Retribution",
         position = 15,
         mainCategory = "Class",
@@ -4040,7 +3935,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Templar",
         skillTree = "Restoring Light"
     },
-    ["ability_templar_restoring_focus.dds"] = {
+    ["ability_templar_uninterrupted_focus.dds"] = {
         skillName = "Restoring Focus",
         position = 18,
         mainCategory = "Class",
@@ -4049,126 +3944,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Warden Skills
-    ["ability_warden_feral_guardian.dds"] = {
+    ["ability_warden_018.dds"] = {
         skillName = "Feral Guardian",
         position = 1,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_eternal_guardian.dds"] = {
+    ["ability_warden_018_b.dds"] = {
         skillName = "Eternal Guardian",
         position = 2,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_wild_guardian.dds"] = {
+    ["ability_warden_018_c.dds"] = {
         skillName = "Wild Guardian",
         position = 3,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_dive.dds"] = {
+    ["ability_warden_013.dds"] = {
         skillName = "Dive",
         position = 4,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_cutting_dive.dds"] = {
+    ["ability_warden_013_b.dds"] = {
         skillName = "Cutting Dive",
         position = 5,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_screaming_cliff_racer.dds"] = {
+    ["ability_warden_013_a.dds"] = {
         skillName = "Screaming Cliff Racer",
         position = 6,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_scorch.dds"] = {
+    ["ability_warden_015.dds"] = {
         skillName = "Scorch",
         position = 7,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_deep_fissure.dds"] = {
+    ["ability_warden_015_a.dds"] = {
         skillName = "Deep Fissure",
         position = 8,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_subterranean_assault.dds"] = {
+    ["ability_warden_015_b.dds"] = {
         skillName = "Subterranean Assault",
         position = 9,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_swarm.dds"] = {
+    ["ability_warden_014.dds"] = {
         skillName = "Swarm",
         position = 10,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_fetcher_infection.dds"] = {
+    ["ability_warden_014_a.dds"] = {
         skillName = "Fetcher Infection",
         position = 11,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_growing_swarm.dds"] = {
+    ["ability_warden_014_b.dds"] = {
         skillName = "Growing Swarm",
         position = 12,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_betty_netch.dds"] = {
+    ["ability_warden_017_a.dds"] = {
         skillName = "Betty Netch",
         position = 13,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_blue_betty.dds"] = {
+    ["ability_warden_017.dds"] = {
         skillName = "Blue Betty",
         position = 14,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_bull_netch.dds"] = {
+    ["ability_warden_017_b.dds"] = {
         skillName = "Bull Netch",
         position = 15,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_falcons_swiftness.dds"] = {
+    ["ability_warden_016.dds"] = {
         skillName = "Falcon's Swiftness",
         position = 16,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_bird_of_prey.dds"] = {
+    ["ability_warden_016_a.dds"] = {
         skillName = "Bird of Prey",
         position = 17,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Animal Companions"
     },
-    ["ability_warden_deceptive_predator.dds"] = {
+    ["ability_warden_016_b.dds"] = {
         skillName = "Deceptive Predator",
         position = 18,
         mainCategory = "Class",
@@ -4177,126 +4072,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Green Balance Skills
-    ["ability_warden_secluded_grove.dds"] = {
+    ["ability_warden_012.dds"] = {
         skillName = "Secluded Grove",
         position = 1,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_enchanted_forest.dds"] = {
+    ["ability_warden_012_a.dds"] = {
         skillName = "Enchanted Forest",
         position = 2,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_healing_thicket.dds"] = {
+    ["ability_warden_012_b.dds"] = {
         skillName = "Healing Thicket",
         position = 3,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_fungal_growth.dds"] = {
+    ["ability_warden_008.dds"] = {
         skillName = "Fungal Growth",
         position = 4,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_enchanted_growth.dds"] = {
+    ["ability_warden_008_b.dds"] = {
         skillName = "Enchanted Growth",
         position = 5,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_soothing_spores.dds"] = {
+    ["ability_warden_008_a.dds"] = {
         skillName = "Soothing Spores",
         position = 6,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_healing_seed.dds"] = {
+    ["ability_warden_007.dds"] = {
         skillName = "Healing Seed",
         position = 7,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_budding_seeds.dds"] = {
+    ["ability_warden_007_b.dds"] = {
         skillName = "Budding Seeds",
         position = 8,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_corrupting_pollen.dds"] = {
+    ["ability_warden_007_c.dds"] = {
         skillName = "Corrupting Pollen",
         position = 9,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_living_vines.dds"] = {
+    ["ability_warden_010.dds"] = {
         skillName = "Living Vines",
         position = 10,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_leeching_vines.dds"] = {
+    ["ability_warden_010_a.dds"] = {
         skillName = "Leeching Vines",
         position = 11,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_living_trellis.dds"] = {
+    ["ability_warden_010_b.dds"] = {
         skillName = "Living Trellis",
         position = 12,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_lotus_flower.dds"] = {
+    ["ability_warden_009.dds"] = {
         skillName = "Lotus Flower",
         position = 13,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_green_lotus.dds"] = {
+    ["ability_warden_009_a.dds"] = {
         skillName = "Green Lotus",
         position = 14,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_lotus_blossom.dds"] = {
+    ["ability_warden_009_b.dds"] = {
         skillName = "Lotus Blossom",
         position = 15,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_natures_grasp.dds"] = {
+    ["ability_warden_011.dds"] = {
         skillName = "Nature's Grasp",
         position = 16,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_bursting_vines.dds"] = {
+    ["ability_warden_011_a.dds"] = {
         skillName = "Bursting Vines",
         position = 17,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Green Balance"
     },
-    ["ability_warden_natures_embrace.dds"] = {
+    ["ability_warden_011_b.dds"] = {
         skillName = "Nature's Embrace",
         position = 18,
         mainCategory = "Class",
@@ -4305,126 +4200,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Winter's Embrace Skills
-    ["ability_warden_sleet_storm.dds"] = {
+    ["ability_warden_006.dds"] = {
         skillName = "Sleet Storm",
         position = 1,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_northern_storm.dds"] = {
+    ["ability_warden_006_a.dds"] = {
         skillName = "Northern Storm",
         position = 2,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_permafrost.dds"] = {
+    ["ability_warden_006_b.dds"] = {
         skillName = "Permafrost",
         position = 3,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_frost_cloak.dds"] = {
+    ["ability_warden_001.dds"] = {
         skillName = "Frost Cloak",
         position = 4,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_expansive_frost_cloak.dds"] = {
+    ["ability_warden_001_a.dds"] = {
         skillName = "Expansive Frost Cloak",
         position = 5,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_ice_fortress.dds"] = {
+    ["ability_warden_001_b.dds"] = {
         skillName = "Ice Fortress",
         position = 6,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_impaling_shards.dds"] = {
+    ["ability_warden_004.dds"] = {
         skillName = "Impaling Shards",
         position = 7,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_gripping_shards.dds"] = {
+    ["ability_warden_004_a.dds"] = {
         skillName = "Gripping Shards",
         position = 8,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_winters_revenge.dds"] = {
+    ["ability_warden_004_b.dds"] = {
         skillName = "Winter's Revenge",
         position = 9,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_arctic_wind.dds"] = {
+    ["ability_warden_003.dds"] = {
         skillName = "Arctic Wind",
         position = 10,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_arctic_blast.dds"] = {
+    ["ability_warden_003_b.dds"] = {
         skillName = "Arctic Blast",
         position = 11,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_polar_wind.dds"] = {
+    ["ability_warden_003_a.dds"] = {
         skillName = "Polar Wind",
         position = 12,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_crystallized_shield.dds"] = {
+    ["ability_warden_002.dds"] = {
         skillName = "Crystallized Shield",
         position = 13,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_crystallized_slab.dds"] = {
+    ["ability_warden_002_a.dds"] = {
         skillName = "Crystallized Slab",
         position = 14,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_shimmering_shield.dds"] = {
+    ["ability_warden_002_b.dds"] = {
         skillName = "Shimmering Shield",
         position = 15,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_frozen_gate.dds"] = {
+    ["ability_warden_005.dds"] = {
         skillName = "Frozen Gate",
         position = 16,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_frozen_device.dds"] = {
+    ["ability_warden_005_a.dds"] = {
         skillName = "Frozen Device",
         position = 17,
         mainCategory = "Class",
         class = "Warden",
         skillTree = "Winter's Embrace"
     },
-    ["ability_warden_frozen_retreat.dds"] = {
+    ["ability_warden_005_b.dds"] = {
         skillName = "Frozen Retreat",
         position = 18,
         mainCategory = "Class",
@@ -4433,42 +4328,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- World Skills
-    ["ability_world_soul_strike.dds"] = {
+    ["ability_otherclass_002.dds"] = {
         skillName = "Soul Strike",
         position = 1,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Soul Magic"
     },
-    ["ability_world_shatter_soul.dds"] = {
+    ["ability_otherclass_002_a.dds"] = {
         skillName = "Shatter Soul",
         position = 2,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Soul Magic"
     },
-    ["ability_world_soul_assault.dds"] = {
+    ["ability_otherclass_002_b.dds"] = {
         skillName = "Soul Assault",
         position = 3,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Soul Magic"
     },
-    ["ability_world_soul_trap.dds"] = {
+    ["ability_otherclass_001.dds"] = {
         skillName = "Soul Trap",
         position = 4,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Soul Magic"
     },
-    ["ability_world_consuming_trap.dds"] = {
+    ["ability_otherclass_001_b.dds"] = {
         skillName = "Consuming Trap",
         position = 5,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Soul Magic"
     },
-    ["ability_world_soul_splitting_trap.dds"] = {
+    ["ability_otherclass_001_a.dds"] = {
         skillName = "Soul Splitting Trap",
         position = 6,
         mainCategory = "Non Class",
@@ -4491,77 +4386,77 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Vampire Skills
-    ["ability_world_blood_scion.dds"] = {
+    ["ability_u26_vampire_06.dds"] = {
         skillName = "Blood Scion",
         position = 1,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_perfect_scion.dds"] = {
+    ["ability_u26_vampire_06_b.dds"] = {
         skillName = "Perfect Scion",
         position = 2,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_swarming_scion.dds"] = {
+    ["ability_u26_vampire_06_a.dds"] = {
         skillName = "Swarming Scion",
         position = 3,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_eviscerate.dds"] = {
+    ["ability_u26_vampire_01.dds"] = {
         skillName = "Eviscerate",
         position = 4,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_arterial_burst.dds"] = {
+    ["ability_u26_vampire_01_b.dds"] = {
         skillName = "Arterial Burst",
         position = 5,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_blood_for_blood.dds"] = {
+    ["ability_u26_vampire_01_a.dds"] = {
         skillName = "Blood for Blood",
         position = 6,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_blood_frenzy.dds"] = {
+    ["ability_u26_vampire_02.dds"] = {
         skillName = "Blood Frenzy",
         position = 7,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_sated_fury.dds"] = {
+    ["ability_u26_vampire_02_b.dds"] = {
         skillName = "Sated Fury",
         position = 8,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_simmering_frenzy.dds"] = {
+    ["ability_u26_vampire_02_a.dds"] = {
         skillName = "Simmering Frenzy",
         position = 9,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_vampiric_drain.dds"] = {
+    ["ability_u26_vampire_03.dds"] = {
         skillName = "Vampiric Drain",
         position = 10,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_drain_vigor.dds"] = {
+    ["ability_u26_vampire_03_a.dds"] = {
         skillName = "Drain Vigor",
         position = 11,
         mainCategory = "Non Class",
@@ -4575,42 +4470,42 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_mesmerize.dds"] = {
+    ["ability_u26_vampire_04.dds"] = {
         skillName = "Mesmerize",
         position = 13,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_hypnosis.dds"] = {
+    ["ability_u26_vampire_04_a.dds"] = {
         skillName = "Hypnosis",
         position = 14,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_stupefy.dds"] = {
+    ["ability_u26_vampire_04_b.dds"] = {
         skillName = "Stupefy",
         position = 15,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_mist_form.dds"] = {
+    ["ability_u26_vampire_05.dds"] = {
         skillName = "Mist Form",
         position = 16,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_blood_mist.dds"] = {
+    ["ability_u26_vampire_05_b.dds"] = {
         skillName = "Blood Mist",
         position = 17,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Vampire"
     },
-    ["ability_world_elusive_mist.dds"] = {
+    ["ability_u26_vampire_05_a.dds"] = {
         skillName = "Elusive Mist",
         position = 18,
         mainCategory = "Non Class",
@@ -4619,126 +4514,126 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
 
     -- Werewolf Skills
-    ["ability_world_werewolf_transformation.dds"] = {
+    ["ability_werewolf_001.dds"] = {
         skillName = "Werewolf Transformation",
         position = 1,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_pack_leader.dds"] = {
+    ["ability_werewolf_001_a.dds"] = {
         skillName = "Pack Leader",
         position = 2,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_werewolf_berserker.dds"] = {
+    ["ability_werewolf_001_b.dds"] = {
         skillName = "Werewolf Berserker",
         position = 3,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_pounce.dds"] = {
+    ["ability_werewolf_002.dds"] = {
         skillName = "Pounce",
         position = 4,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_brutal_pounce.dds"] = {
+    ["ability_werewolf_002_b.dds"] = {
         skillName = "Brutal Pounce",
         position = 5,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_feral_pounce.dds"] = {
+    ["ability_werewolf_002_a.dds"] = {
         skillName = "Feral Pounce",
         position = 6,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_hircines_bounty.dds"] = {
+    ["ability_werewolf_004_a.dds"] = {
         skillName = "Hircine's Bounty",
         position = 7,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_hircines_fortitude.dds"] = {
+    ["ability_werewolf_004_c.dds"] = {
         skillName = "Hircine's Fortitude",
         position = 8,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_hircines_rage.dds"] = {
+    ["ability_werewolf_004_b.dds"] = {
         skillName = "Hircine's Rage",
         position = 9,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_roar.dds"] = {
+    ["ability_werewolf_003.dds"] = {
         skillName = "Roar",
         position = 10,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_deafening_roar.dds"] = {
+    ["ability_werewolf_003_a.dds"] = {
         skillName = "Deafening Roar",
         position = 11,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_ferocious_roar.dds"] = {
+    ["ability_werewolf_003_b.dds"] = {
         skillName = "Ferocious Roar",
         position = 12,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_piercing_howl.dds"] = {
+    ["ability_werewolf_005_a.dds"] = {
         skillName = "Piercing Howl",
         position = 13,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_howl_of_agony.dds"] = {
+    ["ability_werewolf_005_c.dds"] = {
         skillName = "Howl of Agony",
         position = 14,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_howl_of_despair.dds"] = {
+    ["ability_werewolf_005_b.dds"] = {
         skillName = "Howl of Despair",
         position = 15,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_infectious_claws.dds"] = {
+    ["ability_werewolf_006_a.dds"] = {
         skillName = "Infectious Claws",
         position = 16,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_claws_of_anguish.dds"] = {
+    ["ability_werewolf_006_b.dds"] = {
         skillName = "Claws of Anguish",
         position = 17,
         mainCategory = "Non Class",
         class = "World",
         skillTree = "Werewolf"
     },
-    ["ability_world_claws_of_life.dds"] = {
+    ["ability_werewolf_006_c.dds"] = {
         skillName = "Claws of Life",
         position = 18,
         mainCategory = "Non Class",
