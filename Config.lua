@@ -356,6 +356,111 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
+	["ability_destructionstaff_006.dds"] = {
+        skillName = "Destructive Touch L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_006_a.dds"] = {
+        skillName = "Destructive Clench L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_006_b.dds"] = {
+        skillName = "Destructive Reach L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_007.dds"] = {
+        skillName = "Destructive Touch F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_007_a.dds"] = {
+        skillName = "Destructive Clench F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_007_b.dds"] = {
+        skillName = "Destructive Reach F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_008.dds"] = {
+        skillName = "Destructive Touch I",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_008_a.dds"] = {
+        skillName = "Destructive Clench I",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_008_b.dds"] = {
+        skillName = "Destructive Reach I",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_009.dds"] = {
+        skillName = "Impulse L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_009_a.dds"] = {
+        skillName = "Elemental Ring L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_009_b.dds"] = {
+        skillName = "Pulsar L",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_010.dds"] = {
+        skillName = "Impulse F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_010_a.dds"] = {
+        skillName = "Elemental Ring F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
+	["ability_destructionstaff_010_b.dds"] = {
+        skillName = "Pulsar F",
+        position = 12,
+        mainCategory = "Non Class",
+        class = "Weapon",
+        skillTree = "Destruction Staff"
+    },
     ["ability_destructionstaff_011.dds"] = {
         skillName = "Weakness to Elements",
         position = 13,
@@ -363,14 +468,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_011a.dds"] = {
+    ["ability_destructionstaff_011_a.dds"] = {
         skillName = "Elemental Drain",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_011b.dds"] = {
+    ["ability_destructionstaff_011_b.dds"] = {
         skillName = "Elemental Susceptibility",
         position = 15,
         mainCategory = "Non Class",
@@ -378,21 +483,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_008.dds"] = {
-        skillName = "Impulse",
+        skillName = "Impulse I",
         position = 16,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_008_a.dds"] = {
-        skillName = "Elemental Ring",
+        skillName = "Elemental Ring I",
         position = 17,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
     ["ability_destructionstaff_008_b.dds"] = {
-        skillName = "Pulsar",
+        skillName = "Pulsar I",
         position = 18,
         mainCategory = "Non Class",
         class = "Weapon",
@@ -484,7 +589,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Dual Wield"
     },
-    ["ability_dualwield_005_a.ddss"] = {
+    ["ability_dualwield_005_a.dds"] = {
         skillName = "Whirling Blades",
         position = 12,
         mainCategory = "Non Class",
@@ -5280,9 +5385,21 @@ local REPLACEMENT_ICONS = {
 "ability_destructionstaff_005.dds",
 "ability_destructionstaff_005_a.dds",
 "ability_destructionstaff_005_b.dds",
+"ability_destructionstaff_006.dds",
+"ability_destructionstaff_006_a.dds",
+"ability_destructionstaff_006_b.dds",
+"ability_destructionstaff_007.dds",
+"ability_destructionstaff_007_a.dds",
+"ability_destructionstaff_007_b.dds",
 "ability_destructionstaff_008.dds",
 "ability_destructionstaff_008_a.dds",
 "ability_destructionstaff_008_b.dds",
+"ability_destructionstaff_009.dds",
+"ability_destructionstaff_009_a.dds",
+"ability_destructionstaff_009_b.dds",
+"ability_destructionstaff_010.dds",
+"ability_destructionstaff_010_a.dds",
+"ability_destructionstaff_010_b.dds",
 "ability_destructionstaff_011.dds",
 "ability_destructionstaff_011a.dds",
 "ability_destructionstaff_011b.dds",
