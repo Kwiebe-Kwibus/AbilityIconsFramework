@@ -101,7 +101,7 @@ function MapScriptToIcon(scriptName, defaultIcon)
 
     scriptName = string.lower(scriptName)
     for key, value in pairs(customIcons) do
-        if scriptName == key then
+        if string.find(scriptName, key, 1, true) then
             return value
         end
     end
