@@ -75,6 +75,10 @@ local EFFECT = {
     DEFAULT = "default"
 }
 
+function AbilityIconsFramework.GetEffectsList()
+    return EFFECT
+end
+
 AbilityIconsFramework.DEFAULT = EFFECT.DEFAULT
 
 -- Configuration templates
@@ -4856,7 +4860,6 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support.dds"),
 		[EFFECT.PHYSICAL] = addonIcon("ability_grimoire_support_physical.dds"),
 		[EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_support_immobilize.dds"),
-	
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {

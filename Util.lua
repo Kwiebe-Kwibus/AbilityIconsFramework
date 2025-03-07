@@ -144,12 +144,27 @@ end
 --- Calls RedirectTexture to replace an existing skill icon with a different one.
 function AbilityIconsFramework.ReplaceMismatchedIcons()
     AbilityIconsFramework.GenerateReplacementLists()
+
     for key, value in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
         local iconName = string.match(key, "/([^/]+)$")
         if AbilityIconsFramework.GetSettings().replaceMismatchedBaseIcons and AbilityIconsFramework:GetSettings().mismatchedIcons[iconName] then
             RedirectTexture(key, value)
         else
             RedirectTexture(key, key)
+        end
+    end
+end
+
+function AbilityIconsFramework.UpdateDefaultScribingIcons()
+    EffectsList = AbilityIconsFramework.GetEffectsList()
+    if EffectsList == nil then return end
+
+    for BaseIcon, IconList in pairs(AbilityIconsFramework.CUSTOM_ABILITY_ICONS) do
+        local CustomDefaultIcon = IconList[EffectsList.DEFAULT]
+        if CustomDefaultIcon ~= nil and AbilityIconsFramework.GetSettings().showCustomScribeIcons then
+            RedirectTexture(BaseIcon, CustomDefaultIcon)
+        else
+            RedirectTexture(BaseIcon, BaseIcon)
         end
     end
 end

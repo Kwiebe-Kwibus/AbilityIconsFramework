@@ -40,6 +40,8 @@ function AbilityIconsFramework.ApplySkillStyles(hotbarCategory)
     for index = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
         AbilityIconsFramework.ApplySkillStyle(index, hotbarCategory)
     end
+
+    AbilityIconsFramework.UpdateDefaultScribingIcons()
 end
 
 local function ApplyIconPackChanges()
