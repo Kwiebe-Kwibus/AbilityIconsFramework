@@ -70,7 +70,8 @@ function AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
 
     local scriptName = GetCraftedAbilityScriptDisplayName(primaryScriptId)
     local defaultIcon = AbilityIconsFramework.GetDefaultAbilityIcon(slotIndex, hotbarCategory)
-    return defaultIcon and MapScriptToIcon(scriptName, defaultIcon) or nil
+
+    return MapScriptToIcon(scriptName, defaultIcon) or defaultIcon or nil
 end
 
 --- Retrieves the icon path of the skill found in the specified slotIndex.
@@ -94,11 +95,13 @@ end
 --- @return string? abilityIcon The path of the icon to be applied to the skill in question.
 function MapScriptToIcon(scriptName, defaultIcon)
     local customIcons = AbilityIconsFramework.CUSTOM_ABILITY_ICONS[defaultIcon]
-    if not customIcons then return nil end
+    if not customIcons then
+         return nil
+    end
 
     scriptName = string.lower(scriptName)
     for key, value in pairs(customIcons) do
-        if string.find(scriptName, key) then
+        if scriptName == key then
             return value
         end
     end

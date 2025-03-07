@@ -29,17 +29,8 @@ end
 local function esoIcon(name) return ESO_ROOT .. name end
 local function addonIcon(name)
     for PackDirectory, PackIcons in pairs(AbilityIconsFramework.ICON_PACKS) do
-        if name == 'ability_necromancer_002.dds' then
-            d('Processing ability_necromancer_002.dds')
-        end
         if hasIcon(PackIcons, name) then
-            if name == 'ability_necromancer_002.dds' then
-                d('ability_necromancer_002.dds has been found in the pack !')
-            end
             icon = PackDirectory .. name
-            if name == 'ability_necromancer_002.dds' then
-                d('icon : ', icon)
-            end
             return icon
         end
     end
@@ -4861,9 +4852,9 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_support_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_support_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_support_resources.dds"),
-        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_magic.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support_physical.dds"),
-		[EFFECT.PHYSICAL] = DEFAULT_ICONS.BANNER_BEARER,
+        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_multi.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support.dds"),
+		[EFFECT.PHYSICAL] = addonIcon("ability_grimoire_support_physical.dds"),
 		[EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_support_immobilize.dds"),
 	
     }
