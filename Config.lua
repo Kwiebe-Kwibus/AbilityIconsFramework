@@ -64,6 +64,7 @@ local EFFECT = {
     ULTIMATE = "ultimate",
     STUN = "stun",
     IMMOBILIZE = "immobilize",
+    KNOCKBACK = "knockback",
     DISPEL = "dispel",
     SHIELD = "shield",
     PHYSICAL = "physical",
@@ -72,6 +73,9 @@ local EFFECT = {
     TRAUMA = "trauma",
     POISON = "poison",
     DISEASE = "disease",
+    MITIGATION = "mitigation",
+    TAUNT = "taunt",
+    PULL = "pull",
     DEFAULT = "default"
 }
 
@@ -4856,33 +4860,46 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_support_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_support_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_support_resources.dds"),
-        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_multi.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support.dds"),
+        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_support_multitarget.dds"),
+        [EFFECT.MITIGATION] = addonIcon("ability_grimoire_support_mitigation.dds"),
 		[EFFECT.PHYSICAL] = addonIcon("ability_grimoire_support_physical.dds"),
 		[EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_support_immobilize.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_support.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {
-        [EFFECT.FLAME] = DEFAULT_ICONS.ELEMENTAL_EXPLOSION,
+        [EFFECT.FLAME] = addonIcon("ability_grimoire_staffdestro_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_staffdestro_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_staffdestro_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_staffdestro_magic.dds"),
-        [EFFECT.DISPEL] = addonIcon("ability_grimoire_staffdestro_magic.dds"),
+        [EFFECT.DISPEL] = addonIcon("ability_grimoire_staffdestro_dispel.dds"),
         [EFFECT.TRAUMA] = addonIcon("ability_grimoire_staffdestro_trauma.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_staffdestro_physical.dds")
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_staffdestro_physical.dds"),
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_staffdestro_knockback.dds"),
+        [EFFECT.STUN] = addonIcon("ability_grimoire_staffdestro_stun.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_staffdestro.dds")
     }
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.MENDERS_BOND] = {
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_staffresto_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_staffresto_resources.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_staffresto_shield.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.MENDERS_BOND
+        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_staffresto_immobilize.dds"),
+        [EFFECT.HEAL] = addonIcon("ability_grimoire_staffresto_heal.dds"),
+        [EFFECT.ULTIMATE] = addonIcon("ability_grimoire_staffresto_ultimate.dds"),
+        [EFFECT.MITIGATION] = addonIcon("ability_grimoire_staffresto_mitigation.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_staffresto.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SHIELD_THROW] = {
         [EFFECT.FROST] = addonIcon("ability_grimoire_1handed_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_1handed_magic.dds"),
-        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_1handed_magic.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.SHIELD_THROW
+        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_1handed_immobilize.dds"),
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_1handed_physical.dds"),
+        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_1handed_multitarget.dds"),
+        [EFFECT.TAUNT] = addonIcon("ability_grimoire_1handed_taunt.dds"),
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_1handed_knockback.dds"),
+        [EFFECT.PULL] = addonIcon("ability_grimoire_1handed_pull.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_1handed.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SMASH] = {
@@ -4891,40 +4908,51 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_2handed_shield.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_2handed_bleed.dds"),
         [EFFECT.POISON] = addonIcon("ability_grimoire_2handed_poison.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.SMASH
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_2handed_physical.dds"),
+        [EFFECT.TAUNT] = addonIcon("ability_grimoire_2handed_taunt.dds"),
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_2handed_knockback.dds"),
+        [EFFECT.STUN] = addonIcon("ability_grimoire_2handed_stun.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_2handed.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SOUL_BURST] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic2_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic2_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic2_shock.dds"),
-        [EFFECT.MAGIC] = DEFAULT_ICONS.SOUL_BURST,
+        [EFFECT.MAGIC] = addonIcon("ability_grimoire_soulmagic2_magic.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_soulmagic2_heal.dds"),
-        [EFFECT.IMMOBILIZE] = DEFAULT_ICONS.SOUL_BURST,
+        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_soulmagic2_immobilize.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_soulmagic2_shield.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_soulmagic2_bleed.dds"),
         [EFFECT.DISEASE] = addonIcon("ability_grimoire_soulmagic2_disease.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_soulmagic2_physical.dds")
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_soulmagic2_physical.dds"),
+        [EFFECT.PULL] = addonIcon("ability_grimoire_soulmagic2_pull.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_soulmagic2.dds")
     }
     
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TORCHBEARER] = {
-        [EFFECT.FLAME] = DEFAULT_ICONS.TORCHBEARER,
+        [EFFECT.FLAME] = addonIcon("ability_grimoire_fightersguild_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_fightersguild_frost.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_fightersguild_heal.dds"),
         [EFFECT.ULTIMATE] = addonIcon("ability_grimoire_fightersguild_ultimate.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_fightersguild_bleed.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_fightersguild_physical.dds")
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_fightersguild_physical.dds"),
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_fightersguild_knockback.dds"),
+        [EFFECT.STUN] = addonIcon("ability_grimoire_fightersguild_stun.dds"),
+        [EFFECT.ULTIMATE] = addonIcon("ability_grimoire_fightersguild_ultimate.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_fightersguild.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAMPLE] = {
         [EFFECT.FROST] = addonIcon("ability_grimoire_assault_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_assault_magic.dds"),
         [EFFECT.STUN] = addonIcon("ability_grimoire_assault_stun.dds"),
-        [EFFECT.DISPEL] = addonIcon("ability_grimoire_assault_magic.dds"),
+        [EFFECT.DISPEL] = addonIcon("ability_grimoire_assault_dispel.dds"),
         [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_assault_physical.dds"),
         [EFFECT.TRAUMA] = addonIcon("ability_grimoire_assault_trauma.dds"),
         [EFFECT.DISEASE] = addonIcon("ability_grimoire_assault_disease.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.TRAMPLE
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_assault_knockback.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_assault.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAVELING_KNIFE] = {
@@ -4932,7 +4960,11 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_dualwield_magic.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_dualwield_bleed.dds"),
         [EFFECT.POISON] = addonIcon("ability_grimoire_dualwield_poison.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.TRAVELING_KNIFE
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_dualwield_physical.dds"),
+        [EFFECT.MULTITARGET] = addonIcon("ability_grimoire_dualwield_multitarget.dds"),
+        [EFFECT.PULL] = addonIcon("ability_grimoire_dualwield_pull.dds"),
+        [EFFECT.STUN] = addonIcon("ability_grimoire_dualwield_stun.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_dualwield.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ULFSILDS_CONTINGENCY] = {
@@ -4941,7 +4973,11 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_magesguild_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_magesguild_magic.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_magesguild_bleed.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_magesguild_heal.dds")
+        [EFFECT.HEAL] = addonIcon("ability_grimoire_magesguild_heal.dds"),
+        [EFFECT.KNOCKBACK] = addonIcon("ability_grimoire_magesguild_knockback.dds"),
+        [EFFECT.SHIELD] = addonIcon("ability_grimoire_magesguild_shield.dds"),
+        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_magesguild_immobilize.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_magesguild.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.VAULT] = {
@@ -4949,21 +4985,26 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.HEAL] = addonIcon("ability_grimoire_bow_heal.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_bow_bleed.dds"),
         [EFFECT.POISON] = addonIcon("ability_grimoire_bow_poison.dds"),
-        [EFFECT.DISEASE] = addonIcon("ability_grimoire_bow_poison.dds"),
-        [EFFECT.DEFAULT] = DEFAULT_ICONS.VAULT
+        [EFFECT.DISEASE] = addonIcon("ability_grimoire_bow_disease.dds"),
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_bow_physical.dds"),
+        [EFFECT.TAUNT] = addonIcon("ability_grimoire_bow_taunt.dds"),
+        [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_bow_immobilize.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_bow.dds")
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.WIELD_SOUL] = {
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic1_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic1_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic1_shock.dds"),
-        [EFFECT.MAGIC] = DEFAULT_ICONS.WIELD_SOUL,
+        [EFFECT.PHYSICAL] = addonIcon("ability_grimoire_soulmagic1_physical.dds"),
+        [EFFECT.MAGIC] = addonIcon("ability_grimoire_soulmagic1_magic.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_soulmagic1_heal.dds"),
-        [EFFECT.STUN] = addonIcon("ability_grimoire_soulmagic1_frost.dds"),
+        [EFFECT.STUN] = addonIcon("ability_grimoire_soulmagic1_stun.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_soulmagic1_shield.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_soulmagic1_bleed.dds"),
         [EFFECT.DISEASE] = addonIcon("ability_grimoire_soulmagic1_disease.dds"),
-        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_soulmagic1_physical.dds")
+        [EFFECT.PULL] = addonIcon("ability_grimoire_soulmagic1_pull.dds"),
+        [EFFECT.DEFAULT] = addonIcon("ability_grimoire_soulmagic1.dds")
     }
 end
 
