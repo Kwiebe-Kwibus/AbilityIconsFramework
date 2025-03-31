@@ -1,5 +1,4 @@
 AbilityIconsFramework = {}
-
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework
 
@@ -9,7 +8,7 @@ local FAB = FancyActionBar or nil;
 -- Declarations --
 ------------------
 
-local ADDON_VERSION = "1.0"
+local ADDON_VERSION = "113"
 local EVENT_MANAGER = EVENT_MANAGER
 local GetActiveHotbarCategory = GetActiveHotbarCategory
 local GetSlotTexture = GetSlotTexture
@@ -28,6 +27,7 @@ AbilityIconsFramework.name = "AbilityIconsFramework"
 function AbilityIconsFramework.Initialize()
     AbilityIconsFramework.InitializeSettings()
     AbilityIconsFramework.ReplaceMismatchedIcons()
+    AbilityIconsFramework:InitializeHeroismPotions()
 end
 
 function AbilityIconsFramework.GetFAB()
@@ -67,6 +67,58 @@ function AbilityIconsFramework.AddCustomIconPack( PackDirectory, PackIcons )
     end
 end
 
+--- Retrieves the custom icon for the Stagger ability.
+--- @param slotIndex number The index of a given skill in the action bar.
+--- @param hotbarCategory number The category of the hotbar in question.
+--- @return string? customIcon The path of the custom icon for the Stagger ability.
+function AbilityIconsFramework.GetStaggerIcon(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
+    if abilityId == 31816 then
+        return "StaggerIcon/stonefistStomp.dds"
+    end
+    return nil -- Return nil for all other abilities
+end
+
+--- @class (partial) AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework
+
+-- Define the ability ID for the Stagger ability
+local STAGGER_ABILITY_ID = 31816
+
+-- Define the path to the custom Stagger icon
+local STAGGER_ICON_PATH = "StaggerIcon/stonefistStomp.dds"
+
+--- Applies the custom Stagger icon to both the active and inactive bars.
+--- @param slotIndex number The index of a given skill in the action bar.
+--- @param hotbarCategory number The category of the hotbar in question.
+function AbilityIconsFramework.ApplyStaggerIcon(slotIndex, hotbarCategory)
+    local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
+    if abilityId == STAGGER_ABILITY_ID then
+        -- Apply the custom icon to the active bar
+        local activeBtn = ZO_ActionBar_GetButton(slotIndex, hotbarCategory)
+        if activeBtn and activeBtn.icon then
+            activeBtn.icon:SetTexture(STAGGER_ICON_PATH)
+        end
+
+        -- Apply the custom icon to the inactive bar
+        local inactiveHotbarCategory = hotbarCategory == HOTBAR_CATEGORY_PRIMARY and HOTBAR_CATEGORY_BACKUP or HOTBAR_CATEGORY_PRIMARY
+        local inactiveSlotIndex = slotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET
+        local inactiveBtn = ZO_ActionBar_GetButton(inactiveSlotIndex, inactiveHotbarCategory)
+        if inactiveBtn and inactiveBtn.icon then
+            inactiveBtn.icon:SetTexture(STAGGER_ICON_PATH)
+        end
+    end
+end
+
+--- Delayed function to apply the Stagger icon after FAB has processed the buttons.
+--- @param slotIndex number The index of a given skill in the action bar.
+--- @param hotbarCategory number The category of the hotbar in question.
+function AbilityIconsFramework.DelayedApplyStaggerIcon(slotIndex, hotbarCategory)
+    zo_callLater(function()
+        AbilityIconsFramework.ApplyStaggerIcon(slotIndex, hotbarCategory)
+    end) -- Delay of 50ms to ensure FAB has processed the buttons
+end
+
 ------------
 -- Events --
 ------------
@@ -87,6 +139,10 @@ function AbilityIconsFramework.OnHotbarSlotStateUpdated(_, slotIndex, hotbarCate
     if slotIndex >= AbilityIconsFramework.MIN_INDEX and slotIndex <= AbilityIconsFramework.MAX_INDEX then
         local activeHotbarCategory = GetActiveHotbarCategory()
         if hotbarCategory == activeHotbarCategory and (hotbarCategory == HOTBAR_CATEGORY_PRIMARY or hotbarCategory == HOTBAR_CATEGORY_BACKUP or hotbarCategory == HOTBAR_CATEGORY_WEREWOLF) then
+            -- Apply the Stagger icon to both the active and inactive bars after FAB has processed the buttons
+            AbilityIconsFramework.DelayedApplyStaggerIcon(slotIndex, hotbarCategory)
+
+            -- Fall back to the default logic for other abilities
             AbilityIconsFramework.ApplySkillStyle(slotIndex, hotbarCategory)
         end
     end
@@ -94,7 +150,14 @@ end
 
 --- Triggered when hotbars are updated, after the "GetSlotTexture" SecurePostHook.
 function AbilityIconsFramework.OnAllHotbarsUpdated()
-    AbilityIconsFramework.ApplySkillStyles(GetActiveHotbarCategory())
+    local activeHotbarCategory = GetActiveHotbarCategory()
+    for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
+        -- Apply the Stagger icon to both the active and inactive bars after FAB has processed the buttons
+        AbilityIconsFramework.DelayedApplyStaggerIcon(slotIndex, activeHotbarCategory)
+
+        -- Fall back to the default logic for other abilities
+        AbilityIconsFramework.ApplySkillStyle(slotIndex, activeHotbarCategory)
+    end
 end
 
 --- To be used in any event when the skill icons need to be refreshed.
@@ -109,7 +172,15 @@ end
 local originalGetSlotTexture = GetSlotTexture
 SecurePostHook("GetSlotTexture", function(slotIndex, hotbarCategory)
     if hotbarCategory and slotIndex >= AbilityIconsFramework.MIN_INDEX and slotIndex <= AbilityIconsFramework.MAX_INDEX and (hotbarCategory == HOTBAR_CATEGORY_PRIMARY or hotbarCategory == HOTBAR_CATEGORY_BACKUP or hotbarCategory == HOTBAR_CATEGORY_WEREWOLF) then
-        local newIcon = AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory) or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
+        -- Check for the Stagger icon first
+        local staggerIcon = AbilityIconsFramework.GetStaggerIcon(slotIndex, hotbarCategory)
+        if staggerIcon then
+            return staggerIcon, nil, nil -- Return the custom icon for Stagger
+        end
+
+        -- Fall back to the default icon retrieval logic
+        local newIcon = AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory) 
+                        or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
         local icon, weaponIcon, activationAnimation = originalGetSlotTexture(slotIndex, hotbarCategory)
         if newIcon then
             icon = newIcon

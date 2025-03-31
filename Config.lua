@@ -467,14 +467,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_011_a.dds"] = {
+    ["ability_destructionstaff_011a.dds"] = {
         skillName = "Elemental Drain",
         position = 14,
         mainCategory = "Non Class",
         class = "Weapon",
         skillTree = "Destruction Staff"
     },
-    ["ability_destructionstaff_011_b.dds"] = {
+    ["ability_destructionstaff_011b.dds"] = {
         skillName = "Elemental Susceptibility",
         position = 15,
         mainCategory = "Non Class",
@@ -2731,79 +2731,100 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
+	["ability_necromancer_002_blackedout.dds"] = {
+        skillName = "Sacrificial Bones Blackedout",
+        position = 8,
+        mainCategory = "Class",
+        class = "Necromancer",
+        skillTree = "Grave Lord"
+    },
     ["ability_necromancer_002_a.dds"] = {
         skillName = "Blighted Blastbones",
-        position = 8,
+        position = 9,
+        mainCategory = "Class",
+        class = "Necromancer",
+        skillTree = "Grave Lord"
+    },
+	["ability_necromancer_002_a_blackedout.dds"] = {
+        skillName = "Blighted Blastbones Blackedout",
+        position = 10,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_002_b.dds"] = {
         skillName = "Grave Lord's Sacrifice",
-        position = 9,
+        position = 11,
+        mainCategory = "Class",
+        class = "Necromancer",
+        skillTree = "Grave Lord"
+    },
+	["ability_necromancer_002_b_blackedout.dds"] = {
+        skillName = "Grave Lord's Sacrifice Blackedout",
+        position = 12,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_004.dds"] = {
         skillName = "Boneyard",
-        position = 10,
+        position = 13,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_004_b.dds"] = {
         skillName = "Avid Boneyard",
-        position = 11,
+        position = 14,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_004_a.dds"] = {
         skillName = "Unnerving Boneyard",
-        position = 12,
+        position = 15,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_003.dds"] = {
         skillName = "Skeletal Mage",
-        position = 13,
+        position = 16,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_003_b.dds"] = {
         skillName = "Skeletal Arcanist",
-        position = 14,
+        position = 17,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_003_a.dds"] = {
         skillName = "Skeletal Archer",
-        position = 15,
+        position = 18,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_005.dds"] = {
         skillName = "Shocking Siphon",
-        position = 16,
+        position = 19,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_005_b.dds"] = {
         skillName = "Detonating Siphon",
-        position = 17,
+        position = 20,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
     },
     ["ability_necromancer_005_a.dds"] = {
         skillName = "Mystic Siphon",
-        position = 18,
+        position = 21,
         mainCategory = "Class",
         class = "Necromancer",
         skillTree = "Grave Lord"
@@ -3350,100 +3371,142 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
+	["ability_sorcerer_unstable_fimiliar_summoned.dds"] = {
+        skillName = "Summon Unstable Familiar Summoned",
+        position = 5,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
     ["ability_sorcerer_unstable_clannfear.dds"] = {
         skillName = "Summon Unstable Clannfear",
-        position = 5,
+        position = 6,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
+	["ability_sorcerer_unstable_clannfear_summoned.dds"] = {
+        skillName = "Summon Unstable Clannfear Summoned",
+        position = 7,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_speedy_familiar.dds"] = {
         skillName = "Summon Volatile Familiar",
-        position = 6,
+        position = 8,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
+	["ability_sorcerer_speedy_familiar_summoned.dds"] = {
+        skillName = "Summon Volatile Familiar Summoned",
+        position = 9,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_daedric_curse.dds"] = {
         skillName = "Daedric Curse",
-        position = 7,
+        position = 10,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_explosive_curse.dds"] = {
         skillName = "Daedric Prey",
-        position = 8,
+        position = 11,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_velocious_curse.dds"] = {
         skillName = "Haunting Curse",
-        position = 9,
+        position = 12,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_lightning_prey.dds"] = {
         skillName = "Summon Winged Twilight",
-        position = 10,
+        position = 13,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+	},
+	["ability_sorcerer_lightning_prey_summoned.dds"] = {
+        skillName = "Summon Winged Twilight Summoned",
+        position = 14,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_storm_prey.dds"] = {
         skillName = "Summon Twilight Matriarch",
-        position = 11,
+        position = 15,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
+	["ability_sorcerer_storm_prey_summoned.dds"] = {
+        skillName = "Summon Twilight Matriarch Summoned",
+        position = 16,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_lightning_matriarch.dds"] = {
         skillName = "Summon Twilight Tormentor",
-        position = 12,
+        position = 17,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
+	["ability_sorcerer_lightning_matriarch_summoned.dds"] = {
+        skillName = "Summon Twilight Tormentor Summoned",
+        position = 18,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_hurricane.dds"] = {
         skillName = "Conjured Ward",
-        position = 13,
+        position = 19,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_typhoon.dds"] = {
         skillName = "Hardened Ward",
-        position = 14,
+        position = 20,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_tempest.dds"] = {
         skillName = "Regenerative Ward",
-        position = 15,
+        position = 21,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_bound_armor.dds"] = {
         skillName = "Bound Armor",
-        position = 16,
+        position = 22,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_bound_aegis.dds"] = {
         skillName = "Bound Aegis",
-        position = 17,
+        position = 23,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
     ["ability_sorcerer_bound_armaments.dds"] = {
         skillName = "Bound Armaments",
-        position = 18,
+        position = 24,
         mainCategory = "Class",
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
@@ -3480,6 +3543,13 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     },
     ["ability_sorcerer_thunderstomp.dds"] = {
         skillName = "Crystal Fragments",
+        position = 5,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Dark Magic"
+    },
+	["ability_sorcerer_thunder_burst.dds"] = {
+        skillName = "Crystal Fragments Procked",
         position = 5,
         mainCategory = "Class",
         class = "Sorcerer",
@@ -4851,6 +4921,197 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Armor",
         skillTree = "Light"
     },
+	
+	-- Other
+	["ability_healer_019.dds"] = {
+        skillName = "PA",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Buffs"
+    },
+	["ability_healer_030.dds"] = {
+        skillName = "Pillager",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Buffs"
+    },
+	["ability_mage_037.dds"] = {
+        skillName = "Turning Tide",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["ability_mage_044.dds"] = {
+        skillName = "MK",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["antiquities_ornate_necklace_3.dds"] = {
+        skillName = "Pearls",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Mythics"
+    },
+	["consumable_potion_012_type_002.dds"] = {
+        skillName = "Arkasis",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["death_recap_cold_aoe.dds"] = {
+        skillName = "Depths",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["gear_razorhorndaedric_shoulder_a.dds"] = {
+        skillName = "Spaulder",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Mythics"
+    },
+	["gear_terrorbear_head_a.dds"] = {
+        skillName = "Archdruid",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["gear_undaunted_werewolfbehemoth_head_a.dds"] = {
+        skillName = "Zaudrus",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["gear_undfiregiant_head_a.dds"] = {
+        skillName = "Encratis",
+        position = 3,
+        mainCategory = "Buffs/Sets",
+        class = "Armor",
+        skillTree = "Light"
+    },
+	["gear_undredlord_head_a.dds"] = {
+        skillName = "Harness Magicka",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["u30_trial_soulrip.dds"] = {
+        skillName = "Sul-Xan",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["u34_vtrial_meta.dds"] = {
+        skillName = "Coral",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["achievement_vvardenfel_061.dds"] = {
+        skillName = "Ansuul",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["achievement_u25_dun2_flavor_boss_3b.dds"] = {
+        skillName = "Aegis Caller",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["ability_debuff_levitate.dds"] = {
+        skillName = "Acuity",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["ability_buff_major_slayer.dds"] = {
+        skillName = "Major Slayer",
+        position = 3,
+        mainCategory = "Other",
+        class = "Buffs",
+        skillTree = "Major"
+    },
+	["ability_buff_major_force.dds"] = {
+        skillName = "Major Force",
+        position = 3,
+        mainCategory = "Other",
+        class = "Buffs",
+        skillTree = "Major"
+    },
+	["ability_rogue_042.dds"] = {
+        skillName = "Highland Sentinel",
+        position = 3,
+        mainCategory = "Other",
+        class = "Gear",
+        skillTree = "Procs"
+    },
+	["crownpotion_trires.dds"] = {
+        skillName = "Crown Tristat",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
+	["consumable_potion_001_type_005.dds"] = {
+        skillName = "Tristat",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
+	["consumable_potion_002_type_005.dds"] = {
+        skillName = "im tired",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
+	["consumable_potion_003_type_005.dds"] = {
+        skillName = "im tired",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
+	["consumable_potion_004_type_005.dds"] = {
+        skillName = "im tired",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
+	["consumable_potion_006_type_005.dds"] = {
+        skillName = "im tired",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+		},
+	["consumable_potion_007_type_005.dds"] = {
+        skillName = "im tired",
+        position = 3,
+        mainCategory = "Other",
+        class = "Potions",
+        skillTree = "Tristat"
+    },
 }
 
 function AbilityIconsFramework.GenerateScribedSkillsIcons()
@@ -5121,6 +5382,15 @@ local REPLACEMENT_ICONS = {
 "ability_sorcerer_unstable_fimiliar.dds",
 "ability_sorcerer_velocious_curse.dds",
 "ability_sorcerer_weakening_fog.dds",
+"ability_sorcerer_lightning_matriarch_summoned.dds",
+"ability_sorcerer_lightning_prey_summoned.dds",
+"ability_sorcerer_speedy_familiar_summoned.dds",
+"ability_sorcerer_storm_prey_summoned.dds",
+"ability_sorcerer_thunder_burst.dds",
+"ability_sorcerer_thunderclap.dds",
+"ability_sorcerer_thunderstomp.dds",
+"ability_sorcerer_unstable_clannfear_summoned.dds",
+"ability_sorcerer_unstable_fimiliar_summoned.dds",
 
 	-- Nightblade
 "ability_necromancer_018_b.dds",
@@ -5346,6 +5616,9 @@ local REPLACEMENT_ICONS = {
 "ability_necromancer_017_b.dds",
 "ability_necromancer_018.dds",
 "ability_necromancer_018_a.dds",
+"ability_necromancer_002_a_blackedout.dds",
+"ability_necromancer_002_b_blackedout.dds",
+"ability_necromancer_002_blackedout.dds",
 	
 	
 	-- Arcanist
@@ -5735,6 +6008,14 @@ local REPLACEMENT_ICONS = {
 "ability_debuff_levitate.dds",
 "ability_buff_major_slayer.dds",
 "ability_buff_major_force.dds",
+"ability_rogue_042.dds",
+"crownpotion_trires.dds",
+"consumable_potion_001_type_005.dds",
+"consumable_potion_002_type_005.dds",
+"consumable_potion_003_type_005.dds",
+"consumable_potion_004_type_005.dds",
+"consumable_potion_006_type_005.dds",
+"consumable_potion_007_type_005.dds",
 }
 
 -- Initialize all mismatched base icons by default

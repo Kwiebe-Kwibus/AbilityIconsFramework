@@ -22,6 +22,7 @@ function AbilityIconsFramework.InitializeSettings()
         displayName = "|c66b2b2Ability|r |cffbf00Icons|r |c6C3BAAFramework|r",
         author = "|ce6202dKwiebe-Kwibus|r & Asquart",
         version = AbilityIconsFramework.version,
+		website = "https://www.esoui.com/downloads/info4061-AbilityIconsFramework.html",
         slashCommand = "/aifgb",    -- (optional) will register a keybind to open to this panel
         registerForRefresh = true,   -- boolean (optional) (will refresh all options controls when a setting is changed and when the panel is shown)
         registerForDefaults = true   -- boolean (optional) (will set all options controls back to default values)
