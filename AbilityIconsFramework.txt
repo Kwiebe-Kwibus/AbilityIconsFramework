@@ -7,8 +7,8 @@
 ## Description: The Ability Icons Framework ESO addon changes the ability icons with custom selections.
 ## APIVersion: 101045
 ## Author: |ce6202dKwiebe-Kwibus|r & Asquart
-## Version: 119
-## AddOnVersion: 119
+## Version: 120
+## AddOnVersion: 120
 ## SavedVariables: AbilityIconsFramework_SavedVariables AbilityIconsFramework_Globals AbilityIconsFramework_Settings
 ## OptionalDependsOn: LibAddonMenu-2.0 FancyActionBar+ FancyActionBar
 
