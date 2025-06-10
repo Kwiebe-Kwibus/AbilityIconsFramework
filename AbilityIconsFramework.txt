@@ -7,8 +7,8 @@
 ## Description: The Ability Icons Framework ESO addon changes the ability icons with custom selections.
 ## APIVersion: 101045
 ## Author: |ce6202dKwiebe-Kwibus|r & Asquart
-## Version: 113
-## AddOnVersion: 113
+## Version: 119
+## AddOnVersion: 119
 ## SavedVariables: AbilityIconsFramework_SavedVariables AbilityIconsFramework_Globals AbilityIconsFramework_Settings
 ## OptionalDependsOn: LibAddonMenu-2.0 FancyActionBar+ FancyActionBar
 
@@ -21,14 +21,4 @@ InactiveActionBarFAB.lua
 SlashCommands.lua
 HeroismPotions.lua
 
-## Notes: [EN] Heroism Potion Names
-$HP_POTION_NAME_3="Level 3 Heroism Potion"
-$HP_POTION_NAME_10="Level 10 Heroism Potion"
-$HP_POTION_NAME_20="Level 20 Heroism Potion"
-$HP_POTION_NAME_30="Level 30 Heroism Potion"
-$HP_POTION_NAME_40="Level 40 Heroism Potion"
-$HP_POTION_NAME_CP10="CP 10 Heroism Potion"
-$HP_POTION_NAME_50="CP 50 Heroism Potion"
-$HP_POTION_NAME_CP100="CP 100 Heroism Potion"
-$HP_POTION_NAME_CP150="CP 150 Heroism Potion"
 

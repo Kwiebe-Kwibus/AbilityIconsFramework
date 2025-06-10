@@ -88,7 +88,7 @@ AbilityIconsFramework.DEFAULT = EFFECT.DEFAULT
 -- Configuration templates
 AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
     version = AbilityIconsFramework.SAVEDVARIABLES_VERSION,
-    saveSettingsGlobally = false,
+    saveSettingsGlobally = true,
 }
 
 -- Consolidated table for icon names, skill names, main category, class, and skill tree
@@ -1135,14 +1135,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_magicka_detonation.dds"] = {
+    ["ability_ava_magicka_detonation.dds"] = {
         skillName = "Magicka Detonation",
         position = 13,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_inevitable_detonation.dds"] = {
+    ["ability_ava_inevitable_detonation.dds"] = {
         skillName = "Inevitable Detonation",
         position = 14,
         mainCategory = "Non Class",
@@ -1156,7 +1156,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Assault"
     },
-    ["ability_alliancewar_trample.dds"] = {
+    ["ability_ava_trample.dds"] = {
         skillName = "Trample",
         position = 16,
         mainCategory = "Non Class",
@@ -1186,7 +1186,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_banner_bearer.dds"] = {
+    ["ability_ava_banner_bearer.dds"] = {
         skillName = "Banner Bearer",
         position = 4,
         mainCategory = "Non Class",
@@ -1235,21 +1235,21 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_guard.dds"] = {
+    ["ability_ava_guard.dds"] = {
         skillName = "Guard",
         position = 11,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_mystic_guard.dds"] = {
+    ["ability_ava_mystic_guard.dds"] = {
         skillName = "Mystic Guard",
         position = 12,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_stalwart_guard.dds"] = {
+    ["ability_ava_stalwart_guard.dds"] = {
         skillName = "Stalwart Guard",
         position = 13,
         mainCategory = "Non Class",
@@ -1263,14 +1263,14 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_blinding_flare.dds"] = {
+    ["ability_ava_blinding_flare.dds"] = {
         skillName = "Blinding Flare",
         position = 15,
         mainCategory = "Non Class",
         class = "Alliance War",
         skillTree = "Support"
     },
-    ["ability_alliancewar_lingering_flare.dds"] = {
+    ["ability_ava_lingering_flare.dds"] = {
         skillName = "Lingering Flare",
         position = 16,
         mainCategory = "Non Class",
@@ -3285,7 +3285,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Nightblade",
         skillTree = "Siphoning"
     },
-    ["ability_nightblade_006.dds"] = {
+    ["ability_nightblade_006_b.dds"] = {
         skillName = "Crippling Grasp",
         position = 11,
         mainCategory = "Class",

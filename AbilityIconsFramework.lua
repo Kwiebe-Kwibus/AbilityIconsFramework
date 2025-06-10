@@ -8,7 +8,7 @@ local FAB = FancyActionBar or nil;
 -- Declarations --
 ------------------
 
-local ADDON_VERSION = "113"
+local ADDON_VERSION = "119"
 local EVENT_MANAGER = EVENT_MANAGER
 local GetActiveHotbarCategory = GetActiveHotbarCategory
 local GetSlotTexture = GetSlotTexture
