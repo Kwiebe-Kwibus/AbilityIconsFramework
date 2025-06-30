@@ -2,8 +2,6 @@ AbilityIconsFramework = {}
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework
 
-local FAB = FancyActionBar or nil;
-
 ------------------
 -- Declarations --
 ------------------
@@ -27,35 +25,8 @@ AbilityIconsFramework.name = "AbilityIconsFramework"
 function AbilityIconsFramework.Initialize()
     AbilityIconsFramework.InitializeSettings()
     AbilityIconsFramework.ReplaceMismatchedIcons()
-    AbilityIconsFramework:InitializeHeroismPotions()
-end
-
-function AbilityIconsFramework.GetFAB()
-    return FAB;
-end
-
---- Helper function to apply skill styles for all relevant slots.
---- @param hotbarCategory number The category of the hotbar to apply styles to.
-function AbilityIconsFramework.ApplySkillStyles(hotbarCategory)
-    for index = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
-        AbilityIconsFramework.ApplySkillStyle(index, hotbarCategory)
-    end
-
     AbilityIconsFramework.UpdateDefaultScribingIcons()
-end
-
-local function ApplyIconPackChanges()
-
-    if AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons then
-        AbilityIconsFramework.SetOptionMismatchedIcons(false)
-        AbilityIconsFramework.SetOptionMismatchedIcons(true)
-    end
-    if AbilityIconsFramework:GetSettings().showCustomScribeIcons then
-        AbilityIconsFramework.SetOptionCustomIcons(false)
-        AbilityIconsFramework.SetOptionCustomIcons(true)
-    end
-
-    AbilityIconsFramework.ReplaceMismatchedIcons()
+    AbilityIconsFramework:InitializeHeroismPotions()
 end
 
 function AbilityIconsFramework.AddCustomIconPack( PackDirectory, PackIcons )
@@ -123,14 +94,6 @@ end
 -- Events --
 ------------
 
---- Triggered on initial player load, or reloadUI.
---- @param _ any
---- @param isFirstLoad boolean True if it's the first time the UI loads, false otherwise.
-function AbilityIconsFramework.OnPlayerActivated(_, isFirstLoad)
-    AbilityIconsFramework.ApplySkillStyles(GetActiveHotbarCategory())
-    FAB = FancyActionBar
-end
-
 --- Triggered when the player switches hotbars, after the "GetSlotTexture" SecurePostHook.
 --- @param _ any
 --- @param slotIndex number The index of a given skill in the action bar.
@@ -141,10 +104,14 @@ function AbilityIconsFramework.OnHotbarSlotStateUpdated(_, slotIndex, hotbarCate
         if hotbarCategory == activeHotbarCategory and (hotbarCategory == HOTBAR_CATEGORY_PRIMARY or hotbarCategory == HOTBAR_CATEGORY_BACKUP or hotbarCategory == HOTBAR_CATEGORY_WEREWOLF) then
             -- Apply the Stagger icon to both the active and inactive bars after FAB has processed the buttons
             AbilityIconsFramework.DelayedApplyStaggerIcon(slotIndex, hotbarCategory)
-
-            -- Fall back to the default logic for other abilities
-            AbilityIconsFramework.ApplySkillStyle(slotIndex, hotbarCategory)
         end
+    end
+end
+
+function AbilityIconsFramework.OnScribingUiClosed()
+    if AbilityIconsFramework:GetSettings().showCustomScribeIcons then
+        AbilityIconsFramework.SetOptionCustomIcons(false)
+        AbilityIconsFramework.SetOptionCustomIcons(true)
     end
 end
 
@@ -154,17 +121,7 @@ function AbilityIconsFramework.OnAllHotbarsUpdated()
     for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
         -- Apply the Stagger icon to both the active and inactive bars after FAB has processed the buttons
         AbilityIconsFramework.DelayedApplyStaggerIcon(slotIndex, activeHotbarCategory)
-
-        -- Fall back to the default logic for other abilities
-        AbilityIconsFramework.ApplySkillStyle(slotIndex, activeHotbarCategory)
     end
-end
-
---- To be used in any event when the skill icons need to be refreshed.
---- @param _ any
---- @param collectibleId any
-function AbilityIconsFramework.OnCollectibleUpdated(_, collectibleId)
-    AbilityIconsFramework.ApplySkillStyles(GetActiveHotbarCategory())
 end
 
 --- Local alias for GetSlotTexture, introduced to avoid overflowing the stack due to mutual recursion between
@@ -177,14 +134,7 @@ SecurePostHook("GetSlotTexture", function(slotIndex, hotbarCategory)
         if staggerIcon then
             return staggerIcon, nil, nil -- Return the custom icon for Stagger
         end
-
-        -- Fall back to the default icon retrieval logic
-        local newIcon = AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory) 
-                        or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
         local icon, weaponIcon, activationAnimation = originalGetSlotTexture(slotIndex, hotbarCategory)
-        if newIcon then
-            icon = newIcon
-        end
         return icon, weaponIcon, activationAnimation
     end
     return originalGetSlotTexture(slotIndex, hotbarCategory)
@@ -195,20 +145,20 @@ end)
 --- @param addOnName any
 function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
     if addOnName == AbilityIconsFramework.name then
-        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_COLLECTIBLE_UPDATED, AbilityIconsFramework.OnCollectibleUpdated)
         EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_HOTBAR_SLOT_STATE_UPDATED, AbilityIconsFramework.OnHotbarSlotStateUpdated)
-        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_PLAYER_ACTIVATED, AbilityIconsFramework.OnPlayerActivated)
         EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_ACTION_SLOTS_ALL_HOTBARS_UPDATED, AbilityIconsFramework.OnAllHotbarsUpdated)
 
         -- Unregister the event as our addon was loaded and we do not need it to be run for every other addon that will load
         EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name, EVENT_ADD_ON_LOADED)
 
         AbilityIconsFramework.CreateSlashCommands()
-        AbilityIconsFramework.Initialize()
 
+        -- Slight delay to let icon pack changes to be applied first
         zo_callLater(function()
-            ApplyIconPackChanges(bUpdateBaseGameIcons, bUpdateScribingIcons)
-        end, 500)
+            AbilityIconsFramework.Initialize()
+        end)
+
+        ZO_PostHook(SCRIBING_KEYBOARD, "OnHiding", AbilityIconsFramework.OnScribingUiClosed)
     end
 end
 

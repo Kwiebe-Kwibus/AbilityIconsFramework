@@ -5,6 +5,7 @@ AbilityIconsFramework.SAVEDVARIABLES_VERSION = 1.5
 -- Constants
 AbilityIconsFramework.MIN_INDEX = 3                  -- First ability index
 AbilityIconsFramework.MAX_INDEX = 8                  -- Last ability: 7, Ultimate: 8
+AbilityIconsFramework.SCRIBING_ID_KEY = "craftedAbilityId"
 AbilityIconsFramework.SLOT_INDEX_OFFSET = 20         -- Offset for backbar abilities indices
 AbilityIconsFramework.COMPANION_INDEX_OFFSET = 30    -- Offset for companion ultimate
 
@@ -1698,7 +1699,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Guild",
         skillTree = "Undaunted"
     },
-    ["ability_undaunted_005"] = {
+    ["ability_undaunted_005.dds"] = {
         skillName = "Bone Shield",
         position = 10,
         mainCategory = "Non Class",
@@ -2980,6 +2981,13 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Nightblade",
         skillTree = "Assassination"
     },
+	["ability_nightblade_007_c.dds"] = {
+        skillName = "Incapacitating Strike full",
+        position = 2,
+        mainCategory = "Class",
+        class = "Nightblade",
+        skillTree = "Assassination"
+		},
     ["ability_nightblade_002.dds"] = {
         skillName = "Veiled Strike",
         position = 4,
@@ -3511,6 +3519,13 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Daedric Summoning"
     },
+	["ability_sorcerer_bound_armaments_proc.dds"] = {
+        skillName = "Bound Armaments Proc",
+        position = 24,
+        mainCategory = "Class",
+        class = "Sorcerer",
+        skillTree = "Daedric Summoning"
+    },
 
     -- Dark Magic Skills
     ["ability_sorcerer_monsoon.dds"] = {
@@ -3548,7 +3563,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
         class = "Sorcerer",
         skillTree = "Dark Magic"
     },
-	["ability_sorcerer_thunder_burst.dds"] = {
+	["ability_sorcerer_thunderstomp_proc.dds"] = {
         skillName = "Crystal Fragments Procked",
         position = 5,
         mainCategory = "Class",
@@ -5117,6 +5132,7 @@ AbilityIconsFramework.DEFAULT_ADDON_CONFIG = {
 function AbilityIconsFramework.GenerateScribedSkillsIcons()
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.BANNER_BEARER] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 12,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_support_flame.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_support_shock.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_support_magic.dds"),
@@ -5129,6 +5145,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ELEMENTAL_EXPLOSION] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 5,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_staffdestro_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_staffdestro_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_staffdestro_shock.dds"),
@@ -5141,6 +5158,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
         [EFFECT.DEFAULT] = addonIcon("ability_grimoire_staffdestro.dds")
     }
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.MENDERS_BOND] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 6,
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_staffresto_magic.dds"),
         [EFFECT.RESOURCES] = addonIcon("ability_grimoire_staffresto_resources.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_staffresto_shield.dds"),
@@ -5152,6 +5170,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SHIELD_THROW] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 3,
         [EFFECT.FROST] = addonIcon("ability_grimoire_1handed_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_1handed_magic.dds"),
         [EFFECT.IMMOBILIZE] = addonIcon("ability_grimoire_1handed_immobilize.dds"),
@@ -5164,6 +5183,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SMASH] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 4,
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_2handed_magic.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_2handed_heal.dds"),
         [EFFECT.SHIELD] = addonIcon("ability_grimoire_2handed_shield.dds"),
@@ -5177,6 +5197,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.SOUL_BURST] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 8,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic2_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic2_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic2_shock.dds"),
@@ -5192,6 +5213,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
     
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TORCHBEARER] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 10,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_fightersguild_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_fightersguild_frost.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_fightersguild_heal.dds"),
@@ -5205,6 +5227,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAMPLE] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 12,
         [EFFECT.FROST] = addonIcon("ability_grimoire_assault_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_assault_magic.dds"),
         [EFFECT.STUN] = addonIcon("ability_grimoire_assault_stun.dds"),
@@ -5217,6 +5240,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAVELING_KNIFE] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 7,
         [EFFECT.FROST] = addonIcon("ability_grimoire_dualwield_frost.dds"),
         [EFFECT.MAGIC] = addonIcon("ability_grimoire_dualwield_magic.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_dualwield_bleed.dds"),
@@ -5229,6 +5253,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.ULFSILDS_CONTINGENCY] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 9,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_magesguild_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_magesguild_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_magesguild_shock.dds"),
@@ -5242,6 +5267,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.VAULT] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 1,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_bow_flame.dds"),
         [EFFECT.HEAL] = addonIcon("ability_grimoire_bow_heal.dds"),
         [EFFECT.BLEED] = addonIcon("ability_grimoire_bow_bleed.dds"),
@@ -5254,6 +5280,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.WIELD_SOUL] = {
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 2,
         [EFFECT.FLAME] = addonIcon("ability_grimoire_soulmagic1_flame.dds"),
         [EFFECT.FROST] = addonIcon("ability_grimoire_soulmagic1_frost.dds"),
         [EFFECT.SHOCK] = addonIcon("ability_grimoire_soulmagic1_shock.dds"),
@@ -5389,8 +5416,10 @@ local REPLACEMENT_ICONS = {
 "ability_sorcerer_thunder_burst.dds",
 "ability_sorcerer_thunderclap.dds",
 "ability_sorcerer_thunderstomp.dds",
+"ability_sorcerer_thunderstomp_proc.dds",
 "ability_sorcerer_unstable_clannfear_summoned.dds",
 "ability_sorcerer_unstable_fimiliar_summoned.dds",
+"ability_sorcerer_bound_armaments_proc.dds",
 
 	-- Nightblade
 "ability_necromancer_018_b.dds",
@@ -5415,6 +5444,7 @@ local REPLACEMENT_ICONS = {
 "ability_nightblade_007.dds",
 "ability_nightblade_007_a.dds",
 "ability_nightblade_007_b.dds",
+"ability_nightblade_007_c.dds",
 "ability_nightblade_008.dds",
 "ability_nightblade_008_a.dds",
 "ability_nightblade_008_b.dds",
