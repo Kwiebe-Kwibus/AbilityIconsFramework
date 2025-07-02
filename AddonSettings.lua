@@ -3,6 +3,52 @@ local AbilityIconsFramework = AbilityIconsFramework
 
 local LAM2 = LibAddonMenu2
 
+
+AbilityIconsFramework.DEFAULT_SETTINGS =
+{
+    version = AbilityIconsFramework.SAVEDVARIABLES_VERSION,
+    showSkillStyleIcons = false,
+    showCustomScribeIcons = true,
+    replaceMismatchedBaseIcons = true,
+    enableStaggerStompIcon = true,
+    iconPacksData = {},
+}
+
+AbilityIconsFramework.packSortOrderEntries = {}
+
+function AbilityIconsFramework.InitializeSortOrderEntries()
+    AbilityIconsFramework.packSortOrderEntries = {}
+    local currentIdx = 1
+    for packDirectoryString, packData in AbilityIconsFramework.packPairs() do
+        if packData ~= nil then
+            AbilityIconsFramework.packSortOrderEntries[currentIdx] =
+            {
+                value = packDirectoryString,
+                uniqueKey = currentIdx,
+                text  = "|t45:45:" .. packData.packExampleTexture .. "|t" .. " " .. packData.packDisplayName,
+            }
+            currentIdx = currentIdx + 1
+        end
+    end
+end
+
+local function UpdatePackLoadOrderFromSortEntries()
+    local settings = AbilityIconsFramework:GetSettings()
+    for entryIdx, entryData in ipairs(AbilityIconsFramework.packSortOrderEntries) do
+        settings.iconPacksData[entryData.value].loadOrder = entryIdx
+    end
+end
+
+function AbilityIconsFramework.GetHighestIconPackOrder()
+    local max = 0
+    for _, PackData in AbilityIconsFramework.packPairs() do
+        if PackData ~= nil and PackData.loadOrder > max then
+            max = PackData.loadOrder
+        end
+    end
+    return max
+end
+
 --- Initializes saved variables and configures their corresponding menus, using LibAddonMenu2 (if it exists).
 function AbilityIconsFramework.InitializeSettings()
     AbilityIconsFramework.CONFIG = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_SavedVariables", AbilityIconsFramework.SAVEDVARIABLES_VERSION, nil, AbilityIconsFramework.DEFAULT_ADDON_CONFIG)
@@ -53,64 +99,49 @@ function AbilityIconsFramework.InitializeSettings()
         },
         {
             type = "checkbox",
-            name = "Replace mismatched Base Ability Icons",
+            name = "Replace Common Game Icons",
             getFunc = function()
                 return AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons
             end,
             setFunc = AbilityIconsFramework.SetOptionMismatchedIcons
+        },
+        {
+            type = "checkbox",
+            name = "Enable Stagger Stomp Icon",
+            getFunc = function()
+                return AbilityIconsFramework:GetSettings().enableStaggerStompIcon
+            end,
+            setFunc = AbilityIconsFramework.SetStaggerIconEnabled
+        },
+        {
+            type = "submenu",
+            name = "Icon Packs load order",
+            controls =
+            {
+                {
+                    type = "orderlistbox",
+                    name = "Drag entries to change icon pack load order",
+                    listEntries = AbilityIconsFramework.packSortOrderEntries,
+                    disableDrag = false,
+                    disableButtons = true,
+                    showPosition = true,
+                    getFunc = function() return AbilityIconsFramework.packSortOrderEntries end,
+                    setFunc = function(sortedSortListEntries)
+                        AbilityIconsFramework.packSortOrderEntries = sortedSortListEntries
+                        UpdatePackLoadOrderFromSortEntries()
+                        AbilityIconsFramework.ApplyPackLoadOrderChanges()
+                    end,
+                    width="full",
+                    isExtraWide = true,
+                    rowFont = "ZoFontWinH1",
+                    minHeight = 250,
+                    maxHeight = 400,
+                    rowHeight = 45,
+                    showRemoveEntryButton = false,
+                },
+            }
         }
     }
-
-    -- Add mismatched icons options dynamically
--- Add mismatched icons options dynamically, sorted by class and skill tree
-local mismatchedOptions = {}
-
-
-
- -- Group mismatched icons by main category, class, and skill tree
-    local mainCategoryGroups = {}
-    for iconName, data in pairs(AbilityIconsFramework.ICON_TO_SKILL_NAME) do
-        local mainCategory = data.mainCategory
-        local class = data.class
-        local skillTree = data.skillTree
-
-        if not mainCategoryGroups[mainCategory] then
-            mainCategoryGroups[mainCategory] = {}
-        end
-
-        if not mainCategoryGroups[mainCategory][class] then
-            mainCategoryGroups[mainCategory][class] = {}
-        end
-
-        if not mainCategoryGroups[mainCategory][class][skillTree] then
-            mainCategoryGroups[mainCategory][class][skillTree] = {}
-        end
-
-        table.insert(mainCategoryGroups[mainCategory][class][skillTree], {
-            position = data.position,
-            option = {
-                type = "checkbox",
-                name = "Replace " .. data.skillName,
-                getFunc = function()
-                    return AbilityIconsFramework:GetSettings().mismatchedIcons[iconName]
-                end,
-                setFunc = function(value)
-                    AbilityIconsFramework:GetSettings().mismatchedIcons[iconName] = value
-                    AbilityIconsFramework.ReplaceMismatchedIcons()
-                end,
-            }
-        })
-    end
-
-    -- Sort the main categories alphabetically
-    local sortedMainCategories = {}
-    for mainCategory, _ in pairs(mainCategoryGroups) do
-        table.insert(sortedMainCategories, mainCategory)
-    end
-    table.sort(sortedMainCategories)
-
--- Add the sorted main categories to the main optionsData table
-
 
     LAM2:RegisterOptionControls("AbilityIconsFramework_Panel", optionsData)
 end
@@ -178,20 +209,22 @@ function AbilityIconsFramework.SetOptionGlobalIcons(value)
     AbilityIconsFramework:GetSettings().showSkillStyleIcons = oldSettings.showSkillStyleIcons
     AbilityIconsFramework:GetSettings().showCustomScribeIcons = oldSettings.showCustomScribeIcons
     AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons = oldSettings.replaceMismatchedBaseIcons
+    AbilityIconsFramework.UpdateAllSlots()
 end
 
 --- Set the setting for skill style icons to on/off
 --- @param value boolean
 function AbilityIconsFramework.SetOptionSkillStyleIcons(value)
     AbilityIconsFramework:GetSettings().showSkillStyleIcons = value
-    AbilityIconsFramework.OnCollectibleUpdated()
+    AbilityIconsFramework.UpdateAllSlots()
 end
 
 --- Set the setting for custom scribed icons to on/off
 --- @param value boolean
 function AbilityIconsFramework.SetOptionCustomIcons(value)
     AbilityIconsFramework:GetSettings().showCustomScribeIcons = value
-    AbilityIconsFramework.OnCollectibleUpdated()
+    AbilityIconsFramework.UpdateDefaultScribingIcons()
+    AbilityIconsFramework.UpdateAllSlots()
 end
 
 --- Set the setting for mismatched icons to on/off
@@ -199,4 +232,20 @@ end
 function AbilityIconsFramework.SetOptionMismatchedIcons(value)
     AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons = value
     AbilityIconsFramework.ReplaceMismatchedIcons()
+    AbilityIconsFramework.UpdateAllSlots()
+end
+
+--- Set the setting for enabling stagger stomp to on/off
+--- @param value boolean
+function AbilityIconsFramework.SetStaggerIconEnabled(value)
+    AbilityIconsFramework:GetSettings().enableStaggerStompIcon = value
+    AbilityIconsFramework.UpdateAllSlots()
+end
+
+function AbilityIconsFramework.ApplyPackLoadOrderChanges()
+    AbilityIconsFramework.ResetAllTextureRedirects()
+    AbilityIconsFramework.GenerateReplacementLists()
+    AbilityIconsFramework.ReplaceMismatchedIcons()
+    AbilityIconsFramework.UpdateDefaultScribingIcons()
+    AbilityIconsFramework.UpdateAllSlots()
 end
