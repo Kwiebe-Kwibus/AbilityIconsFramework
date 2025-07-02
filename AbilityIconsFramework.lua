@@ -115,7 +115,6 @@ function AbilityIconsFramework.UpdateAllSlots()
     -- Iterate over active skill bar slots to update
     local activeHotbarCategory = GetActiveHotbarCategory()
     local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or HOTBAR_CATEGORY_BACKUP
-    d(AbilityIconsFramework.GetStaggerStompIcon())
     for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
         -- Update base game action bars
         AbilityIconsFramework.HandleSlotChanged(slotIndex, activeHotbarCategory)
