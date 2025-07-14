@@ -224,7 +224,7 @@ end
 -- Custom iteration function going over icon pack data in their load order (since lua is a smoking piece of a horse cock and cant even sort a table).
 -- Bro like literally what the fucking castrated pile of hot piss is this "language"
 -- Absolute dusgusting fucking trash
-local packSortFunc = function(t,a,b) return t[b].loadOrder > t[a].loadOrder end
+local packSortFunc = function(t,a,b) return t[b].loadOrder < t[a].loadOrder end
 function AbilityIconsFramework.packPairs()
     local settings = AbilityIconsFramework:GetSettings()
     -- collect the keys

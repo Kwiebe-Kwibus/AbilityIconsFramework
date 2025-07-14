@@ -11,6 +11,7 @@ AbilityIconsFramework.DEFAULT_SETTINGS =
     showCustomScribeIcons = true,
     replaceMismatchedBaseIcons = true,
     enableStaggerStompIcon = true,
+    enableHeroismPotionIcons = true,
     iconPacksData = {},
 }
 
@@ -91,7 +92,7 @@ function AbilityIconsFramework.InitializeSettings()
         },
         {
             type = "checkbox",
-            name = "Use Custom Scribed Ability Icons on ability bar",
+            name = "Use Custom Scribed Ability Icons",
             getFunc = function()
                 return AbilityIconsFramework:GetSettings().showCustomScribeIcons
             end,
@@ -99,7 +100,7 @@ function AbilityIconsFramework.InitializeSettings()
         },
         {
             type = "checkbox",
-            name = "Replace Common Game Icons",
+            name = "Replace Base Game Icons",
             getFunc = function()
                 return AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons
             end,
@@ -114,13 +115,21 @@ function AbilityIconsFramework.InitializeSettings()
             setFunc = AbilityIconsFramework.SetStaggerIconEnabled
         },
         {
+            type = "checkbox",
+            name = "Enable Heroism Potion Icons",
+            getFunc = function()
+                return AbilityIconsFramework:GetSettings().enableHeroismPotionIcons
+            end,
+            setFunc = AbilityIconsFramework.SetHeroismPotionIconsEnabled
+        },
+        {
             type = "submenu",
             name = "Icon Packs load order",
             controls =
             {
                 {
                     type = "orderlistbox",
-                    name = "Drag entries to change icon pack load order",
+                    name = "Icon pack priority",
                     listEntries = AbilityIconsFramework.packSortOrderEntries,
                     disableDrag = false,
                     disableButtons = true,
@@ -239,6 +248,13 @@ end
 --- @param value boolean
 function AbilityIconsFramework.SetStaggerIconEnabled(value)
     AbilityIconsFramework:GetSettings().enableStaggerStompIcon = value
+    AbilityIconsFramework.UpdateAllSlots()
+end
+
+--- Set the setting for enabling heroism potion icons to on/off
+--- @param value boolean
+function AbilityIconsFramework.SetHeroismPotionIconsEnabled(value)
+    AbilityIconsFramework:GetSettings().enableHeroismPotionIcons = value
     AbilityIconsFramework.UpdateAllSlots()
 end
 

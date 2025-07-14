@@ -173,7 +173,7 @@ function AbilityIconsFramework.GenerateScribedSkillsIcons()
     }
 
     AbilityIconsFramework.CUSTOM_ABILITY_ICONS[DEFAULT_ICONS.TRAMPLE] = {
-        [AbilityIconsFramework.SCRIBING_ID_KEY] = 12,
+        [AbilityIconsFramework.SCRIBING_ID_KEY] = 11,
         [EFFECT.FROST] = AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon("ability_grimoire_assault_frost.dds")],
         [EFFECT.MAGIC] = AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon("ability_grimoire_assault_magic.dds")],
         [EFFECT.STUN] = AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon("ability_grimoire_assault_stun.dds")],
@@ -503,6 +503,7 @@ local REPLACEMENT_ICONS = {
 "ability_warden_006_a.dds",
 "ability_warden_006_b.dds",
 "ability_warden_007.dds",
+"ability_warden_007_a.dds",
 "ability_warden_007_b.dds",
 "ability_warden_007_c.dds",
 "ability_warden_008.dds",
@@ -1132,6 +1133,8 @@ local REPLACEMENT_ICONS = {
 "consumable_potion_004_type_005.dds",
 "consumable_potion_006_type_005.dds",
 "consumable_potion_007_type_005.dds",
+
+	-- Skillstyles
 }
 
 -- We will fill the stagger stomp icon data asap before initialization so core functions like GetAbilityIcon() dont crash with nil value

@@ -6,7 +6,7 @@ local AbilityIconsFramework = AbilityIconsFramework
 -- Declarations --
 ------------------
 
-local ADDON_VERSION = "120"
+local ADDON_VERSION = "132"
 
 AbilityIconsFramework.version = ADDON_VERSION
 AbilityIconsFramework.name = "AbilityIconsFramework"
@@ -33,7 +33,7 @@ function AbilityIconsFramework.Initialize()
     AbilityIconsFramework:InitializeHeroismPotions()
     AbilityIconsFramework.UpdateAllSlots()
     AbilityIconsFramework.SetOptionMismatchedIcons(false)
-    AbilityIconsFramework.SetOptionMismatchedIcons(true) -- completely reset all vase game redirects in case there were changes in loaded icon packs
+    AbilityIconsFramework.SetOptionMismatchedIcons(true) -- completely reset all base game redirects in case there were changes in loaded icon packs
     AbilityIconsFramework.OnScribingUpdate() -- Already has UpdateAllSlots() inside it
 end
 

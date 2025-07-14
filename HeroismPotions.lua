@@ -64,6 +64,9 @@ function AbilityIconsFramework:GetPotionIcon(itemLink)
 end
 
 function AbilityIconsFramework:ShouldReplacePotion(itemLink)
+    -- Check if heroism potion icons are enabled
+    if not self:GetSettings().enableHeroismPotionIcons then return false end
+    
     if self.HEROISM_POTIONS.isStationInteract then return false end
 
     local itemId = GetItemLinkItemId(itemLink)
