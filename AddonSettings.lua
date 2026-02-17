@@ -1,19 +1,26 @@
 --- @class (partial) AbilityIconsFramework
-local AbilityIconsFramework = AbilityIconsFramework
 
+local AbilityIconsFramework = AbilityIconsFramework
 local LAM2 = LibAddonMenu2
 
-
-AbilityIconsFramework.DEFAULT_SETTINGS =
-{
+AbilityIconsFramework.DEFAULT_SETTINGS = {
     version = AbilityIconsFramework.SAVEDVARIABLES_VERSION,
     showSkillStyleIcons = false,
     showCustomScribeIcons = true,
     replaceMismatchedBaseIcons = true,
-    enableStaggerStompIcon = true,
     enableHeroismPotionIcons = true,
+    autoTypeConfirm = true,
     iconPacksData = {},
+    resolution = 256
 }
+
+AbilityIconsFramework.resolutionChoices = {
+    64,
+    128,
+    256
+}
+
+local currentIconsResolution = 256
 
 AbilityIconsFramework.packSortOrderEntries = {}
 
@@ -22,11 +29,10 @@ function AbilityIconsFramework.InitializeSortOrderEntries()
     local currentIdx = 1
     for packDirectoryString, packData in AbilityIconsFramework.packPairs() do
         if packData ~= nil then
-            AbilityIconsFramework.packSortOrderEntries[currentIdx] =
-            {
+            AbilityIconsFramework.packSortOrderEntries[currentIdx] = {
                 value = packDirectoryString,
                 uniqueKey = currentIdx,
-                text  = "|t45:45:" .. packData.packExampleTexture .. "|t" .. " " .. packData.packDisplayName,
+                text = "|t45:45:" .. packData.packExampleTexture .. "|t" .. " " .. packData.packDisplayName,
             }
             currentIdx = currentIdx + 1
         end
@@ -55,11 +61,15 @@ function AbilityIconsFramework.InitializeSettings()
     AbilityIconsFramework.CONFIG = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_SavedVariables", AbilityIconsFramework.SAVEDVARIABLES_VERSION, nil, AbilityIconsFramework.DEFAULT_ADDON_CONFIG)
     AbilityIconsFramework.CleanupAccountWideSettings(AbilityIconsFramework_SavedVariables, AbilityIconsFramework.DEFAULT_ADDON_CONFIG, nil)
 
-    AbilityIconsFramework.GLOBALSETTINGS = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_Globals", AbilityIconsFramework.SAVEDVARIABLES_VERSION, "global_settings",  AbilityIconsFramework.DEFAULT_SETTINGS)
+    AbilityIconsFramework.GLOBALSETTINGS = ZO_SavedVars:NewAccountWide("AbilityIconsFramework_Globals", AbilityIconsFramework.SAVEDVARIABLES_VERSION, "global_settings", AbilityIconsFramework.DEFAULT_SETTINGS)
     AbilityIconsFramework.CleanupAccountWideSettings(AbilityIconsFramework_Globals, AbilityIconsFramework.DEFAULT_SETTINGS, "global_settings")
 
     AbilityIconsFramework.CHARACTERSETTINGS = ZO_SavedVars:NewCharacterIdSettings("AbilityIconsFramework_Settings", AbilityIconsFramework.SAVEDVARIABLES_VERSION, "character_settings", AbilityIconsFramework.DEFAULT_SETTINGS)
     AbilityIconsFramework.CleanupCharacterIdSettings(AbilityIconsFramework_Settings, AbilityIconsFramework.DEFAULT_SETTINGS, "character_settings")
+
+    currentIconsResolution = AbilityIconsFramework:GetSettings().resolution
+
+    AbilityIconsFramework.InitBaseIconsPath()
 
     if LAM2 == nil then return end
 
@@ -69,10 +79,10 @@ function AbilityIconsFramework.InitializeSettings()
         displayName = "|c66b2b2Ability|r |cffbf00Icons|r |c6C3BAAFramework|r",
         author = "|ce6202dKwiebe-Kwibus|r & Asquart",
         version = AbilityIconsFramework.version,
-		website = "https://www.esoui.com/downloads/info4061-AbilityIconsFramework.html",
-        slashCommand = "/aifgb",    -- (optional) will register a keybind to open to this panel
-        registerForRefresh = true,   -- boolean (optional) (will refresh all options controls when a setting is changed and when the panel is shown)
-        registerForDefaults = true   -- boolean (optional) (will set all options controls back to default values)
+        website = "https://www.esoui.com/downloads/info4061-AbilityIconsFramework.html",
+        slashCommand = "/aifgb",
+        registerForRefresh = true,
+        registerForDefaults = true
     }
 
     LAM2:RegisterAddonPanel("AbilityIconsFramework_Panel", panelData)
@@ -108,14 +118,6 @@ function AbilityIconsFramework.InitializeSettings()
         },
         {
             type = "checkbox",
-            name = "Enable Stagger Stomp Icon",
-            getFunc = function()
-                return AbilityIconsFramework:GetSettings().enableStaggerStompIcon
-            end,
-            setFunc = AbilityIconsFramework.SetStaggerIconEnabled
-        },
-        {
-            type = "checkbox",
             name = "Enable Heroism Potion Icons",
             getFunc = function()
                 return AbilityIconsFramework:GetSettings().enableHeroismPotionIcons
@@ -123,10 +125,34 @@ function AbilityIconsFramework.InitializeSettings()
             setFunc = AbilityIconsFramework.SetHeroismPotionIconsEnabled
         },
         {
+            type = "dropdown",
+            name = "Base game icons resolution",
+            tooltip = 'Texture resolution to use for default game icons',
+            choices = AbilityIconsFramework.resolutionChoices,
+            scrollable = false,
+            getFunc = function() return AbilityIconsFramework:GetSettings().resolution end,
+            setFunc = function(selected)
+                for _, resolution in ipairs(AbilityIconsFramework.resolutionChoices) do
+                    if resolution == selected then
+                        AbilityIconsFramework:GetSettings().resolution = resolution
+                        break
+                    end
+                end
+            end,
+            default = AbilityIconsFramework:GetSettings().resolution,
+            warning = "Requires /reloadui to apply the changes"
+        },
+        {
+            type = "button",
+            name = "Reload UI",
+            width = "full",
+            func = function() ReloadUI("ingame") end,
+            disabled = function() return AbilityIconsFramework:GetSettings().resolution == currentIconsResolution end
+        },
+        {
             type = "submenu",
             name = "Icon Packs load order",
-            controls =
-            {
+            controls = {
                 {
                     type = "orderlistbox",
                     name = "Icon pack priority",
@@ -140,7 +166,7 @@ function AbilityIconsFramework.InitializeSettings()
                         UpdatePackLoadOrderFromSortEntries()
                         AbilityIconsFramework.ApplyPackLoadOrderChanges()
                     end,
-                    width="full",
+                    width = "full",
                     isExtraWide = true,
                     rowFont = "ZoFontWinH1",
                     minHeight = 250,
@@ -149,6 +175,19 @@ function AbilityIconsFramework.InitializeSettings()
                     showRemoveEntryButton = false,
                 },
             }
+        },
+        {
+            type = "header",
+            name = "Non visual settings",
+        },
+        {
+            type = "checkbox",
+            name = "Auto-fill confirmation dialogs",
+            tooltip = 'Automatically fills the required CONFIRM/DELETE/etc text into confirmation dialogs.',
+            getFunc = function()
+                return AbilityIconsFramework:GetSettings().autoTypeConfirm
+            end,
+            setFunc = AbilityIconsFramework.SetAutoTypeConfirmEnabled
         }
     }
 
@@ -157,9 +196,9 @@ end
 
 --- Retrieves the saved settings, whether global or per character (and the default settings if nothing was previously saved).
 function AbilityIconsFramework.GetSettings()
-	if AbilityIconsFramework.CONFIG and AbilityIconsFramework.CONFIG.saveSettingsGlobally then
-		return AbilityIconsFramework.GLOBALSETTINGS or AbilityIconsFramework.DEFAULT_SETTINGS
-	else
+    if AbilityIconsFramework.CONFIG and AbilityIconsFramework.CONFIG.saveSettingsGlobally then
+        return AbilityIconsFramework.GLOBALSETTINGS or AbilityIconsFramework.DEFAULT_SETTINGS
+    else
         return AbilityIconsFramework.CHARACTERSETTINGS or AbilityIconsFramework.DEFAULT_SETTINGS
     end
 end
@@ -168,17 +207,18 @@ end
 --- @param savedVars table Contains the current account-wide saved variables.
 --- @param defaultConfig table Contains the default account-wide saved variables.
 --- @param namespace string? The sub-table (if any) in which the saved variables are stored.
--- Update the CleanupAccountWideSettings and CleanupCharacterIdSettings functions
 function AbilityIconsFramework.CleanupAccountWideSettings(savedVars, defaultConfig, namespace)
     local currentConfig = savedVars["Default"][GetDisplayName()]["$AccountWide"]
     if namespace then
         currentConfig = currentConfig[namespace]
     end
+
     for key, _ in pairs(currentConfig) do
         if key ~= "version" and defaultConfig[key] == nil then
             currentConfig[key] = nil
         end
     end
+
     -- Cleanup mismatchedIcons table
     if currentConfig.mismatchedIcons then
         for iconName, _ in pairs(currentConfig.mismatchedIcons) do
@@ -195,11 +235,13 @@ function AbilityIconsFramework.CleanupCharacterIdSettings(savedVars, defaultConf
     if namespace then
         currentConfig = currentConfig[namespace]
     end
+
     for key, _ in pairs(currentConfig) do
         if key ~= "version" and defaultConfig[key] == nil then
             currentConfig[key] = nil
         end
     end
+
     -- Cleanup mismatchedIcons table
     if currentConfig.mismatchedIcons then
         for iconName, _ in pairs(currentConfig.mismatchedIcons) do
@@ -218,6 +260,7 @@ function AbilityIconsFramework.SetOptionGlobalIcons(value)
     AbilityIconsFramework:GetSettings().showSkillStyleIcons = oldSettings.showSkillStyleIcons
     AbilityIconsFramework:GetSettings().showCustomScribeIcons = oldSettings.showCustomScribeIcons
     AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons = oldSettings.replaceMismatchedBaseIcons
+    AbilityIconsFramework:GetSettings().autoTypeConfirm = oldSettings.autoTypeConfirm
     AbilityIconsFramework.UpdateAllSlots()
 end
 
@@ -244,18 +287,17 @@ function AbilityIconsFramework.SetOptionMismatchedIcons(value)
     AbilityIconsFramework.UpdateAllSlots()
 end
 
---- Set the setting for enabling stagger stomp to on/off
---- @param value boolean
-function AbilityIconsFramework.SetStaggerIconEnabled(value)
-    AbilityIconsFramework:GetSettings().enableStaggerStompIcon = value
-    AbilityIconsFramework.UpdateAllSlots()
-end
-
 --- Set the setting for enabling heroism potion icons to on/off
 --- @param value boolean
 function AbilityIconsFramework.SetHeroismPotionIconsEnabled(value)
     AbilityIconsFramework:GetSettings().enableHeroismPotionIcons = value
     AbilityIconsFramework.UpdateAllSlots()
+end
+
+--- Set the setting for auto-fill confirmation dialogs to on/off
+--- @param value boolean
+function AbilityIconsFramework.SetAutoTypeConfirmEnabled(value)
+    AbilityIconsFramework:GetSettings().autoTypeConfirm = value
 end
 
 function AbilityIconsFramework.ApplyPackLoadOrderChanges()

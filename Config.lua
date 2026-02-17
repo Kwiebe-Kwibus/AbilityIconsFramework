@@ -18,8 +18,10 @@ AbilityIconsFramework.CUSTOM_ABILITY_ICONS = {}
 local ESO_ROOT = "/esoui/art/icons/"
 local ADDON_ROOT = "/AbilityIconsFramework/icons/"
 
+local baseIconsPath = "/AbilityIconsFramework/icons/256/"
+
 function AbilityIconsFramework.esoIcon(name) return ESO_ROOT .. name end
-function AbilityIconsFramework.addonIcon(name) return ADDON_ROOT .. name end
+function AbilityIconsFramework.addonIcon(name) return baseIconsPath .. name end
 
 -- Default icons
 local DEFAULT_ICONS = {
@@ -1133,12 +1135,17 @@ local REPLACEMENT_ICONS = {
 "consumable_potion_004_type_005.dds",
 "consumable_potion_006_type_005.dds",
 "consumable_potion_007_type_005.dds",
+"u38_ability_armor_ultimatetransfer.dds",
 
 	-- Skillstyles
 }
 
 -- We will fill the stagger stomp icon data asap before initialization so core functions like GetAbilityIcon() dont crash with nil value
 AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE["/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"] = AbilityIconsFramework.addonIcon("ability_dragonknight_013_a_stomp.dds")
+
+function AbilityIconsFramework.InitBaseIconsPath()
+    baseIconsPath = ADDON_ROOT .. tostring(AbilityIconsFramework:GetSettings().resolution) .. "/"
+end
 
 function AbilityIconsFramework.ApplyIconPacks()
     -- packPairs is custom iterator function which goes through icon packs in their load order

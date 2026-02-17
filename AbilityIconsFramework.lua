@@ -1,4 +1,5 @@
 AbilityIconsFramework = {}
+
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework
 
@@ -6,68 +7,128 @@ local AbilityIconsFramework = AbilityIconsFramework
 -- Declarations --
 ------------------
 
-local ADDON_VERSION = "132"
+local ADDON_VERSION = "140"
 
 AbilityIconsFramework.version = ADDON_VERSION
 AbilityIconsFramework.name = "AbilityIconsFramework"
 
--- Skill slot object with stagger equipped - if there is one. nil otherwise
+-- If icon packs call AddCustomIconPack before settings exist, queue them here.
+AbilityIconsFramework._earlyIconPacks = AbilityIconsFramework._earlyIconPacks or {}
 
--- Define the ability ID for the Stagger ability
-local STAGGER_ABILITY_ID = 31816
-
--- Key to use to get an actual addon icon from the BASE_GAME_ICONS_TO_REPLACE list
-local STAGGER_ICON_KEY = "/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"
 ---------------
 -- Functions --
 ---------------
 
+local function ProcessEarlyIconPacks()
+    if not AbilityIconsFramework._earlyIconPacks then return end
+    if AbilityIconsFramework.GetSettings == nil then return end
+
+    for packDir, packIcons in pairs(AbilityIconsFramework._earlyIconPacks) do
+        -- Re-run AddCustomIconPack now that settings exist
+        AbilityIconsFramework.AddCustomIconPack(packDir, packIcons)
+    end
+
+    AbilityIconsFramework._earlyIconPacks = {}
+end
+
 --- Initializes the saved variables and replaces mismatched base skill icons, if the saved variables dictate it.
 function AbilityIconsFramework.Initialize()
     AbilityIconsFramework.ResetAllTextureRedirects() -- reset in case we had some icon pack disabled
+
     AbilityIconsFramework.InitializeSettings()
+    ProcessEarlyIconPacks()
+
+    AbilityIconsFramework.InitializeAutoConfirm()
+
     AbilityIconsFramework.GenerateReplacementLists()
     AbilityIconsFramework.ReplaceMismatchedIcons()
     AbilityIconsFramework.UpdateDefaultScribingIcons()
+
     AbilityIconsFramework.InitializeSortOrderEntries()
+
     AbilityIconsFramework:InitializeHeroismPotions()
+
     AbilityIconsFramework.UpdateAllSlots()
+
+    -- completely reset all base game redirects in case there were changes in loaded icon packs
     AbilityIconsFramework.SetOptionMismatchedIcons(false)
-    AbilityIconsFramework.SetOptionMismatchedIcons(true) -- completely reset all base game redirects in case there were changes in loaded icon packs
-    AbilityIconsFramework.OnScribingUpdate() -- Already has UpdateAllSlots() inside it
+    AbilityIconsFramework.SetOptionMismatchedIcons(true)
+
+    -- Already has UpdateAllSlots() inside it
+    AbilityIconsFramework.OnScribingUpdate()
 end
 
-function AbilityIconsFramework.AddCustomIconPack( PackDirectory, PackIcons )
+function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
     if PackDirectory == nil or PackIcons == nil or #PackIcons == 0 then
         return
     end
+
+    -- Always register as enabled
     AbilityIconsFramework.ENABLED_ICON_PACKS[PackDirectory] = PackIcons
 
+    -- Settings might not exist yet (if another addon calls us very early)
+    if AbilityIconsFramework.GetSettings == nil then
+        AbilityIconsFramework._earlyIconPacks[PackDirectory] = PackIcons
+        return
+    end
+
     local settings = AbilityIconsFramework:GetSettings()
+    if settings == nil then
+        AbilityIconsFramework._earlyIconPacks[PackDirectory] = PackIcons
+        return
+    end
+
     -- If we already had this pack's info saved we can exit
     if settings.iconPacksData[PackDirectory] ~= nil then
         return
     end
 
-    -- Add saved variables data about this pack
     -- Get pack's addon folder name
     local packName = PackDirectory:match("/(.*)/")
-    packName = packName:match("(.*)/")
-    local highestOrder = AbilityIconsFramework.GetHighestIconPackOrder()
-    settings.iconPacksData[PackDirectory] =
-    {
+    if packName then
+        packName = packName:match("(.*)/") or packName
+    else
+        packName = PackDirectory
+    end
+
+    local highestOrder = 0
+    if AbilityIconsFramework.GetHighestIconPackOrder ~= nil then
+        highestOrder = AbilityIconsFramework.GetHighestIconPackOrder()
+    end
+
+    settings.iconPacksData[PackDirectory] = {
         packDisplayName = packName,
         loadOrder = highestOrder + 1,
-        packExampleTexture = PackDirectory .. PackIcons[1]
+        packExampleTexture = PackDirectory .. PackIcons[1],
     }
 end
 
-function AbilityIconsFramework.GetStaggerStompIcon()
-    return AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[STAGGER_ICON_KEY]
-end
+--- Initializes a LazyConfirm-like auto-fill for confirmation dialogs (type CONFIRM/DELETE/etc).
+function AbilityIconsFramework.InitializeAutoConfirm()
+    if AbilityIconsFramework._autoConfirmHooked then return end
+    AbilityIconsFramework._autoConfirmHooked = true
 
---- @class (partial) AbilityIconsFramework
-local AbilityIconsFramework = AbilityIconsFramework
+    local function hook(...)
+        zo_callLater(function()
+            if AbilityIconsFramework.GetSettings == nil then return end
+            local settings = AbilityIconsFramework:GetSettings()
+            if settings == nil or not settings.autoTypeConfirm then return end
+
+            if ZO_Dialog1 and ZO_Dialog1.textParams and ZO_Dialog1.textParams.mainTextParams then
+                for _, v in pairs(ZO_Dialog1.textParams.mainTextParams) do
+                    if type(v) == "string" and v == string.upper(v) then
+                        if ZO_Dialog1EditBox and ZO_Dialog1EditBox.SetText then
+                            ZO_Dialog1EditBox:SetText(v)
+                            ZO_Dialog1EditBox:LoseFocus()
+                        end
+                    end
+                end
+            end
+        end, 10)
+    end
+
+    ZO_PreHook("ZO_Dialogs_ShowDialog", hook)
+end
 
 ------------
 -- Events --
@@ -78,6 +139,7 @@ function AbilityIconsFramework.OnScribingUpdate()
         AbilityIconsFramework.SetOptionCustomIcons(false)
         AbilityIconsFramework.SetOptionCustomIcons(true)
     end
+
     AbilityIconsFramework.UpdateAllSlots()
 end
 
@@ -88,37 +150,16 @@ function AbilityIconsFramework.HandleSlotChanged(actionSlotIndex, hotbarCategory
     end
 end
 
--- Here we check for skill slots updates to refresh stagger stomp icon on FAB's inactive bar 
-function AbilityIconsFramework.OnHotbarSlotUpdated(_, actionSlotIndex, hotbarCategory)
-    -- We only need this for FAB and if we actually have the stomp feature enabled
-    if FancyActionBar == nil or not AbilityIconsFramework:GetSettings().enableStaggerStompIcon then
-        return
-    end
-    -- We only care about inactive bar
-    if hotbarCategory == GetActiveHotbarCategory() then
-        return
-    end
-    -- We only need it to update stagger stomp icon
-    local abilityId = GetSlotBoundId(actionSlotIndex, hotbarCategory)
-    if abilityId ~= STAGGER_ABILITY_ID then
-        return
-    end
-    -- When all conditions are met - update FAB inactive bar icon
-    local btnBack = FancyActionBar.GetActionButton(actionSlotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET)
-    if btnBack ~= nil then
-        btnBack.icon:SetTexture(AbilityIconsFramework.GetStaggerStompIcon())
-    end
-end
-
 -- This function not only triggers action bar icons update, but has a side-effect of force-updating any other pending texture redirects
 function AbilityIconsFramework.UpdateAllSlots()
-    -- Iterate over active skill bar slots to update
     local activeHotbarCategory = GetActiveHotbarCategory()
     local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or HOTBAR_CATEGORY_BACKUP
+
     for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
         -- Update base game action bars
         AbilityIconsFramework.HandleSlotChanged(slotIndex, activeHotbarCategory)
         AbilityIconsFramework.HandleSlotChanged(slotIndex, inactiveHotbarCategory)
+
         -- If we got FAB, update FAB back bar slots separately, since those are addon generated duplicates of the base game back bar
         if FancyActionBar ~= nil then
             local inactiveAbilityId = GetSlotBoundId(slotIndex, inactiveHotbarCategory)
@@ -126,6 +167,7 @@ function AbilityIconsFramework.UpdateAllSlots()
             if abilityType == ACTION_TYPE_CRAFTED_ABILITY then
                 inactiveAbilityId = GetAbilityIdForCraftedAbilityId(inactiveAbilityId)
             end
+
             local btnBack = FancyActionBar.GetActionButton(slotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET)
             if btnBack ~= nil then
                 btnBack.icon:SetTexture(GetAbilityIcon(inactiveAbilityId))
@@ -134,41 +176,12 @@ function AbilityIconsFramework.UpdateAllSlots()
     end
 end
 
--- Used by addons to get ability icons. FAB uses it to get back bar icons
-local GetAbilityIconOriginal = GetAbilityIcon
-GetAbilityIcon = function (abilityId)
-    if not AbilityIconsFramework:GetSettings().enableStaggerStompIcon then
-        return GetAbilityIconOriginal(abilityId)
-    end
-    if abilityId == STAGGER_ABILITY_ID then
-        return AbilityIconsFramework.GetStaggerStompIcon()
-    end
-    return GetAbilityIconOriginal(abilityId)
-end
-
--- Used by base game action bar to get skill icons
-local GetSlotTextureOriginal = GetSlotTexture
-GetSlotTexture = function (actionSlotIndex, hotbarCategory)
-    if not AbilityIconsFramework:GetSettings().enableStaggerStompIcon then
-        return GetSlotTextureOriginal(actionSlotIndex, hotbarCategory)
-    end
-    local abilityId = GetSlotBoundId(actionSlotIndex, hotbarCategory)
-    if abilityId == STAGGER_ABILITY_ID then
-        return AbilityIconsFramework.GetStaggerStompIcon(), nil, nil
-    end
-    return GetSlotTextureOriginal(actionSlotIndex, hotbarCategory)
-end
-
 --- To be used during game initialization. Code contained in this method needs to run conditionally, for this addon only.
 --- @param eventCode any
 --- @param addOnName any
 function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
     if addOnName == AbilityIconsFramework.name then
-
-        -- Unregister the event as our addon was loaded and we do not need it to be run for every other addon that will load
         EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name, EVENT_ADD_ON_LOADED)
-
-        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_HOTBAR_SLOT_UPDATED, AbilityIconsFramework.OnHotbarSlotUpdated)
 
         AbilityIconsFramework.CreateSlashCommands()
 
@@ -177,12 +190,19 @@ function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
             AbilityIconsFramework.Initialize()
         end, 250)
 
-        -- Event  firing when scribing craft completes - so we might want to update scribing icons
+        -- Event firing when scribing craft completes - so we might want to update scribing icons
         CALLBACK_MANAGER:RegisterCallback("CraftingAnimationsStopped", function()
             AbilityIconsFramework.OnScribingUpdate()
         end)
     end
 end
+
+----------
+-- Main --
+----------
+
+EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_ADD_ON_LOADED, AbilityIconsFramework.OnAddOnLoaded)
+
 
 ----------
 -- Main --

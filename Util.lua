@@ -1,6 +1,9 @@
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework
 
+-- Do not allow any icon pack / base-game replacement to redirect this one.
+local STAGGER_STOMP_BASE_ICON = "/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"
+
 --- Retrieves the base ability id of the skill with the specified ability id.
 --- @param slotIndex number The index of a given skill in the action bar.
 --- @param hotbarCategory number The category of the hotbar in question.
@@ -33,6 +36,7 @@ function AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if index < AbilityIconsFramework.MIN_INDEX or index > AbilityIconsFramework.MAX_INDEX then
         return nil
     end
+
     return GetSlotBoundId(slotIndex, hotbarCategory)
 end
 
@@ -59,7 +63,7 @@ local effectTranslations = {
         ["disease"] = "disease",
         ["mitigation"] = "mitigation",
         ["taunt"] = "taunt",
-        ["pull"] = "pull"
+        ["pull"] = "pull",
     },
     ["de"] = {
         ["flame"] = "flammen",
@@ -82,7 +86,7 @@ local effectTranslations = {
         ["disease"] = "seuche",
         ["mitigation"] = "mitigation",
         ["taunt"] = "verspotten",
-        ["pull"] = "ziehen"
+        ["pull"] = "ziehen",
     },
     ["fr"] = {
         ["flame"] = "flamme",
@@ -105,7 +109,7 @@ local effectTranslations = {
         ["disease"] = "maladie",
         ["mitigation"] = "absorption",
         ["taunt"] = "provocation",
-        ["pull"] = "attraction"
+        ["pull"] = "attraction",
     },
     ["es"] = {
         ["flame"] = "fuego",
@@ -128,7 +132,7 @@ local effectTranslations = {
         ["disease"] = "enfermedad",
         ["mitigation"] = "mitigación",
         ["taunt"] = "provocar",
-        ["pull"] = "atracción"
+        ["pull"] = "atracción",
     },
     ["ru"] = {
         ["flame"] = "огненный",
@@ -151,9 +155,10 @@ local effectTranslations = {
         ["disease"] = "болезнетворный",
         ["mitigation"] = "увеличение эффективности",
         ["taunt"] = "провоцирование",
-        ["pull"] = "притяжение"
-    }
+        ["pull"] = "притяжение",
+    },
 }
+
 --- Maps the given scriptName and defaultIcon to their corresponding custom icon.
 --- @param scriptName string The name of the focus script based on which the custom icon will be applied.
 --- @param defaultIcon string The path of the base game icon to be replaced with our own.
@@ -161,59 +166,59 @@ local effectTranslations = {
 function MapScriptToIcon(scriptName, defaultIcon)
     local customIcons = AbilityIconsFramework.CUSTOM_ABILITY_ICONS[defaultIcon]
     if not customIcons then
-         return nil
+        return nil
     end
 
-    -- Get the current game language
     local currentLang = GetCVar("Language.2")
-
     scriptName = string.lower(scriptName)
     local translations = effectTranslations[currentLang] or effectTranslations["en"]
-    
+
     for key, value in pairs(customIcons) do
         local translatedEffect = translations[key]
         if translatedEffect and string.find(scriptName, translatedEffect, 1, true) then
             return value
         end
     end
+
     return customIcons[AbilityIconsFramework.DEFAULT]
 end
 
 --- Calls RedirectTexture to replace an existing skill icon with a different one.
 function AbilityIconsFramework.ReplaceMismatchedIcons()
-    if AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons then
-        for key, value in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
-            -- Skip any scribing icons here
-            if AbilityIconsFramework.CUSTOM_ABILITY_ICONS[key] == nil then
+    local doReplace = AbilityIconsFramework:GetSettings().replaceMismatchedBaseIcons
+
+    for key, value in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
+        -- Never redirect the stagger stomp icon, and skip scribing icons here.
+        if key ~= STAGGER_STOMP_BASE_ICON and AbilityIconsFramework.CUSTOM_ABILITY_ICONS[key] == nil then
+            if doReplace then
                 RedirectTexture(key, value)
-            end
-        end
-    else
-        for key, _ in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
-            -- Skip any scribing icons here
-            if AbilityIconsFramework.CUSTOM_ABILITY_ICONS[key] == nil then
+            else
                 RedirectTexture(key, key)
             end
         end
     end
+
+    -- Safety: always restore it (even if something else attempted to redirect it earlier).
+    RedirectTexture(STAGGER_STOMP_BASE_ICON, STAGGER_STOMP_BASE_ICON)
 end
 
 function AbilityIconsFramework.UpdateDefaultScribingIcons()
-    EffectsList = AbilityIconsFramework.GetEffectsList()
+    local EffectsList = AbilityIconsFramework.GetEffectsList()
     if EffectsList == nil then return end
 
     for BaseIcon, IconDataList in pairs(AbilityIconsFramework.CUSTOM_ABILITY_ICONS) do
         local CustomDefaultIcon = IconDataList[EffectsList.DEFAULT]
         local CustomScribedIcon = nil
+
         if IsCraftedAbilityScribed(IconDataList[AbilityIconsFramework.SCRIBING_ID_KEY]) then
             local primaryScriptId = GetCraftedAbilityActiveScriptIds(IconDataList[AbilityIconsFramework.SCRIBING_ID_KEY])
             local scriptName = GetCraftedAbilityScriptDisplayName(primaryScriptId)
             CustomScribedIcon = MapScriptToIcon(scriptName, BaseIcon) or nil
         end
 
-        if CustomScribedIcon ~= nil and AbilityIconsFramework.GetSettings().showCustomScribeIcons then
+        if CustomScribedIcon ~= nil and AbilityIconsFramework:GetSettings().showCustomScribeIcons then
             RedirectTexture(BaseIcon, CustomScribedIcon)
-        elseif  CustomDefaultIcon ~= nil and AbilityIconsFramework.GetSettings().showCustomScribeIcons then
+        elseif CustomDefaultIcon ~= nil and AbilityIconsFramework:GetSettings().showCustomScribeIcons then
             RedirectTexture(BaseIcon, CustomDefaultIcon)
         else
             RedirectTexture(BaseIcon, BaseIcon)
@@ -221,26 +226,22 @@ function AbilityIconsFramework.UpdateDefaultScribingIcons()
     end
 end
 
--- Custom iteration function going over icon pack data in their load order (since lua is a smoking piece of a horse cock and cant even sort a table).
--- Bro like literally what the fucking castrated pile of hot piss is this "language"
--- Absolute dusgusting fucking trash
-local packSortFunc = function(t,a,b) return t[b].loadOrder < t[a].loadOrder end
+-- Custom iteration function going over icon pack data in their load order.
+local packSortFunc = function(t, a, b) return t[b].loadOrder < t[a].loadOrder end
+
 function AbilityIconsFramework.packPairs()
     local settings = AbilityIconsFramework:GetSettings()
-    -- collect the keys
+
     local keys = {}
     for k, _ in pairs(settings.iconPacksData) do
-        -- Iterare only over currently enabled icon packs
+        -- Iterate only over currently enabled icon packs
         if AbilityIconsFramework.ENABLED_ICON_PACKS[k] ~= nil then
-            keys[#keys+1] = k
+            keys[#keys + 1] = k
         end
     end
 
-    -- if order function given, sort by it by passing the table and keys a, b,
-    -- otherwise just sort the keys
-    table.sort(keys, function(a,b) return packSortFunc(settings.iconPacksData, a, b) end)
+    table.sort(keys, function(a, b) return packSortFunc(settings.iconPacksData, a, b) end)
 
-    -- return the iterator function
     local i = 0
     return function()
         i = i + 1
@@ -254,4 +255,7 @@ function AbilityIconsFramework.ResetAllTextureRedirects()
     for key, _ in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
         RedirectTexture(key, key)
     end
+
+    -- Extra safety
+    RedirectTexture(STAGGER_STOMP_BASE_ICON, STAGGER_STOMP_BASE_ICON)
 end
