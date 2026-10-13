@@ -1,75 +1,58 @@
 --- @class (partial) AbilityIconsFramework
-local AbilityIconsFramework = AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework or {}
 
---- Applies the active skill style for the skill found in the specified slotIndex
---- to the corresponding slot on both the active and inactive action bars.
---- @param slotIndex number The index of a given skill in the action bar.
---- @param hotbarCategory number The category of the hotbar in question.
-function AbilityIconsFramework.ApplySkillStyleInactiveFAB(slotIndex, hotbarCategory)
-    -- NOTE: Stagger icon override removed on purpose.
-
-    local icon =
-        AbilityIconsFramework.GetSkillStyleIcon(slotIndex, hotbarCategory)
-        or AbilityIconsFramework.GetCustomAbilityIcon(slotIndex, hotbarCategory)
-
-    if icon then
-        -- Apply to the inactive bar
-        local inactiveSlotIndex = slotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET
-        AbilityIconsFramework.ReplaceAbilityBarIcon(inactiveSlotIndex, hotbarCategory, icon)
-
-        -- Apply to the active bar
-        AbilityIconsFramework.ReplaceAbilityBarIcon(slotIndex, hotbarCategory, icon)
-    end
-end
-
---- Decides whether icon replacement should take place or not. The only reason not to perform it, is if we've been asked to draw
---- the icons of the inactive action bar and the inactive weapon is a destruction staff.
---- @param hotbarCategory number The category of the hotbar in question.
---- @return boolean skipIconReplacement True if AbilityIconsFramework should not perform icon replacement. False otherwise.
-function AbilityIconsFramework.SkipSkillIconReplacement(hotbarCategory)
-    local result = false
-    local activeHotbarCategory = GetActiveHotbarCategory()
-    local inactiveWeapon = nil
-
-    if activeHotbarCategory ~= hotbarCategory then
-        if hotbarCategory == HOTBAR_CATEGORY_BACKUP then
-            inactiveWeapon = GetItemLinkWeaponType(GetItemLink(BAG_WORN, EQUIP_SLOT_BACKUP_MAIN, LINK_STYLE_DEFAULT))
-        else
-            inactiveWeapon = GetItemLinkWeaponType(GetItemLink(BAG_WORN, EQUIP_SLOT_MAIN_HAND, LINK_STYLE_DEFAULT))
-        end
-    end
-
-    if inactiveWeapon == WEAPONTYPE_FIRE_STAFF
-        or inactiveWeapon == WEAPONTYPE_FROST_STAFF
-        or inactiveWeapon == WEAPONTYPE_LIGHTNING_STAFF
-    then
-        result = true
-    end
-
-    return result
-end
-
---- Retrieves the inactive action bar button corresponding to the specified slotIndex, provided that
---- FancyActionBar+ is available.
---- @param slotIndex number The index of a given skill in the action bar.
---- @return any btn The inactive bar button correspondign to the specified slotIndex.
+--- Retrieves the inactive action bar button corresponding to the specified slotIndex,
+--- compatible with both FancyActionBar+ and classic FancyActionBar.
+--- @param slotIndex number The slot index (3-8) or backbar physical index (23-28).
+--- @return any btn The inactive bar button control, or nil.
 function AbilityIconsFramework.GetInactiveBarButtonFAB(slotIndex)
-    local FAB = AbilityIconsFramework.GetFAB()
+    if not FancyActionBar then return nil end
 
-    if FAB
-        and slotIndex >= AbilityIconsFramework.SLOT_INDEX_OFFSET + AbilityIconsFramework.MIN_INDEX
-        and slotIndex <= AbilityIconsFramework.SLOT_INDEX_OFFSET + AbilityIconsFramework.MAX_INDEX
-    then
-        if FAB.buttons then
-            return FAB.buttons[slotIndex]
+    local physicalIndex = tonumber(slotIndex) or 0
+    if physicalIndex >= AbilityIconsFramework.MIN_INDEX and physicalIndex <= AbilityIconsFramework.MAX_INDEX then
+        physicalIndex = physicalIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET
+    end
+
+    -- FancyActionBar+ provides GetActionButton(physicalIndex)
+    if FancyActionBar.GetActionButton then
+        return FancyActionBar.GetActionButton(physicalIndex)
+    -- Classic FancyActionBar stores backbar buttons in FancyActionBar.buttons
+    elseif FancyActionBar.buttons then
+        return FancyActionBar.buttons[physicalIndex]
+    end
+
+    return nil
+end
+
+--- Updates the texture and state of an inactive/backbar action button for FancyActionBar or FancyActionBar+.
+--- @param slotIndex number The ability slot index (3-8).
+--- @param inactiveHotbarCategory number The inactive hotbar category.
+function AbilityIconsFramework.UpdateInactiveBarButtonFAB(slotIndex, inactiveHotbarCategory)
+    local btn = AbilityIconsFramework.GetInactiveBarButtonFAB(slotIndex)
+    if not btn then return end
+
+    -- NOTE: Never call btn:HandleSlotChanged() on backbar buttons!
+    -- Backbar buttons in FancyActionBar/FancyActionBar+ use physical indices (23-28).
+    -- Calling ESO's ActionButton:HandleSlotChanged() on slot > 8 causes ESO's engine
+    -- to evaluate GetSlotType() as ACTION_TYPE_NOTHING and run self:Clear(), wiping
+    -- the button texture and setting it hidden.
+    if btn.icon and btn.icon.SetTexture then
+        local boundId = nil
+        if FancyActionBar.GetSlotTrueBoundId then
+            boundId = FancyActionBar.GetSlotTrueBoundId(slotIndex, inactiveHotbarCategory)
+        elseif FancyActionBar.GetSlotBoundAbilityId then
+            boundId = FancyActionBar.GetSlotBoundAbilityId(slotIndex, inactiveHotbarCategory)
         else
-            if FAB.GetActionButton then
-                return FAB.GetActionButton(slotIndex)
-            else
-                return nil
-            end
+            boundId = GetSlotBoundId(slotIndex, inactiveHotbarCategory)
         end
-    else
-        return nil
+        if boundId and boundId > 0 then
+            local icon = GetAbilityIcon(boundId)
+            if icon and icon ~= "" then
+                btn.icon:SetTexture(icon)
+                btn.icon:SetHidden(false)
+            end
+        else
+            btn.icon:SetHidden(true)
+        end
     end
 end

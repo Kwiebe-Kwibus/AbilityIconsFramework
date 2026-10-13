@@ -1,23 +1,62 @@
 --- @class (partial) AbilityIconsFramework
-local AbilityIconsFramework = AbilityIconsFramework
+local AbilityIconsFramework = AbilityIconsFramework or {}
 
---- Creates slash commands to be used for debugging.
+local function PrintMsg(text)
+    d("[AIF] " .. tostring(text))
+end
+
+--- Creates slash commands to be used for debugging and options.
 function AbilityIconsFramework.CreateSlashCommands()
+    AbilityIconsFramework.CreateMainAifCommand()
     AbilityIconsFramework.CreateGetAbilityDetailsCommand()
     AbilityIconsFramework.CreateGetIconsCommand()
-    AbilityIconsFramework.CreteGetSavedVarsCommand()
+    AbilityIconsFramework.CreateGetSavedVarsCommand()
     AbilityIconsFramework.CreateSetOptionGlobalIconsCommand()
-    AbilityIconsFramework.CreateSetOptionSkillStyleIconsCommand()
     AbilityIconsFramework.CreateSetOptionCustomIconsCommand()
     AbilityIconsFramework.CreateSetOptionMismatchedIconsCommand()
 end
 
---- Creates the /getabilitydetails command, to retrieve details about the ability found at a specified slot.
-function AbilityIconsFramework.CreateGetAbilityDetailsCommand()
-    SLASH_COMMANDS["/getabilitydetails"] = function(strInput)
+--- Unified command router for /aif
+function AbilityIconsFramework.CreateMainAifCommand()
+    SLASH_COMMANDS["/aif"] = function(strInput)
         local params = {}
-        for word in strInput:gmatch("%w+") do table.insert(params, word) end
-        local skillIndex = params[1]
+        for word in (strInput or ""):gmatch("%S+") do
+            table.insert(params, word)
+        end
+
+        local subCmd = string.lower(params[1] or "")
+        if subCmd == "details" then
+            local rest = table.concat(params, " ", 2)
+            if SLASH_COMMANDS["/getabilitydetails"] then
+                SLASH_COMMANDS["/getabilitydetails"](rest)
+            end
+        elseif subCmd == "icons" then
+            local rest = table.concat(params, " ", 2)
+            if SLASH_COMMANDS["/geticons"] then
+                SLASH_COMMANDS["/geticons"](rest)
+            end
+        elseif subCmd == "vars" or subCmd == "savedvars" then
+            if SLASH_COMMANDS["/getsavedvars"] then
+                SLASH_COMMANDS["/getsavedvars"]()
+            end
+        elseif subCmd == "reload" or subCmd == "rl" then
+            ReloadUI("ingame")
+        else
+            PrintMsg(GetString(SI_AIF_COMMANDS_HEADER))
+            PrintMsg(GetString(SI_AIF_COMMAND_DETAILS))
+            PrintMsg(GetString(SI_AIF_COMMAND_ICONS))
+            PrintMsg(GetString(SI_AIF_COMMAND_VARS))
+            PrintMsg(GetString(SI_AIF_COMMAND_SETTINGS))
+        end
+    end
+end
+
+--- Creates the /getabilitydetails (and /aif_details) command
+function AbilityIconsFramework.CreateGetAbilityDetailsCommand()
+    local handler = function(strInput)
+        local params = {}
+        for word in (strInput or ""):gmatch("%w+") do table.insert(params, word) end
+        local skillIndex = tonumber(params[1]) or 3
         local inactive = params[2] or "0"
 
         local hotbarCategory = GetActiveHotbarCategory()
@@ -27,30 +66,34 @@ function AbilityIconsFramework.CreateGetAbilityDetailsCommand()
         end
 
         local baseAbilityId = AbilityIconsFramework.GetBaseAbilityId(skillIndex, hotbarCategory)
-        CHAT_SYSTEM:AddMessage("Base Ability ID: " .. (baseAbilityId or -1))
+        PrintMsg("Base Ability ID: " .. tostring(baseAbilityId or -1))
         local abilityId = AbilityIconsFramework.GetAbilityId(skillIndex, hotbarCategory)
-        CHAT_SYSTEM:AddMessage("Ability ID: " .. (abilityId or -1))
+        PrintMsg("Ability ID: " .. tostring(abilityId or -1))
 
-        local primaryScriptId, secondaryScriptId, tertiaryScriptId = GetCraftedAbilityActiveScriptIds(abilityId)
-        local scriptLink = ""
-        if primaryScriptId ~= 0 or secondaryScriptId ~= 0 or tertiaryScriptId ~= 0 then
-            CHAT_SYSTEM:AddMessage("Focus Script: " .. GetCraftedAbilityScriptDisplayName(primaryScriptId) .. "(" .. primaryScriptId .. ")")
-            CHAT_SYSTEM:AddMessage("Signature Script: " .. GetCraftedAbilityScriptDisplayName(secondaryScriptId) .. "(" .. secondaryScriptId .. ")")
-            CHAT_SYSTEM:AddMessage("Affix Script: " .. GetCraftedAbilityScriptDisplayName(tertiaryScriptId) .. "(" .. tertiaryScriptId .. ")")
-            if primaryScriptId ~= 0 and secondaryScriptId ~= 0 and tertiaryScriptId ~= 0 then
-                scriptLink = ZO_LinkHandler_CreateChatLink(GetCraftedAbilityLink, abilityId, primaryScriptId, secondaryScriptId, tertiaryScriptId)
-                CHAT_SYSTEM:AddMessage("Scribed Skill Link: " .. scriptLink)
+        if abilityId and abilityId > 0 then
+            local primaryScriptId, secondaryScriptId, tertiaryScriptId = GetCraftedAbilityActiveScriptIds(abilityId)
+            if primaryScriptId ~= 0 or secondaryScriptId ~= 0 or tertiaryScriptId ~= 0 then
+                PrintMsg("Focus Script: " .. GetCraftedAbilityScriptDisplayName(primaryScriptId) .. " (" .. primaryScriptId .. ")")
+                PrintMsg("Signature Script: " .. GetCraftedAbilityScriptDisplayName(secondaryScriptId) .. " (" .. secondaryScriptId .. ")")
+                PrintMsg("Affix Script: " .. GetCraftedAbilityScriptDisplayName(tertiaryScriptId) .. " (" .. tertiaryScriptId .. ")")
+                if primaryScriptId ~= 0 and secondaryScriptId ~= 0 and tertiaryScriptId ~= 0 then
+                    local scriptLink = ZO_LinkHandler_CreateChatLink(GetCraftedAbilityLink, abilityId, primaryScriptId, secondaryScriptId, tertiaryScriptId)
+                    PrintMsg("Scribed Skill Link: " .. scriptLink)
+                end
             end
         end
     end
+
+    SLASH_COMMANDS["/getabilitydetails"] = handler
+    SLASH_COMMANDS["/aif_details"] = handler
 end
 
---- Creates the /geticons command, to retrieve available icons for the skill found at the specified slot.
+--- Creates the /geticons (and /aif_icons) command, safely reporting icon paths without crashing
 function AbilityIconsFramework.CreateGetIconsCommand()
-    SLASH_COMMANDS["/geticons"] = function(strInput)
+    local handler = function(strInput)
         local params = {}
-        for word in strInput:gmatch("%w+") do table.insert(params, word) end
-        local skillIndex = params[1]
+        for word in (strInput or ""):gmatch("%w+") do table.insert(params, word) end
+        local skillIndex = tonumber(params[1]) or 3
         local inactive = params[2] or "0"
 
         local hotbarCategory = GetActiveHotbarCategory()
@@ -59,94 +102,121 @@ function AbilityIconsFramework.CreateGetIconsCommand()
                              and HOTBAR_CATEGORY_BACKUP or HOTBAR_CATEGORY_PRIMARY
         end
 
-        local collectibleIcon = AbilityIconsFramework.GetSkillStyleIcon(skillIndex, hotbarCategory)
-        CHAT_SYSTEM:AddMessage("Collectible Icon: " .. (collectibleIcon or "nil"))
-        local customIcon = AbilityIconsFramework.GetCustomAbilityIcon(skillIndex, hotbarCategory)
-        CHAT_SYSTEM:AddMessage("Custom Icon: " .. (customIcon or "nil"))
-        local abilityIcon = AbilityIconsFramework.GetDefaultAbilityIcon(skillIndex, hotbarCategory)
-        CHAT_SYSTEM:AddMessage("Default Icon: " .. (abilityIcon or "nil"))
+        local abilityId = AbilityIconsFramework.GetAbilityId(skillIndex, hotbarCategory)
+        if not abilityId or abilityId <= 0 then
+            PrintMsg(zo_strformat(GetString(SI_AIF_SLOT_EMPTY), skillIndex, hotbarCategory))
+            return
+        end
+
+        local abilityName = GetAbilityName(abilityId)
+        local baseTexture = GetAbilityIcon(abilityId)
+        PrintMsg("Slot " .. tostring(skillIndex) .. ": " .. tostring(abilityName) .. " (" .. tostring(abilityId) .. ")")
+        PrintMsg("  Base Texture: " .. tostring(baseTexture))
+
+        local redirectedTexture = AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[baseTexture]
+        if redirectedTexture then
+            PrintMsg("  Redirected to: " .. tostring(redirectedTexture))
+        else
+            PrintMsg(GetString(SI_AIF_SLOT_REDIRECT_NONE))
+        end
     end
+
+    SLASH_COMMANDS["/geticons"] = handler
+    SLASH_COMMANDS["/aif_icons"] = handler
 end
 
---- Creates the /getsavedvars command, to check the contents of the addon's saved variables.
-function AbilityIconsFramework.CreteGetSavedVarsCommand()
-    SLASH_COMMANDS["/getsavedvars"] = function ()
-        CHAT_SYSTEM:AddMessage("----------------------------------")
+--- Creates the /getsavedvars (and /aif_vars) command with nil-safe checks
+function AbilityIconsFramework.CreateGetSavedVarsCommand()
+    local handler = function()
+        PrintMsg("----------------------------------")
+        local displayName = GetDisplayName()
 
-        local sv1 = AbilityIconsFramework_SavedVariables["Default"][GetDisplayName()]["$AccountWide"]
-        CHAT_SYSTEM:AddMessage("AbilityIconsFramework_SavedVariables:")
-        for key, value in pairs(sv1) do
-            CHAT_SYSTEM:AddMessage("[" .. key .. "] -> " .. tostring(value))
+        if AbilityIconsFramework_SavedVariables and AbilityIconsFramework_SavedVariables["Default"] and AbilityIconsFramework_SavedVariables["Default"][displayName] then
+            local svAccount = AbilityIconsFramework_SavedVariables["Default"][displayName]["$AccountWide"]
+            if svAccount then
+                PrintMsg("AbilityIconsFramework_SavedVariables ($AccountWide):")
+                for key, value in pairs(svAccount) do
+                    if type(value) == "table" then
+                        PrintMsg("  [" .. tostring(key) .. "] -> (table)")
+                    else
+                        PrintMsg("  [" .. tostring(key) .. "] -> " .. tostring(value))
+                    end
+                end
+            end
+
+            local charId = GetCurrentCharacterId()
+            local svChar = AbilityIconsFramework_SavedVariables["Default"][displayName][charId]
+            if svChar then
+                PrintMsg("AbilityIconsFramework_SavedVariables (Character " .. tostring(charId) .. "):")
+                for key, value in pairs(svChar) do
+                    if type(value) == "table" then
+                        PrintMsg("  [" .. tostring(key) .. "] -> (table)")
+                    else
+                        PrintMsg("  [" .. tostring(key) .. "] -> " .. tostring(value))
+                    end
+                end
+            end
+        else
+            PrintMsg("SavedVariables have not been written to disk yet.")
         end
 
-        CHAT_SYSTEM:AddMessage("----------------------------------")
-
-        local sv2 = AbilityIconsFramework_Globals["Default"][GetDisplayName()]["$AccountWide"]["global_settings"]
-        CHAT_SYSTEM:AddMessage("AbilityIconsFramework_Globals:")
-        for key, value in pairs(sv2) do
-            CHAT_SYSTEM:AddMessage("[" .. key .. "] -> " .. tostring(value))
-        end
-
-        CHAT_SYSTEM:AddMessage("----------------------------------")
-
-        local sv3 = AbilityIconsFramework_Settings["Default"][GetDisplayName()][GetCurrentCharacterId()]["character_settings"]
-        CHAT_SYSTEM:AddMessage("AbilityIconsFramework_Settings:")
-        for key, value in pairs(sv3) do
-            CHAT_SYSTEM:AddMessage("[" .. key .. "] -> " .. tostring(value))
-        end
-
-        CHAT_SYSTEM:AddMessage("----------------------------------")
+        PrintMsg("----------------------------------")
     end
+
+    SLASH_COMMANDS["/getsavedvars"] = handler
+    SLASH_COMMANDS["/aif_vars"] = handler
 end
 
---- Creates the /setoptionglobalicons command, to change the display setting for global (Account Wide) Icons
+--- Backward compatibility helper for typo in previous versions
+AbilityIconsFramework.CreteGetSavedVarsCommand = AbilityIconsFramework.CreateGetSavedVarsCommand
+
+--- Creates the /setoptionglobalicons command
 function AbilityIconsFramework.CreateSetOptionGlobalIconsCommand()
-    SLASH_COMMANDS["/setoptionglobalicons"] = function(option)
-        if string.lower(option) == "false" or option == "0" or string.lower(option) == "off" then
+    local handler = function(option)
+        local opt = string.lower(option or "")
+        if opt == "false" or opt == "0" or opt == "off" then
             AbilityIconsFramework.SetOptionGlobalIcons(false)
-            CHAT_SYSTEM:AddMessage("Glocal (Account Wide) Icons are now OFF")
-        elseif string.lower(option) == "true" or option == "1" or string.lower(option) == "on" then
+            PrintMsg("Global (Account Wide) Icons are now OFF")
+        elseif opt == "true" or opt == "1" or opt == "on" then
             AbilityIconsFramework.SetOptionGlobalIcons(true)
-            CHAT_SYSTEM:AddMessage("Glocal (Account Wide) Icons are now ON")
+            PrintMsg("Global (Account Wide) Icons are now ON")
         end
     end
+
+    SLASH_COMMANDS["/setoptionglobalicons"] = handler
+    SLASH_COMMANDS["/aif_globalicons"] = handler
 end
 
---- Creates the /setoptionskillstyleicons command, to change the display setting for Skill Style Icons
-function AbilityIconsFramework.CreateSetOptionSkillStyleIconsCommand()
-    SLASH_COMMANDS["/setoptionskillstyleicons"] = function(option)
-        if string.lower(option) == "false" or option == "0" or string.lower(option) == "off" then
-            AbilityIconsFramework.SetOptionSkillStyleIcons(false)
-            CHAT_SYSTEM:AddMessage("Skill Style Icons are now OFF")
-        elseif string.lower(option) == "true" or option == "1" or string.lower(option) == "on" then
-            AbilityIconsFramework.SetOptionSkillStyleIcons(true)
-            CHAT_SYSTEM:AddMessage("Skill Style Icons are now ON")
-        end
-    end
-end
-
---- Creates the /setoptioncustomicons command, to change the display setting for Custom Scribed Ability Icons
+--- Creates the /setoptioncustomicons command
 function AbilityIconsFramework.CreateSetOptionCustomIconsCommand()
-    SLASH_COMMANDS["/setoptioncustomicons"] = function(option)
-        if string.lower(option) == "false" or option == "0" or string.lower(option) == "off" then
+    local handler = function(option)
+        local opt = string.lower(option or "")
+        if opt == "false" or opt == "0" or opt == "off" then
             AbilityIconsFramework.SetOptionCustomIcons(false)
-            CHAT_SYSTEM:AddMessage("Custom Scribed Ability Icons are now OFF")
-        elseif string.lower(option) == "true" or option == "1" or string.lower(option) == "on" then
+            PrintMsg("Custom Scribed Ability Icons are now OFF")
+        elseif opt == "true" or opt == "1" or opt == "on" then
             AbilityIconsFramework.SetOptionCustomIcons(true)
-            CHAT_SYSTEM:AddMessage("Custom Scribed Ability Icons are now ON")
+            PrintMsg("Custom Scribed Ability Icons are now ON")
         end
     end
+
+    SLASH_COMMANDS["/setoptioncustomicons"] = handler
+    SLASH_COMMANDS["/aif_customicons"] = handler
 end
 
---- Creates the /setoptionmismatchedicons command, to change the display setting for Mismatched Skill Icon replacements
+--- Creates the /setoptionmismatchedicons command
 function AbilityIconsFramework.CreateSetOptionMismatchedIconsCommand()
-    SLASH_COMMANDS["/setoptionmismatchedicons"] = function(option)
-        if string.lower(option) == "false" or option == "0" or string.lower(option) == "off" then
+    local handler = function(option)
+        local opt = string.lower(option or "")
+        if opt == "false" or opt == "0" or opt == "off" then
             AbilityIconsFramework.SetOptionMismatchedIcons(false)
-            CHAT_SYSTEM:AddMessage("Mismatched Skill Icon replacements are now OFF")
-        elseif string.lower(option) == "true" or option == "1" or string.lower(option) == "on" then
+            PrintMsg("Mismatched Skill Icon replacements are now OFF")
+        elseif opt == "true" or opt == "1" or opt == "on" then
             AbilityIconsFramework.SetOptionMismatchedIcons(true)
-            CHAT_SYSTEM:AddMessage("Mismatched Skill Icon replacements are now ON")
+            PrintMsg("Mismatched Skill Icon replacements are now ON")
         end
     end
+
+    SLASH_COMMANDS["/setoptionmismatchedicons"] = handler
+    SLASH_COMMANDS["/aif_mismatchedicons"] = handler
 end

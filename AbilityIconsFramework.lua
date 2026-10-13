@@ -1,34 +1,26 @@
-AbilityIconsFramework = {}
-
 --- @class (partial) AbilityIconsFramework
+AbilityIconsFramework = AbilityIconsFramework or {}
+
 local AbilityIconsFramework = AbilityIconsFramework
 
 ------------------
 -- Declarations --
 ------------------
 
-local ADDON_VERSION = "140"
+local ADDON_VERSION = "2.0"
 
 AbilityIconsFramework.version = ADDON_VERSION
 AbilityIconsFramework.name = "AbilityIconsFramework"
-
--- If icon packs call AddCustomIconPack before settings exist, queue them here.
-AbilityIconsFramework._earlyIconPacks = AbilityIconsFramework._earlyIconPacks or {}
 
 ---------------
 -- Functions --
 ---------------
 
-local function ProcessEarlyIconPacks()
-    if not AbilityIconsFramework._earlyIconPacks then return end
-    if AbilityIconsFramework.GetSettings == nil then return end
-
-    for packDir, packIcons in pairs(AbilityIconsFramework._earlyIconPacks) do
-        -- Re-run AddCustomIconPack now that settings exist
-        AbilityIconsFramework.AddCustomIconPack(packDir, packIcons)
+--- Applies the vAS 64x64 dimension constraints to the combat tips icon (permanently enabled).
+function AbilityIconsFramework.ApplyFixVas()
+    if ZO_ActiveCombatTipsTipIcon then
+        ZO_ActiveCombatTipsTipIcon:SetDimensionConstraints(64, 64, 64, 64)
     end
-
-    AbilityIconsFramework._earlyIconPacks = {}
 end
 
 --- Initializes the saved variables and replaces mismatched base skill icons, if the saved variables dictate it.
@@ -36,17 +28,20 @@ function AbilityIconsFramework.Initialize()
     AbilityIconsFramework.ResetAllTextureRedirects() -- reset in case we had some icon pack disabled
 
     AbilityIconsFramework.InitializeSettings()
-    ProcessEarlyIconPacks()
+    AbilityIconsFramework.ProcessEarlyIconPacks()
 
-    AbilityIconsFramework.InitializeAutoConfirm()
+    AbilityIconsFramework.ApplyFixVas()
+
+    -- Normalize load orders and build sort entries before applying icon replacements
+    AbilityIconsFramework.InitializeSortOrderEntries()
 
     AbilityIconsFramework.GenerateReplacementLists()
     AbilityIconsFramework.ReplaceMismatchedIcons()
     AbilityIconsFramework.UpdateDefaultScribingIcons()
 
-    AbilityIconsFramework.InitializeSortOrderEntries()
-
-    AbilityIconsFramework:InitializeHeroismPotions()
+    if AbilityIconsFramework.InitializeHeroismPotions then
+        AbilityIconsFramework.InitializeHeroismPotions()
+    end
 
     AbilityIconsFramework.UpdateAllSlots()
 
@@ -56,121 +51,42 @@ function AbilityIconsFramework.Initialize()
 
     -- Already has UpdateAllSlots() inside it
     AbilityIconsFramework.OnScribingUpdate()
-end
 
-function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
-    if PackDirectory == nil or PackIcons == nil or #PackIcons == 0 then
-        return
-    end
-
-    -- Always register as enabled
-    AbilityIconsFramework.ENABLED_ICON_PACKS[PackDirectory] = PackIcons
-
-    -- Settings might not exist yet (if another addon calls us very early)
-    if AbilityIconsFramework.GetSettings == nil then
-        AbilityIconsFramework._earlyIconPacks[PackDirectory] = PackIcons
-        return
-    end
-
-    local settings = AbilityIconsFramework:GetSettings()
-    if settings == nil then
-        AbilityIconsFramework._earlyIconPacks[PackDirectory] = PackIcons
-        return
-    end
-
-    -- If we already had this pack's info saved we can exit
-    if settings.iconPacksData[PackDirectory] ~= nil then
-        return
-    end
-
-    -- Get pack's addon folder name
-    local packName = PackDirectory:match("/(.*)/")
-    if packName then
-        packName = packName:match("(.*)/") or packName
-    else
-        packName = PackDirectory
-    end
-
-    local highestOrder = 0
-    if AbilityIconsFramework.GetHighestIconPackOrder ~= nil then
-        highestOrder = AbilityIconsFramework.GetHighestIconPackOrder()
-    end
-
-    settings.iconPacksData[PackDirectory] = {
-        packDisplayName = packName,
-        loadOrder = highestOrder + 1,
-        packExampleTexture = PackDirectory .. PackIcons[1],
-    }
-end
-
---- Initializes a LazyConfirm-like auto-fill for confirmation dialogs (type CONFIRM/DELETE/etc).
-function AbilityIconsFramework.InitializeAutoConfirm()
-    if AbilityIconsFramework._autoConfirmHooked then return end
-    AbilityIconsFramework._autoConfirmHooked = true
-
-    local function hook(...)
-        zo_callLater(function()
-            if AbilityIconsFramework.GetSettings == nil then return end
-            local settings = AbilityIconsFramework:GetSettings()
-            if settings == nil or not settings.autoTypeConfirm then return end
-
-            if ZO_Dialog1 and ZO_Dialog1.textParams and ZO_Dialog1.textParams.mainTextParams then
-                for _, v in pairs(ZO_Dialog1.textParams.mainTextParams) do
-                    if type(v) == "string" and v == string.upper(v) then
-                        if ZO_Dialog1EditBox and ZO_Dialog1EditBox.SetText then
-                            ZO_Dialog1EditBox:SetText(v)
-                            ZO_Dialog1EditBox:LoseFocus()
-                        end
-                    end
-                end
-            end
-        end, 10)
-    end
-
-    ZO_PreHook("ZO_Dialogs_ShowDialog", hook)
+    AbilityIconsFramework.isInitialized = true
 end
 
 ------------
 -- Events --
 ------------
 
-function AbilityIconsFramework.OnScribingUpdate()
-    if AbilityIconsFramework:GetSettings().showCustomScribeIcons then
-        AbilityIconsFramework.SetOptionCustomIcons(false)
-        AbilityIconsFramework.SetOptionCustomIcons(true)
-    end
-
-    AbilityIconsFramework.UpdateAllSlots()
-end
-
 function AbilityIconsFramework.HandleSlotChanged(actionSlotIndex, hotbarCategory)
     local btn = ZO_ActionBar_GetButton(actionSlotIndex, hotbarCategory)
-    if btn then
-        btn:HandleSlotChanged()
+    if btn and btn.HandleSlotChanged then
+        btn:HandleSlotChanged(hotbarCategory)
     end
 end
 
--- This function not only triggers action bar icons update, but has a side-effect of force-updating any other pending texture redirects
+-- Force-updates action bar icons across Vanilla UI, FancyActionBar+, and FancyActionBar
 function AbilityIconsFramework.UpdateAllSlots()
     local activeHotbarCategory = GetActiveHotbarCategory()
     local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or HOTBAR_CATEGORY_BACKUP
 
+    -- 1. Base Game Action Bars (Vanilla UI & active bar of FancyActionBar / FancyActionBar+)
     for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
-        -- Update base game action bars
         AbilityIconsFramework.HandleSlotChanged(slotIndex, activeHotbarCategory)
         AbilityIconsFramework.HandleSlotChanged(slotIndex, inactiveHotbarCategory)
+    end
 
-        -- If we got FAB, update FAB back bar slots separately, since those are addon generated duplicates of the base game back bar
-        if FancyActionBar ~= nil then
-            local inactiveAbilityId = GetSlotBoundId(slotIndex, inactiveHotbarCategory)
-            local abilityType = GetSlotType(slotIndex, inactiveHotbarCategory)
-            if abilityType == ACTION_TYPE_CRAFTED_ABILITY then
-                inactiveAbilityId = GetAbilityIdForCraftedAbilityId(inactiveAbilityId)
+    -- 2. FancyActionBar+ & FancyActionBar inactive/backbar buttons compatibility
+    if FancyActionBar then
+        if type(FancyActionBar.PaintAbilityOverlays) == "function" then
+            FancyActionBar.PaintAbilityOverlays(nil, activeHotbarCategory)
+            if type(FancyActionBar.RefreshActiveBarIconVisuals) == "function" then
+                FancyActionBar.RefreshActiveBarIconVisuals()
             end
-
-            local btnBack = FancyActionBar.GetActionButton(slotIndex + AbilityIconsFramework.SLOT_INDEX_OFFSET)
-            if btnBack ~= nil then
-                btnBack.icon:SetTexture(GetAbilityIcon(inactiveAbilityId))
+        elseif AbilityIconsFramework.UpdateInactiveBarButtonFAB then
+            for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
+                AbilityIconsFramework.UpdateInactiveBarButtonFAB(slotIndex, inactiveHotbarCategory)
             end
         end
     end
@@ -185,24 +101,30 @@ function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
 
         AbilityIconsFramework.CreateSlashCommands()
 
-        -- Slight delay to let icon pack changes to be applied first
+        -- Slight delay to let any dependent icon packs finish registering
         zo_callLater(function()
             AbilityIconsFramework.Initialize()
         end, 250)
 
-        -- Event firing when scribing craft completes - so we might want to update scribing icons
+        -- Ensure slots are refreshed once player enters world and UI is fully instantiated
+        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED, function()
+            EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED)
+            AbilityIconsFramework.UpdateAllSlots()
+            AbilityIconsFramework.ApplyFixVas()
+
+            -- Deferred update to ensure third-party action bar addons (like FancyActionBar+)
+            -- have fully completed their first zone layout
+            zo_callLater(function()
+                AbilityIconsFramework.UpdateAllSlots()
+            end, 100)
+        end)
+
+        -- Event firing when scribing craft completes - so we update scribing icons
         CALLBACK_MANAGER:RegisterCallback("CraftingAnimationsStopped", function()
             AbilityIconsFramework.OnScribingUpdate()
         end)
     end
 end
-
-----------
--- Main --
-----------
-
-EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name, EVENT_ADD_ON_LOADED, AbilityIconsFramework.OnAddOnLoaded)
-
 
 ----------
 -- Main --
