@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Icon Packs & Load Order Priority
+-- Manages external icon packs, priority sorting, tie-breakers, and live texture overrides.
+-- Guarantees that when two icon packs fight over the same skill, the higher-priority pack wins every time.
 --- @class (partial) AbilityIconsFramework
 AbilityIconsFramework = AbilityIconsFramework or {}
 local AbilityIconsFramework = AbilityIconsFramework
@@ -8,13 +11,13 @@ local AbilityIconsFramework = AbilityIconsFramework
 
 -- If icon packs call AddCustomIconPack before settings exist, queue them here.
 AbilityIconsFramework._earlyIconPacks = AbilityIconsFramework._earlyIconPacks or {}
-
 AbilityIconsFramework.packSortOrderEntries = AbilityIconsFramework.packSortOrderEntries or {}
 
 ---------------------------
 -- Early Pack Processing --
 ---------------------------
 
+-- Flushes icon packs that registered before our saved variables were initialized
 function AbilityIconsFramework.ProcessEarlyIconPacks()
     if not AbilityIconsFramework._earlyIconPacks then return end
     if AbilityIconsFramework.GetSettings == nil then return end
@@ -36,15 +39,18 @@ end
 -- Registration Function --
 ---------------------------
 
+--- External API: other addons call this function to register their custom texture packs.
+--- @param PackDirectory string The root path to the icon pack (e.g. "/MyPackAddon/icons/")
+--- @param PackIcons table Array of relative filenames inside the pack directory
 function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
     if PackDirectory == nil or PackIcons == nil or #PackIcons == 0 then
         return
     end
 
-    -- Always register as enabled
+    -- Always mark pack as active in memory
     AbilityIconsFramework.ENABLED_ICON_PACKS[PackDirectory] = PackIcons
 
-    -- Settings might not exist yet (if another addon calls us very early)
+    -- Settings might not exist yet if another addon wakes up before AIF
     if AbilityIconsFramework.GetSettings == nil then
         AbilityIconsFramework._earlyIconPacks = AbilityIconsFramework._earlyIconPacks or {}
         AbilityIconsFramework._earlyIconPacks[PackDirectory] = PackIcons
@@ -58,7 +64,7 @@ function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
         return
     end
 
-    -- Get pack's addon folder name
+    -- Extract folder name for user-friendly display in the settings menu
     local packName = PackDirectory:match("/(.*)/")
     if packName then
         packName = packName:match("(.*)/") or packName
@@ -66,7 +72,7 @@ function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
         packName = PackDirectory
     end
 
-    -- If we already had this pack's info saved, ensure its fields are valid
+    -- If this pack already existed in SavedVariables, preserve its custom load order
     if settings.iconPacksData[PackDirectory] ~= nil then
         local data = settings.iconPacksData[PackDirectory]
         if data.packDisplayName == nil or data.packDisplayName == "" then
@@ -90,6 +96,7 @@ function AbilityIconsFramework.AddCustomIconPack(PackDirectory, PackIcons)
         highestOrder = AbilityIconsFramework.GetHighestIconPackOrder()
     end
 
+    -- Brand new pack: assign it the next available load order at the bottom
     settings.iconPacksData[PackDirectory] = {
         packDisplayName = packName,
         loadOrder = highestOrder + 1,
@@ -119,6 +126,7 @@ function AbilityIconsFramework.GetHighestIconPackOrder()
     return max
 end
 
+-- Ascending sort comparator for LibAddonMenu reordering list (1 = top priority)
 local function packSortFuncAsc(t, a, b)
     if not (t and t[a] and t[b]) then return false end
     local orderA = t[a].loadOrder or 9999
@@ -135,6 +143,7 @@ local function packSortFuncAsc(t, a, b)
     return tostring(a) < tostring(b)
 end
 
+-- Re-indexes and populates the ordered pack list for the settings UI
 function AbilityIconsFramework.InitializeSortOrderEntries()
     local settings = AbilityIconsFramework.GetSettings()
     if not (settings and settings.iconPacksData) then return end
@@ -177,7 +186,7 @@ function AbilityIconsFramework.InitializeSortOrderEntries()
         return packSortFuncAsc(settings.iconPacksData, a, b)
     end)
 
-    -- Mutate existing table in-place so references held by LAM are preserved
+    -- Mutate existing table in-place so references held by LibAddonMenu controls remain valid
     local entries = AbilityIconsFramework.packSortOrderEntries
     local oldCount = #entries
     local newCount = #keys
@@ -185,7 +194,6 @@ function AbilityIconsFramework.InitializeSortOrderEntries()
     for currentIdx, packDirectoryString in ipairs(keys) do
         local packData = settings.iconPacksData[packDirectoryString]
         if packData ~= nil then
-            -- Normalize loadOrder to consecutive clean numbers (1 = top priority)
             packData.loadOrder = currentIdx
 
             local texture = packData.packExampleTexture
@@ -213,6 +221,7 @@ function AbilityIconsFramework.InitializeSortOrderEntries()
     end
 end
 
+-- Saves user dragging / priority shifts from the LAM UI back into SavedVariables
 function AbilityIconsFramework.UpdatePackLoadOrderFromSortEntries()
     local settings = AbilityIconsFramework.GetSettings()
     if not (settings and settings.iconPacksData) then return end
@@ -227,9 +236,9 @@ end
 -- Iteration & Application  --
 ------------------------------
 
--- Custom iteration function going over icon pack data in their load order.
+-- Custom iteration function going over icon pack data in reverse priority order.
 -- In ApplyIconPacks, icon packs are applied from lowest priority (highest number) to highest priority (1),
--- so loadOrder = 1 is applied LAST and overwrites any conflicting icons from lower priority packs.
+-- so loadOrder = 1 is applied LAST and wins any conflicting textures.
 local packSortFunc = function(t, a, b)
     if not (t and t[a] and t[b]) then return false end
     local orderA = t[a].loadOrder or 9999
@@ -254,7 +263,6 @@ function AbilityIconsFramework.packPairs()
 
     local keys = {}
     for k, _ in pairs(settings.iconPacksData) do
-        -- Iterate only over currently enabled icon packs
         if AbilityIconsFramework.ENABLED_ICON_PACKS[k] ~= nil then
             keys[#keys + 1] = k
         end
@@ -271,8 +279,8 @@ function AbilityIconsFramework.packPairs()
     end
 end
 
+-- Registers icon replacements in priority order into BASE_GAME_ICONS_TO_REPLACE
 function AbilityIconsFramework.ApplyIconPacks()
-    -- packPairs is custom iterator function which goes through icon packs in their load order
     for PackDirectory, _ in AbilityIconsFramework.packPairs() do
         for _, icon in ipairs(AbilityIconsFramework.ENABLED_ICON_PACKS[PackDirectory]) do
             AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon(icon)] = PackDirectory .. icon
@@ -280,6 +288,7 @@ function AbilityIconsFramework.ApplyIconPacks()
     end
 end
 
+-- Compiles full replacement dictionary from base assets, packs, and scribed abilities
 function AbilityIconsFramework.GenerateReplacementLists()
     local replacementIcons = AbilityIconsFramework.REPLACEMENT_ICONS or {}
     for _, icon in ipairs(replacementIcons) do
@@ -291,6 +300,7 @@ function AbilityIconsFramework.GenerateReplacementLists()
     end
 end
 
+-- Flushes and re-applies all textures whenever the user changes pack priority order
 function AbilityIconsFramework.ApplyPackLoadOrderChanges()
     AbilityIconsFramework.ResetAllTextureRedirects()
     AbilityIconsFramework.GenerateReplacementLists()

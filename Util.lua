@@ -1,18 +1,22 @@
+﻿-- Ability Icons Framework (AIF) - Utilities
+-- Helper routines for inspecting ability IDs, hotbars, and redirecting textures in ESO's engine.
 --- @class (partial) AbilityIconsFramework
 AbilityIconsFramework = AbilityIconsFramework or {}
 local AbilityIconsFramework = AbilityIconsFramework
 
--- Do not allow any icon pack / base-game replacement to redirect this one.
+-- Do not allow any icon pack or base-game replacement to redirect this specific icon,
+-- otherwise Dragonknight Stagger / Stomp animations look completely unhinged.
 local STAGGER_STOMP_BASE_ICON = "/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"
 
 -----------------------------
 -- Action Bar Slot Helpers --
 -----------------------------
 
---- Retrieves the base ability id of the skill with the specified ability id.
---- @param slotIndex number The index of a given skill in the action bar.
---- @param hotbarCategory number The category of the hotbar in question.
---- @return number? baseAbilityId The base ability id of the specified skill.
+--- Retrieves the root/base ability ID of a skill (unmorphed version).
+--- Essential because morphs have unique IDs, but icon packs often target the base skill.
+--- @param slotIndex number The action bar slot index (3-8).
+--- @param hotbarCategory number The active hotbar category (Primary, Backup, etc.).
+--- @return number? baseAbilityId The root ability ID, or nil if empty.
 function AbilityIconsFramework.GetBaseAbilityId(slotIndex, hotbarCategory)
     local abilityId = AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     if not abilityId then return nil end
@@ -32,10 +36,10 @@ function AbilityIconsFramework.GetBaseAbilityId(slotIndex, hotbarCategory)
     return baseMorphData and baseMorphData:GetAbilityId() or abilityId
 end
 
---- Retrieves the ability id of the skill found in the specified slotIndex.
---- @param slotIndex number The index of a given skill in the action bar.
---- @param hotbarCategory number The category of the hotbar in question.
---- @return number? abilityId The ability id that corresponds to the skill in question.
+--- Retrieves the raw ability ID bound to an action bar slot.
+--- @param slotIndex number The slot index (3-8).
+--- @param hotbarCategory number The hotbar category.
+--- @return number? abilityId The bound ability ID.
 function AbilityIconsFramework.GetAbilityId(slotIndex, hotbarCategory)
     local index = tonumber(slotIndex) or 0
     if index < AbilityIconsFramework.MIN_INDEX or index > AbilityIconsFramework.MAX_INDEX then
@@ -49,25 +53,27 @@ end
 -- Texture Redirection Helpers --
 ---------------------------------
 
---- Calls RedirectTexture to replace an existing skill icon with a different one.
+--- Iterates through configured texture replacements and commands ESO's C++ rendering engine
+--- via RedirectTexture() to swap old blurry textures for shiny HD replacements.
 function AbilityIconsFramework.ReplaceMismatchedIcons()
     local doReplace = AbilityIconsFramework.GetSettings().replaceMismatchedBaseIcons
 
     for key, value in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
-        -- Never redirect the stagger stomp icon, and skip scribing icons here.
+        -- Never redirect the stagger stomp icon, and skip scribing icons here (handled separately).
         if key ~= STAGGER_STOMP_BASE_ICON and AbilityIconsFramework.CUSTOM_ABILITY_ICONS[key] == nil then
             if doReplace then
                 RedirectTexture(key, value)
             else
-                RedirectTexture(key, key)
+                RedirectTexture(key, key) -- Restores vanilla texture
             end
         end
     end
 
-    -- Safety: always restore it (even if something else attempted to redirect it earlier).
+    -- Safety: always guarantee Stagger Stomp stays on its vanilla track
     RedirectTexture(STAGGER_STOMP_BASE_ICON, STAGGER_STOMP_BASE_ICON)
 end
 
+--- Resets all redirected textures back to vanilla defaults (cleans up disabled packs).
 function AbilityIconsFramework.ResetAllTextureRedirects()
     for key, _ in pairs(AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE) do
         RedirectTexture(key, key)

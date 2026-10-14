@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Inactive Action Bar Compatibility
+-- Bridges icon updates directly into FancyActionBar and FancyActionBar+ backbars.
+-- Because players who play with backbars deserve to see their custom icons too.
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework or {}
 
@@ -35,7 +38,7 @@ function AbilityIconsFramework.UpdateInactiveBarButtonFAB(slotIndex, inactiveHot
     -- Backbar buttons in FancyActionBar/FancyActionBar+ use physical indices (23-28).
     -- Calling ESO's ActionButton:HandleSlotChanged() on slot > 8 causes ESO's engine
     -- to evaluate GetSlotType() as ACTION_TYPE_NOTHING and run self:Clear(), wiping
-    -- the button texture and setting it hidden.
+    -- the button texture and setting it hidden. We manually set the texture instead.
     if btn.icon and btn.icon.SetTexture then
         local boundId = nil
         if FancyActionBar.GetSlotTrueBoundId then

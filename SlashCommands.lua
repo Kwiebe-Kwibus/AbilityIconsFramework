@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Slash Commands & Debugging
+-- Handy chat commands (/aif, /geticons, /getabilitydetails) to inspect slots,
+-- verify texture redirection, and troubleshoot without tearing your hair out.
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework or {}
 
@@ -51,7 +54,7 @@ function AbilityIconsFramework.CreateMainAifCommand()
     end
 end
 
---- Creates the /getabilitydetails (and /aif_details) command
+--- Inspects an action bar slot and dumps Focus, Signature, and Affix scripts for Scribing abilities
 function AbilityIconsFramework.CreateGetAbilityDetailsCommand()
     local handler = function(strInput)
         local params = {}
@@ -88,7 +91,7 @@ function AbilityIconsFramework.CreateGetAbilityDetailsCommand()
     SLASH_COMMANDS["/aif_details"] = handler
 end
 
---- Creates the /geticons (and /aif_icons) command, safely reporting icon paths without crashing
+--- Reports the exact texture path assigned to an ability, and checks if it is being redirected
 function AbilityIconsFramework.CreateGetIconsCommand()
     local handler = function(strInput)
         local params = {}
@@ -125,7 +128,7 @@ function AbilityIconsFramework.CreateGetIconsCommand()
     SLASH_COMMANDS["/aif_icons"] = handler
 end
 
---- Creates the /getsavedvars (and /aif_vars) command with nil-safe checks
+--- Safely prints active SavedVariables keys for debugging config corruption
 function AbilityIconsFramework.CreateGetSavedVarsCommand()
     local handler = function()
         PrintMsg("----------------------------------")
@@ -167,10 +170,9 @@ function AbilityIconsFramework.CreateGetSavedVarsCommand()
     SLASH_COMMANDS["/aif_vars"] = handler
 end
 
---- Backward compatibility helper for typo in previous versions
 AbilityIconsFramework.CreteGetSavedVarsCommand = AbilityIconsFramework.CreateGetSavedVarsCommand
 
---- Creates the /setoptionglobalicons command
+--- Quick toggle for account-wide settings via chat
 function AbilityIconsFramework.CreateSetOptionGlobalIconsCommand()
     local handler = function(option)
         local opt = string.lower(option or "")
@@ -187,7 +189,7 @@ function AbilityIconsFramework.CreateSetOptionGlobalIconsCommand()
     SLASH_COMMANDS["/aif_globalicons"] = handler
 end
 
---- Creates the /setoptioncustomicons command
+--- Quick toggle for custom scribed skill icons
 function AbilityIconsFramework.CreateSetOptionCustomIconsCommand()
     local handler = function(option)
         local opt = string.lower(option or "")
@@ -204,7 +206,7 @@ function AbilityIconsFramework.CreateSetOptionCustomIconsCommand()
     SLASH_COMMANDS["/aif_customicons"] = handler
 end
 
---- Creates the /setoptionmismatchedicons command
+--- Quick toggle for replacing mismatched vanilla icons
 function AbilityIconsFramework.CreateSetOptionMismatchedIconsCommand()
     local handler = function(option)
         local opt = string.lower(option or "")

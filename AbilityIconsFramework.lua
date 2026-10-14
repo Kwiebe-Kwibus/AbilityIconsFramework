@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Core Engine
+-- Coordinates icon replacements, Scribing textures, third-party action bar updates,
+-- and fixes visual glitches (like the infamous Veteran Asylum Sanctorium tip icon bug).
 --- @class (partial) AbilityIconsFramework
 AbilityIconsFramework = AbilityIconsFramework or {}
 
@@ -16,16 +19,18 @@ AbilityIconsFramework.name = "AbilityIconsFramework"
 -- Functions --
 ---------------
 
---- Applies the vAS 64x64 dimension constraints to the combat tips icon (permanently enabled).
+--- Fixes an infamous base-game bug where the Asylum Sanctorium combat tip icon
+--- expands to elephantine proportions and obscures the center of your screen.
 function AbilityIconsFramework.ApplyFixVas()
     if ZO_ActiveCombatTipsTipIcon then
         ZO_ActiveCombatTipsTipIcon:SetDimensionConstraints(64, 64, 64, 64)
     end
 end
 
---- Initializes the saved variables and replaces mismatched base skill icons, if the saved variables dictate it.
+--- Main initialization sequence: builds sort orders, applies icon replacements,
+--- connects Heroism Potion hooks, and refreshes the player's action bars.
 function AbilityIconsFramework.Initialize()
-    AbilityIconsFramework.ResetAllTextureRedirects() -- reset in case we had some icon pack disabled
+    AbilityIconsFramework.ResetAllTextureRedirects() -- Clean slate in case an icon pack was removed
 
     AbilityIconsFramework.InitializeSettings()
     AbilityIconsFramework.ProcessEarlyIconPacks()
@@ -45,11 +50,11 @@ function AbilityIconsFramework.Initialize()
 
     AbilityIconsFramework.UpdateAllSlots()
 
-    -- completely reset all base game redirects in case there were changes in loaded icon packs
+    -- Completely reset all base game redirects in case there were changes in loaded icon packs
     AbilityIconsFramework.SetOptionMismatchedIcons(false)
     AbilityIconsFramework.SetOptionMismatchedIcons(true)
 
-    -- Already has UpdateAllSlots() inside it
+    -- Synchronize custom scribed skill textures with action bars
     AbilityIconsFramework.OnScribingUpdate()
 
     AbilityIconsFramework.isInitialized = true
@@ -59,6 +64,7 @@ end
 -- Events --
 ------------
 
+-- Signals ESO's ActionButton controller to repaint a given slot
 function AbilityIconsFramework.HandleSlotChanged(actionSlotIndex, hotbarCategory)
     local btn = ZO_ActionBar_GetButton(actionSlotIndex, hotbarCategory)
     if btn and btn.HandleSlotChanged then
@@ -66,7 +72,7 @@ function AbilityIconsFramework.HandleSlotChanged(actionSlotIndex, hotbarCategory
     end
 end
 
--- Force-updates action bar icons across Vanilla UI, FancyActionBar+, and FancyActionBar
+--- Force-updates action bar icons across Vanilla UI, FancyActionBar+, and classic FancyActionBar
 function AbilityIconsFramework.UpdateAllSlots()
     local activeHotbarCategory = GetActiveHotbarCategory()
     local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or HOTBAR_CATEGORY_BACKUP
@@ -92,16 +98,14 @@ function AbilityIconsFramework.UpdateAllSlots()
     end
 end
 
---- To be used during game initialization. Code contained in this method needs to run conditionally, for this addon only.
---- @param eventCode any
---- @param addOnName any
+--- Addon startup handler
 function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
     if addOnName == AbilityIconsFramework.name then
         EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name, EVENT_ADD_ON_LOADED)
 
         AbilityIconsFramework.CreateSlashCommands()
 
-        -- Slight delay to let any dependent icon packs finish registering
+        -- Slight 250ms breather to let third-party icon packs register their tables first
         zo_callLater(function()
             AbilityIconsFramework.Initialize()
         end, 250)
@@ -119,7 +123,7 @@ function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
             end, 100)
         end)
 
-        -- Event firing when scribing craft completes - so we update scribing icons
+        -- Re-apply scribed icons whenever you finish crafting a new Grimoire at the Scribing altar
         CALLBACK_MANAGER:RegisterCallback("CraftingAnimationsStopped", function()
             AbilityIconsFramework.OnScribingUpdate()
         end)

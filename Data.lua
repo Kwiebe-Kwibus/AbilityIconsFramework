@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Scribing & Grimoire Metadata Data Table
+-- Master dictionary of all Scribing Focus scripts, damage types (Magic, Flame, Frost, Shock, Bleed, etc.),
+-- and default Grimoire ability texture paths.
 --- @class (partial) AbilityIconsFramework
 AbilityIconsFramework = AbilityIconsFramework or {}
 local AbilityIconsFramework = AbilityIconsFramework
@@ -961,3 +964,4 @@ AbilityIconsFramework.REPLACEMENT_ICONS = {
 
 -- Fill stagger stomp icon data immediately so core functions like GetAbilityIcon() do not crash
 AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE["/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"] = AbilityIconsFramework.addonIcon("ability_dragonknight_013_a_stomp.dds")
+

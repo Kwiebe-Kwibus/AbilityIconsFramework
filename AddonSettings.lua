@@ -1,3 +1,6 @@
+﻿-- Ability Icons Framework (AIF) - Addon Settings & LibAddonMenu Configuration
+-- Handles account-wide vs per-character SavedVariables migrations, settings cleanup,
+-- resolution choices (64/128/256), and the interactive drag-to-reorder icon pack priority list.
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework or {}
 
@@ -291,4 +294,5 @@ function AbilityIconsFramework.SetOptionFixVas(value)
     end
     AbilityIconsFramework.ApplyFixVas()
 end
+
 

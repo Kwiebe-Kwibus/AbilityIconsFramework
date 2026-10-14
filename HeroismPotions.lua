@@ -1,15 +1,18 @@
+﻿-- Ability Icons Framework (AIF) - Heroism Potions
+-- Gives crafted Heroism potions distinct, glowing purple icons and colorized tooltips.
+-- Because popping a 1,000-gold Heroism pot when you just wanted a cheap stamina potion hurts deep inside.
 --- @class (partial) AbilityIconsFramework
 local AbilityIconsFramework = AbilityIconsFramework or {}
 
 -- Heroism Potions Configuration
 AbilityIconsFramework.HEROISM_POTIONS = {
     potionItemIds = {
-        [54340] = true, -- All Magicka Pots
-        [54341] = true, -- All Stamina Pots
+        [54340] = true, -- All Magicka-based Heroism Potions
+        [54341] = true, -- All Stamina-based Heroism Potions
     },
     potionEffects = {
-        [197919] = true, -- Restore Magicka + Restore Stamina + Heroism
-        [335616] = true, -- Restore Stamina + Heroism
+        [197919] = true, -- Tri-Restoration / Restore Magicka + Restore Stamina + Minor Heroism
+        [335616] = true, -- Restore Stamina + Minor Heroism
     },
     potions = {
         [3]   = { name = GetString(HP_POTION_NAME_3),     icon = "/AbilityIconsFramework/HeroismPotions/potion_type_001.dds" },
@@ -23,12 +26,13 @@ AbilityIconsFramework.HEROISM_POTIONS = {
         [200] = { name = GetString(HP_POTION_NAME_CP150), icon = "/AbilityIconsFramework/HeroismPotions/potion_type_005.dds" },
     },
     isStationInteract = false,
-    tooltipColor = "B066FF", -- Purple color for heroism potions
+    tooltipColor = "B066FF", -- Distinctive purple hue for Heroism
 }
 
--- Fast lookup cache for itemLink -> potionData or false
+-- Fast lookup cache for itemLink -> potionData (or false if regular potion)
 local linkHeroismCache = {}
 
+-- Rebuilds localized potion names and clears the itemLink cache
 function AbilityIconsFramework.InitializePotionNames()
     AbilityIconsFramework.HEROISM_POTIONS.potions = {
         [3]   = { name = GetString(HP_POTION_NAME_3),     icon = "/AbilityIconsFramework/HeroismPotions/potion_type_001.dds" },
@@ -44,7 +48,7 @@ function AbilityIconsFramework.InitializePotionNames()
     linkHeroismCache = {}
 end
 
--- Heroism Potions Functions
+-- Extracts the 21st parameter from the itemLink string (the potion effect signature in ESO's item link protocol)
 function AbilityIconsFramework.GetPotionEffectFromItemLink(itemLink)
     if not itemLink or itemLink == "" then return 0 end
     local data = itemLink:match("|H.:item:(.-)|h.-|h")
@@ -53,6 +57,7 @@ function AbilityIconsFramework.GetPotionEffectFromItemLink(itemLink)
     return tonumber(result) or 0
 end
 
+-- Checks if a given itemLink matches a known Heroism potion and returns its metadata
 function AbilityIconsFramework.FindPotion(itemLink)
     if not itemLink or itemLink == "" then return nil end
 
@@ -89,6 +94,7 @@ function AbilityIconsFramework.GetPotionIcon(itemLink)
     return potion and potion.icon
 end
 
+-- Checks if an item qualifies for the Heroism visual override (disabled at alchemy tables to prevent crafting UI glitches)
 function AbilityIconsFramework.ShouldReplacePotion(itemLink)
     if not itemLink or itemLink == "" then return false end
     if not AbilityIconsFramework.GetSettings().enableHeroismPotionIcons then return false end
@@ -97,7 +103,10 @@ function AbilityIconsFramework.ShouldReplacePotion(itemLink)
     return AbilityIconsFramework.FindPotion(itemLink) ~= nil
 end
 
--- Tooltip hooks
+---------------------------------
+-- Tooltip & Inventory Hooks   --
+---------------------------------
+
 local tooltipFunctions = {
     ["SetBagItem"]             = GetItemLink,
     ["SetTradeItem"]           = GetTradeItemLink,
@@ -113,6 +122,7 @@ local function ReturnItemLink(itemLink)
     return itemLink
 end
 
+-- Intercepts tooltips across inventories, stores, trading houses, and links to colorize Heroism names and textures
 local function TooltipHook(tooltipControl, method, linkFunc)
     local origMethod = tooltipControl[method]
     if not origMethod then return end
@@ -147,14 +157,13 @@ local function InitializeTooltipHooks()
     TooltipHook(PopupTooltip, "SetLink", ReturnItemLink)
 end
 
--- Initialize Heroism Potions Hooks
+-- Hooks all item getter APIs so bag inventories, quickslots, and guild stores show custom potion art
 function AbilityIconsFramework.InitializeHeroismPotions()
     if AbilityIconsFramework._heroismPotionsInitialized then return end
     AbilityIconsFramework._heroismPotionsInitialized = true
 
     AbilityIconsFramework.InitializePotionNames()
 
-    -- Store original functions
     local ZO_GetItemName                         = GetItemName
     local ZO_GetItemInfo                         = GetItemInfo
     local ZO_GetItemLinkName                     = GetItemLinkName
@@ -164,7 +173,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
     local ZO_GetTradingHouseListingItemInfo      = GetTradingHouseListingItemInfo
     local ZO_GetTradingHouseSearchResultItemInfo = GetTradingHouseSearchResultItemInfo
 
-    -- Hook GetItemName
     GetItemName = function(bagId, slotIndex)
         local itemLink = GetItemLink(bagId, slotIndex)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -176,7 +184,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetItemName(bagId, slotIndex)
     end
 
-    -- Hook GetItemInfo
     GetItemInfo = function(bagId, slotIndex)
         local itemLink = GetItemLink(bagId, slotIndex)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -189,7 +196,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetItemInfo(bagId, slotIndex)
     end
 
-    -- Hook GetItemLinkName
     GetItemLinkName = function(itemLink)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
             local potionName = AbilityIconsFramework.GetPotionName(itemLink)
@@ -200,7 +206,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetItemLinkName(itemLink)
     end
 
-    -- Hook GetItemLinkInfo
     GetItemLinkInfo = function(itemLink)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
             local icon = AbilityIconsFramework.GetPotionIcon(itemLink)
@@ -212,7 +217,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetItemLinkInfo(itemLink)
     end
 
-    -- Hook GetSlotTexture
     GetSlotTexture = function(slotIndex, hotbarCategory)
         local itemLink = GetSlotItemLink(slotIndex, hotbarCategory)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -222,7 +226,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetSlotTexture(slotIndex, hotbarCategory)
     end
 
-    -- Hook GetSlotName
     GetSlotName = function(slotIndex, hotbarCategory)
         local itemLink = GetSlotItemLink(slotIndex, hotbarCategory)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -234,7 +237,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetSlotName(slotIndex, hotbarCategory)
     end
 
-    -- Hook GetTradingHouseListingItemInfo
     GetTradingHouseListingItemInfo = function(index)
         local itemLink = GetTradingHouseListingItemLink(index)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -249,7 +251,6 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetTradingHouseListingItemInfo(index)
     end
 
-    -- Hook GetTradingHouseSearchResultItemInfo
     GetTradingHouseSearchResultItemInfo = function(index)
         local itemLink = GetTradingHouseSearchResultItemLink(index)
         if AbilityIconsFramework.ShouldReplacePotion(itemLink) then
@@ -264,10 +265,9 @@ function AbilityIconsFramework.InitializeHeroismPotions()
         return ZO_GetTradingHouseSearchResultItemInfo(index)
     end
 
-    -- Initialize Tooltip Hooks
     InitializeTooltipHooks()
 
-    -- Register for crafting station events with unique event namespaces
+    -- Temporarily disable overrides while interacting with Alchemy tables so crafting stays vanilla
     EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name .. "_CraftingStart", EVENT_CRAFTING_STATION_INTERACT, function()
         AbilityIconsFramework.HEROISM_POTIONS.isStationInteract = true
     end)
