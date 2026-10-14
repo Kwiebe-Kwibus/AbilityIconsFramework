@@ -19,7 +19,7 @@ function AbilityIconsFramework.GetInactiveBarButtonFAB(slotIndex)
     -- FancyActionBar+ provides GetActionButton(physicalIndex)
     if FancyActionBar.GetActionButton then
         return FancyActionBar.GetActionButton(physicalIndex)
-    -- Classic FancyActionBar stores backbar buttons in FancyActionBar.buttons
+        -- Classic FancyActionBar stores backbar buttons in FancyActionBar.buttons
     elseif FancyActionBar.buttons then
         return FancyActionBar.buttons[physicalIndex]
     end

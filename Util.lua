@@ -4,8 +4,7 @@
 AbilityIconsFramework = AbilityIconsFramework or {}
 local AbilityIconsFramework = AbilityIconsFramework
 
--- Do not allow any icon pack or base-game replacement to redirect this specific icon,
--- otherwise Dragonknight Stagger / Stomp animations look completely unhinged.
+-- Do not allow any icon pack or base-game replacement to redirect this specific icon
 local STAGGER_STOMP_BASE_ICON = "/esoui/art/icons/ability_dragonknight_013_a_stomp.dds"
 
 -----------------------------
@@ -53,8 +52,8 @@ end
 -- Texture Redirection Helpers --
 ---------------------------------
 
---- Iterates through configured texture replacements and commands ESO's C++ rendering engine
---- via RedirectTexture() to swap old blurry textures for shiny HD replacements.
+--- Iterates through configured texture replacements
+--- via RedirectTexture() to swap old blurry textures for HD replacements.
 function AbilityIconsFramework.ReplaceMismatchedIcons()
     local doReplace = AbilityIconsFramework.GetSettings().replaceMismatchedBaseIcons
 

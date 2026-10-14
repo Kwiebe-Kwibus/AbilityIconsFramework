@@ -292,7 +292,8 @@ end
 function AbilityIconsFramework.GenerateReplacementLists()
     local replacementIcons = AbilityIconsFramework.REPLACEMENT_ICONS or {}
     for _, icon in ipairs(replacementIcons) do
-        AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon(icon)] = AbilityIconsFramework.addonIcon(icon)
+        AbilityIconsFramework.BASE_GAME_ICONS_TO_REPLACE[AbilityIconsFramework.esoIcon(icon)] = AbilityIconsFramework
+        .addonIcon(icon)
     end
     AbilityIconsFramework.ApplyIconPacks()
     if AbilityIconsFramework.GenerateScribedSkillsIcons then
