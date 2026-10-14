@@ -19,7 +19,7 @@ AbilityIconsFramework.name = "AbilityIconsFramework"
 -- Functions --
 ---------------
 
---- Fixes an infamous base-game bug where the Asylum Sanctorium combat tip icon
+--- Fixes an unintentional behavior where the Asylum Sanctorium combat tip icon
 --- expands to elephantine proportions and obscures the center of your screen.
 function AbilityIconsFramework.ApplyFixVas()
     if ZO_ActiveCombatTipsTipIcon then
@@ -75,7 +75,8 @@ end
 --- Force-updates action bar icons across Vanilla UI, FancyActionBar+, and classic FancyActionBar
 function AbilityIconsFramework.UpdateAllSlots()
     local activeHotbarCategory = GetActiveHotbarCategory()
-    local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or HOTBAR_CATEGORY_BACKUP
+    local inactiveHotbarCategory = activeHotbarCategory == HOTBAR_CATEGORY_BACKUP and HOTBAR_CATEGORY_PRIMARY or
+    HOTBAR_CATEGORY_BACKUP
 
     -- 1. Base Game Action Bars (Vanilla UI & active bar of FancyActionBar / FancyActionBar+)
     for slotIndex = AbilityIconsFramework.MIN_INDEX, AbilityIconsFramework.MAX_INDEX do
@@ -111,17 +112,18 @@ function AbilityIconsFramework.OnAddOnLoaded(eventCode, addOnName)
         end, 250)
 
         -- Ensure slots are refreshed once player enters world and UI is fully instantiated
-        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED, function()
-            EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED)
-            AbilityIconsFramework.UpdateAllSlots()
-            AbilityIconsFramework.ApplyFixVas()
-
-            -- Deferred update to ensure third-party action bar addons (like FancyActionBar+)
-            -- have fully completed their first zone layout
-            zo_callLater(function()
+        EVENT_MANAGER:RegisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED,
+            function()
+                EVENT_MANAGER:UnregisterForEvent(AbilityIconsFramework.name .. "_PlayerActivated", EVENT_PLAYER_ACTIVATED)
                 AbilityIconsFramework.UpdateAllSlots()
-            end, 100)
-        end)
+                AbilityIconsFramework.ApplyFixVas()
+
+                -- Deferred update to ensure third-party action bar addons (like FancyActionBar+)
+                -- have fully completed their first zone layout
+                zo_callLater(function()
+                    AbilityIconsFramework.UpdateAllSlots()
+                end, 100)
+            end)
 
         -- Re-apply scribed icons whenever you finish crafting a new Grimoire at the Scribing altar
         CALLBACK_MANAGER:RegisterCallback("CraftingAnimationsStopped", function()
